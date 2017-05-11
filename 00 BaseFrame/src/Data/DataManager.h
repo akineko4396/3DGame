@@ -19,7 +19,7 @@ public:
 	return			:	–ß‚è’l‚È‚µ
 
 	--------------------------------------------*/
-	void DataLoad(std::string _FileName);
+	void DataLoad(const std::string& _FileName);
 
 	/*DataLoad------------------------------------
 

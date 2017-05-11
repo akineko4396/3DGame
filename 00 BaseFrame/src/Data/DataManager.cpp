@@ -3,7 +3,7 @@
 #include "DataManager.h"
 
 
-void DataManager::DataLoad(std::string _FileName)
+void DataManager::DataLoad(const std::string& _FileName)
 {
 	std::ifstream ifs;
 
@@ -54,7 +54,6 @@ void DataManager::DataLoad(std::string _FileName)
 		YsVec3 vPos = YsVec3(0.0f, 0.0f, 0.0f);
 		YsVec3 vScale = YsVec3(1.0f, 1.0f, 1.0f);
 		YsVec3 vAngle = YsVec3(0.0f, 0.0f, 0.0f);
-		std::string	 Tag = "";
 		INT		 Id = -1;
 
 
@@ -160,6 +159,8 @@ void DataManager::DataLoad(std::string _FileName)
 
 void DataManager::DataSave(const std::string _FileName)
 {
+
+
 
 }
 
