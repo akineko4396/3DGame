@@ -3,13 +3,9 @@
 //====================================
 // プレイヤークラス
 //====================================
-class Player :public CharacterBase
+class Player :public ObjectBase
 {
 public: 
-
-	Player(){
-		m_Id = PLAYER;
-	}
 
 	//初期化設定
 	void Init();

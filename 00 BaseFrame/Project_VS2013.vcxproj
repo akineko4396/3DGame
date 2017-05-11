@@ -53,7 +53,6 @@
     <ClCompile Include="src\Data\DataManager.cpp" />
     <ClCompile Include="src\GameResource\GameResource.cpp" />
     <ClCompile Include="src\Game\GameCamera.cpp" />
-    <ClCompile Include="src\Game\GameWorld\Base\CharacterBase.cpp" />
     <ClCompile Include="src\Game\GameWorld\Base\ObjectBase.cpp" />
     <ClCompile Include="src\Game\GameWorld\Character\Player.cpp" />
     <ClCompile Include="src\Game\GameWorld\GameWorld.cpp" />
@@ -123,7 +122,6 @@
     <ClInclude Include="src\Data\DataManager.h" />
     <ClInclude Include="src\GameResource\GameResource.h" />
     <ClInclude Include="src\Game\GameCamera.h" />
-    <ClInclude Include="src\Game\GameWorld\Base\CharacterBase.h" />
     <ClInclude Include="src\Game\GameWorld\Base\ObjectBase.h" />
     <ClInclude Include="src\Game\GameWorld\Character\Player.h" />
     <ClInclude Include="src\Game\GameWorld\GameWorld.h" />

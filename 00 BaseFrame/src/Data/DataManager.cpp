@@ -2,10 +2,8 @@
 #include "Game/GameWorld/GameWorld.h"
 #include "DataManager.h"
 
-//staticƒƒ“ƒo•Ï”‚Ì–{‘Ì
-DataManager*	DataManager::s_pdmInst = nullptr;
 
-void DataManager::DataLoad(const std::string _FileName)
+void DataManager::DataLoad(std::string _FileName)
 {
 	std::ifstream ifs;
 
@@ -142,7 +140,7 @@ void DataManager::DataLoad(const std::string _FileName)
 			{
 				if ((*FileIt) == "Player")
 				{
-					CreateGameCharacter<Player>(Id, vPos, vScale, vAngle);
+					CreateGameObject<Player>(Id, vPos, vScale, vAngle);
 				}
 			}
 

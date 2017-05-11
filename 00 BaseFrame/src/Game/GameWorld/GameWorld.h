@@ -14,7 +14,6 @@ public:
 };
 
 //作成したインクルードヘッダー
-#include "Base/CharacterBase.h"
 #include "Base/ObjectBase.h"
 #include "Character/Player.h"
 #include "Map/Object/Ground.h"

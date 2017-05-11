@@ -8,8 +8,8 @@ GameWorld*	GameWorld::s_pInst = nullptr;
 void GameWorld::Init()
 {
 	//外部からゲームオブジェクトを読み込み
-	DM.DataLoad("data/c-data.txt");
-	DM.DataLoad("data/o-data.txt");
+	UPtr<DataManager> uDM(new DataManager);
+	uDM->DataLoad("data/txt/Object1.txt");
 
 	//カメラの初期化
 	m_Cam.Init(20, 180, 0, false, true);
@@ -22,7 +22,6 @@ void GameWorld::Release()
 	//=======================================
 	//m_EffectTaskMgr.Release();
 
-	CharacterBase::FullClear();
 	ObjectBase::FullClear();
 }
 
@@ -59,7 +58,6 @@ void GameWorld::Update()
 	//=======================================
 	//m_EffectTaskMgr.UpdateTask();
 
-	CharacterBase::AllUpdate();
 	ObjectBase::AllUpdate();
 }
 
@@ -82,6 +80,5 @@ void GameWorld::Draw()
 	//m_EffectTaskMgr.DrawTask();
 	//YsDx.DS_ZSetting(true, true);	//Z書き込みをONに戻す
 
-	CharacterBase::AllDraw();
 	ObjectBase::AllDraw();
 }

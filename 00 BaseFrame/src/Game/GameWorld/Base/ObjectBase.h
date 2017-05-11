@@ -1,5 +1,31 @@
 #pragma once
 
+//====================
+// namespace
+//====================
+namespace OBJECT_LIST {
+
+	enum ID {
+
+		//プレイヤー
+		PLAYER			= 0,
+
+		//敵
+		ENEMY			= 1,
+
+		//ステージ
+		GROUND		= 2,
+
+		//オブジェクト最大数
+		MAX_NUM,
+
+		//初期化
+		FREE				= -1,
+
+	};
+
+}
+
 //===================================
 // オブジェクトの基底クラス
 // 　オブジェクトのクラスを管理する
@@ -29,8 +55,6 @@ public:
 	//リストのゲッター
 	static std::vector<SPtr<ObjectBase>> & GetList(){ return m_oList; }
 
-	enum { GROUND };
-
 	//オブジェクト情報を返す
 	static SPtr<ObjectBase>	GetThisObject(int _id);
 
@@ -57,11 +81,24 @@ public:
 	// セッター
 	//===========
 
+	//行列を返す
+	inline YsMatrix GetMatrix() { return m_Mat; }
+
 	//キルフラグの情報を返す
 	inline int	GetKillFlg(){ return m_killFlg; }
 
 	//個別IDを取得
 	inline int	GetId(){ return m_Id; }
+
+
+	//	指定されたクラスをインスタンス化してリストに格納する
+	template <class T>
+	inline static SPtr<T> CreateObjectTask()
+	{
+		SPtr<T> add(new T);
+		PushObject(add);
+		return add;
+	}
 
 protected:
 

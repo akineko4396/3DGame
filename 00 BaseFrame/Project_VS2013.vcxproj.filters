@@ -264,9 +264,6 @@
     <ClCompile Include="src\Game\GameWorld\Map\Object\Ground.cpp">
       <Filter>src\Game\GameWorld\Map\Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\GameWorld\Base\CharacterBase.cpp">
-      <Filter>src\Game\GameWorld\Base</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Base\ObjectBase.cpp">
       <Filter>src\Game\GameWorld\Base</Filter>
     </ClCompile>
@@ -457,9 +454,6 @@
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Map\Object\Ground.h">
       <Filter>src\Game\GameWorld\Map\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\GameWorld\Base\CharacterBase.h">
-      <Filter>src\Game\GameWorld\Base</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Base\ObjectBase.h">
       <Filter>src\Game\GameWorld\Base</Filter>

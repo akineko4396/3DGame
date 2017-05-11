@@ -4,17 +4,17 @@
 void Player::Init()
 {
 	//　モデル読み込み
-	m_gmChara=APP.m_ResStg.LoadMesh("data/model/Hackadoll_1/model.xed");
+	m_gmObj=APP.m_ResStg.LoadMesh("data/model/Hackadoll_1/model.xed");
 	//　モデルデータをセット
-	m_moPla.SetModel(m_gmChara);
+	m_moPla.SetModel(m_gmObj);
 	//　初期の行列設定
-	m_mChara.CreateMove(m_vPos);
+	m_mObj.CreateMove(m_vPos);
 	//　初期のサイズ
-	m_mChara.Scale(m_vScale);
+	m_mObj.Scale(m_vScale);
 	//　初期の回転量
-	m_mChara.RotateY_Local(m_vAngle.y);
-	m_mChara.RotateX_Local(m_vAngle.x);
-	m_mChara.RotateZ_Local(m_vAngle.z);
+	m_mObj.RotateY_Local(m_vAngle.y);
+	m_mObj.RotateX_Local(m_vAngle.x);
+	m_mObj.RotateZ_Local(m_vAngle.z);
 
 	//　アニメータを初期化
 	m_moPla.InitAnimator(m_aniPla);
@@ -35,10 +35,10 @@ void Player::Update()
 	//===========================================================
 	// 移動処理
 	//===========================================================
-	if (INPUT.KeyCheck('W'))m_mChara.Move_Local(0.0f, 0.0f, 0.1f);
-	if (INPUT.KeyCheck('S'))m_mChara.Move_Local(0.0f, 0.0f, -0.1f);
-	if (INPUT.KeyCheck('A'))m_mChara.Move_Local(-0.1f, 0.0f, 0.0f);
-	if (INPUT.KeyCheck('D'))m_mChara.Move_Local(0.1f, 0.0f, 0.0f);
+	if (INPUT.KeyCheck('W'))m_mObj.Move_Local(0.0f, 0.0f, 0.1f);
+	if (INPUT.KeyCheck('S'))m_mObj.Move_Local(0.0f, 0.0f, -0.1f);
+	if (INPUT.KeyCheck('A'))m_mObj.Move_Local(-0.1f, 0.0f, 0.0f);
+	if (INPUT.KeyCheck('D'))m_mObj.Move_Local(0.1f, 0.0f, 0.0f);
 
 	//===========================================================
 	// ジャンプ処理
@@ -46,7 +46,7 @@ void Player::Update()
 	/*if (INPUT.KeyCheck(VK_SPACE) && !JFlg){
 		JFlg = true;
 		JUMP_POWER = 1;
-		Pos = m_mChara.GetPos();
+		Pos = m_mObj.GetPos();
 		prev = Pos.y;
 	}
 	if (JFlg){
@@ -58,7 +58,7 @@ void Player::Update()
 			JFlg = false;
 			Pos.y = prev;
 		}
-		m_mChara.Move_Local(0.0f, Pos.y, 0.0f);
+		m_mObj.Move_Local(0.0f, Pos.y, 0.0f);
 	}*/
 
 	//アニメーションを進める
@@ -72,7 +72,7 @@ void Player::Update()
 
 	//全ボーンの「WorldMat」を「TransMat」をもとに算出する
 	// 実際に描画などで必要なのがこのWorldMatです
-	m_moPla.CalcBoneMatrix(&m_mChara);
+	m_moPla.CalcBoneMatrix(&m_mObj);
 
 	//Spaceで次のアニメへ
 	/*if (INPUT.KeyCheck_Enter(VK_SPACE)){
@@ -89,7 +89,7 @@ void Player::Update()
 void Player::Draw()
 {
 	// SampleShaderクラスで描画する
-	ShMgr.m_Samp.DrawModel(m_moPla, &m_mChara);
+	ShMgr.m_Samp.DrawModel(m_moPla, &m_mObj);
 
 	////=======================================
 	//// 武器描画

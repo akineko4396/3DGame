@@ -38,11 +38,12 @@ void ObjectBase::CheckKillFlg()
 	std::vector<SPtr<ObjectBase>>::iterator it = m_oList.begin();
 	while (it != m_oList.end())
 	{
-		if ((*it)->GetId() == GROUND)
+		//—áŠOÝ’è
+		/*if ((*it)->GetId() == PLAYER)
 		{
 			it++;
 			continue;
-		}
+		}*/
 		if ((*it)->GetKillFlg() == 1)
 		{
 			*it = NULL;
