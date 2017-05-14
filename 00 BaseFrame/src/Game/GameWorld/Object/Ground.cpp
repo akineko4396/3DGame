@@ -1,5 +1,5 @@
 #include "main.h"
-#include "../../GameWorld.h"
+#include "../GameWorld.h"
 
 void Ground::Init()
 {

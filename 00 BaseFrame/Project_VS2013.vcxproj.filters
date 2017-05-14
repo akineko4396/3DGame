@@ -34,21 +34,6 @@
     <Filter Include="Lib\YskLib\Physics">
       <UniqueIdentifier>{eeff10c9-8ab7-47d7-9e98-272a3a16496e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Game">
-      <UniqueIdentifier>{2841f2a2-e934-4b93-b53b-a0cad9ecb8bf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\Scene">
-      <UniqueIdentifier>{589ca8bd-a195-433c-a9a9-978dd148f412}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\Task">
-      <UniqueIdentifier>{cd60ae0e-2344-4081-b332-94ada3ab7969}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\Scene\TitleScene">
-      <UniqueIdentifier>{293000c3-f331-4eea-b4a7-dfe2f122ad39}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\Scene\GameScene">
-      <UniqueIdentifier>{50c54e42-2cd8-43f3-b459-7a95f44976a2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Lib\YskLib\Sound">
       <UniqueIdentifier>{5a9fc501-febb-4181-aa90-606f245d3013}</UniqueIdentifier>
     </Filter>
@@ -60,9 +45,6 @@
     </Filter>
     <Filter Include="src\GameResource">
       <UniqueIdentifier>{e0c227b0-7331-49ce-bf96-8305a24a3042}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\Scene\SampleScene">
-      <UniqueIdentifier>{ba882638-239e-415c-a1c3-44d499158fcd}</UniqueIdentifier>
     </Filter>
     <Filter Include="Lib\YskLib\ResourceManage">
       <UniqueIdentifier>{a09d8329-f18e-48f8-84b2-d8a6e430e9f7}</UniqueIdentifier>
@@ -82,23 +64,50 @@
     <Filter Include="Lib\YskLib\Shader">
       <UniqueIdentifier>{1de576d6-679d-49c4-88ae-74dfa60230a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Game\GameWorld">
-      <UniqueIdentifier>{0a2d035e-8a22-4d64-bdbf-7ebe45202b70}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Character">
-      <UniqueIdentifier>{cc609d56-264a-4aef-a9c5-9245908263e0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Map">
-      <UniqueIdentifier>{523ebbae-94a6-44a9-af4f-848f6daac38d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Map\Object">
-      <UniqueIdentifier>{edd6a3e4-b837-4a16-b5bb-9f431dbfc3aa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Base">
-      <UniqueIdentifier>{acf63031-5acf-4dcd-8602-d97496dec981}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Data">
       <UniqueIdentifier>{217ed684-1b4d-419d-9b95-e56e5917e8fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game">
+      <UniqueIdentifier>{2de0d5e1-ec88-43b2-87f4-f6d69522b85b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld">
+      <UniqueIdentifier>{51fb9cdb-5856-4833-891b-9200a4c3a6a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base">
+      <UniqueIdentifier>{fb0c65b1-faad-4b81-aba5-b723decb24c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Scene">
+      <UniqueIdentifier>{ebca8dcf-fa8d-4e65-8f6f-91b528c9fac9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Scene\GameScene">
+      <UniqueIdentifier>{b1c878b7-86dd-4ac5-9ab0-05efd067e3b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Scene\SampleScene">
+      <UniqueIdentifier>{de9ca5cf-5ce8-437d-ab2d-0f6a29a366b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Scene\TitleScene">
+      <UniqueIdentifier>{4d3b5f12-24e0-48e6-ab3d-9895921e39f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\Task">
+      <UniqueIdentifier>{3ff9464c-4d4e-48e7-8e50-ad9d1e562153}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\ObjectBase">
+      <UniqueIdentifier>{25dafca2-3988-46e3-8f98-747a68e37894}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Character">
+      <UniqueIdentifier>{2607a9d4-cd73-42d1-88e6-08fe80fc00f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object">
+      <UniqueIdentifier>{7aa0bef0-c124-4b44-86dd-a5cb1aa71b84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\Ground">
+      <UniqueIdentifier>{5eed6dd0-d117-4bbd-a91d-8d066e9ffa52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Character\Player">
+      <UniqueIdentifier>{f1380b3f-0c17-47d5-9b50-68ba8398852d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\BeltConveyor">
+      <UniqueIdentifier>{e6a7af63-4313-492b-91d5-3a13ba5b4d05}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -117,9 +126,6 @@
     <ClCompile Include="src\Shader\SampleShader.cpp">
       <Filter>src\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Scene\Scene.cpp">
-      <Filter>src\Game\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="src\Shader\SpriteShader.cpp">
       <Filter>src\Shader</Filter>
     </ClCompile>
@@ -129,14 +135,8 @@
     <ClCompile Include="src\Shader\EasyShader.cpp">
       <Filter>src\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Scene\SampleScene\Sample_Data.cpp">
-      <Filter>src\Game\Scene\SampleScene</Filter>
-    </ClCompile>
     <ClCompile Include="src\Shader\LightManager.cpp">
       <Filter>src\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\GameCamera.cpp">
-      <Filter>src\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\Lib\YskLib\YsPolygon.cpp">
       <Filter>Lib\YskLib\Graphic\Model</Filter>
@@ -234,18 +234,6 @@
     <ClCompile Include="..\Lib\YskLib\YsCamera.cpp">
       <Filter>Lib\YskLib\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Task\TaskManager.cpp">
-      <Filter>src\Game\Task</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Scene\TitleScene\TitleScene.cpp">
-      <Filter>src\Game\Scene\TitleScene</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Scene\GameScene\GameScene.cpp">
-      <Filter>src\Game\Scene\GameScene</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Scene\SampleScene\SampleScene.cpp">
-      <Filter>src\Game\Scene\SampleScene</Filter>
-    </ClCompile>
     <ClCompile Include="..\Lib\YskLib\YsBullet_RigidBody.cpp">
       <Filter>Lib\YskLib\Physics</Filter>
     </ClCompile>
@@ -255,20 +243,44 @@
     <ClCompile Include="..\Lib\YskLib\YsBullet_Joint.cpp">
       <Filter>Lib\YskLib\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="src\Data\DataManager.cpp">
+      <Filter>src\Data</Filter>
+    </ClCompile>
     <ClCompile Include="src\Game\GameWorld\GameWorld.cpp">
       <Filter>src\Game\GameWorld</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\GameWorld\Character\Player.cpp">
-      <Filter>src\Game\GameWorld\Character</Filter>
+    <ClCompile Include="src\Game\Scene\Scene.cpp">
+      <Filter>src\Game\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\GameWorld\Map\Object\Ground.cpp">
-      <Filter>src\Game\GameWorld\Map\Object</Filter>
+    <ClCompile Include="src\Game\Scene\SampleScene\SampleScene.cpp">
+      <Filter>src\Game\Scene\SampleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Scene\SampleScene\Sample_Data.cpp">
+      <Filter>src\Game\Scene\SampleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Scene\GameScene\GameScene.cpp">
+      <Filter>src\Game\Scene\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Scene\TitleScene\TitleScene.cpp">
+      <Filter>src\Game\Scene\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Task\TaskManager.cpp">
+      <Filter>src\Game\Task</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameCamera.cpp">
+      <Filter>src\Game</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Base\ObjectBase.cpp">
-      <Filter>src\Game\GameWorld\Base</Filter>
+      <Filter>src\Game\GameWorld\Base\ObjectBase</Filter>
     </ClCompile>
-    <ClCompile Include="src\Data\DataManager.cpp">
-      <Filter>src\Data</Filter>
+    <ClCompile Include="src\Game\GameWorld\Character\Player.cpp">
+      <Filter>src\Game\GameWorld\Base\ObjectBase\Character\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameWorld\Object\Ground.cpp">
+      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameWorld\Object\BeltConveyor.cpp">
+      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\BeltConveyor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -290,9 +302,6 @@
     <ClInclude Include="src\Shader\SampleShader.h">
       <Filter>src\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Scene\Scene.h">
-      <Filter>src\Game\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="src\Shader\SpriteShader.h">
       <Filter>src\Shader</Filter>
     </ClInclude>
@@ -302,14 +311,8 @@
     <ClInclude Include="src\Shader\EasyShader.h">
       <Filter>src\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Scene\SampleScene\Sample_Data.h">
-      <Filter>src\Game\Scene\SampleScene</Filter>
-    </ClInclude>
     <ClInclude Include="src\Shader\LightManager.h">
       <Filter>src\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\GameCamera.h">
-      <Filter>src\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\Lib\YskLib\YsPolygon.h">
       <Filter>Lib\YskLib\Graphic\Model</Filter>
@@ -425,18 +428,6 @@
     <ClInclude Include="..\Lib\YskLib\YsCamera.h">
       <Filter>Lib\YskLib\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Task\TaskManager.h">
-      <Filter>src\Game\Task</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Scene\TitleScene\TitleScene.h">
-      <Filter>src\Game\Scene\TitleScene</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Scene\GameScene\GameScene.h">
-      <Filter>src\Game\Scene\GameScene</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Scene\SampleScene\SampleScene.h">
-      <Filter>src\Game\Scene\SampleScene</Filter>
-    </ClInclude>
     <ClInclude Include="..\Lib\YskLib\YsBullet_Shape.h">
       <Filter>Lib\YskLib\Physics</Filter>
     </ClInclude>
@@ -446,20 +437,44 @@
     <ClInclude Include="..\Lib\YskLib\YsBullet_Joint.h">
       <Filter>Lib\YskLib\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="src\Data\DataManager.h">
+      <Filter>src\Data</Filter>
+    </ClInclude>
     <ClInclude Include="src\Game\GameWorld\GameWorld.h">
       <Filter>src\Game\GameWorld</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\GameWorld\Character\Player.h">
-      <Filter>src\Game\GameWorld\Character</Filter>
+    <ClInclude Include="src\Game\Scene\Scene.h">
+      <Filter>src\Game\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\GameWorld\Map\Object\Ground.h">
-      <Filter>src\Game\GameWorld\Map\Object</Filter>
+    <ClInclude Include="src\Game\Scene\SampleScene\Sample_Data.h">
+      <Filter>src\Game\Scene\SampleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Scene\SampleScene\SampleScene.h">
+      <Filter>src\Game\Scene\SampleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Scene\GameScene\GameScene.h">
+      <Filter>src\Game\Scene\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Scene\TitleScene\TitleScene.h">
+      <Filter>src\Game\Scene\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Task\TaskManager.h">
+      <Filter>src\Game\Task</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameCamera.h">
+      <Filter>src\Game</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Base\ObjectBase.h">
-      <Filter>src\Game\GameWorld\Base</Filter>
+      <Filter>src\Game\GameWorld\Base\ObjectBase</Filter>
     </ClInclude>
-    <ClInclude Include="src\Data\DataManager.h">
-      <Filter>src\Data</Filter>
+    <ClInclude Include="src\Game\GameWorld\Character\Player.h">
+      <Filter>src\Game\GameWorld\Base\ObjectBase\Character\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameWorld\Object\Ground.h">
+      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameWorld\Object\BeltConveyor.h">
+      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\BeltConveyor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -16,8 +16,8 @@ public:
 //作成したインクルードヘッダー
 #include "Base/ObjectBase.h"
 #include "Character/Player.h"
-#include "Map/Object/Ground.h"
-
+#include "Object/Ground.h"
+#include "Object\BeltConveyor.h"
 //=====================================
 //
 //ゲームワールドクラス

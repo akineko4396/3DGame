@@ -16,6 +16,9 @@ namespace OBJECT_LIST {
 		//ステージ
 		GROUND		= 2,
 
+		//アーム
+		ARM				= 3,
+
 		//オブジェクト最大数
 		MAX_NUM,
 

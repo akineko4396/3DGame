@@ -151,6 +151,14 @@ void DataManager::DataLoad(const std::string& _FileName)
 				}
 			}
 
+			//ÉAÅ[ÉÄ
+			{
+				if ((*FileIt) == "Arm")
+				{
+					CreateGameObject<BeltConveyor>(Id, vPos, vScale, vAngle);
+				}
+			}
+
 			++FileIt;
 
 		}

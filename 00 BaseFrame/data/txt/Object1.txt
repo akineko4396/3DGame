@@ -1,3 +1,5 @@
 ClassName(Player)	Pos(0.0,0.0,0.0)	Scale(1.0,1.0,1.0)	Angle(0.0,0.0,0.0)	Id(0)
 
-ClassName(Ground)	Pos(0.0,0.0,0.0)	Scale(1.0,1.0,1.0)	Angle(0.0,0.0,0.0)	Id(1)
+ClassName(Ground)	Pos(0.0,0.0,0.0)	Scale(1.0,1.0,1.0)	Angle(0.0,0.0,0.0)	Id(2)
+
+ClassName(Arm)	Pos(0.0,0.0,0.0)	Scale(3.0,3.0,3.0)	Angle(0.0,0.0,0.0)	Id(3)
