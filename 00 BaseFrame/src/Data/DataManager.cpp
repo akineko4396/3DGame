@@ -170,6 +170,9 @@ int DataManager::DataLoad(const std::string& _FileName)
 	return num_cnt;
 }
 
+//コードが長いため簡略化
+#define DATA_SAVE_NORMAL "\t" << "Pos(" << Pos.x << "," << Pos.y << "," << Pos.z << ")" << "\t" << "Scale(" << Scale.x << "," << Scale.y << "," << Scale.z << ")" << "\t" << "Angle(" << Angle.x << "," << Angle.y << "," << Angle.z << ")" 
+
 void DataManager::DataSave(const std::string _FileName, int _num)
 {
 
@@ -212,16 +215,16 @@ void DataManager::DataSave(const std::string _FileName, int _num)
 		switch (ObjectBase::GetThisObject(num_cnt)->GetObjId()) {
 			//プレイヤー
 		case OBJECT_LIST::ID::PLAYER:
-			ofs << "ClassName(Player)" << "\t" << "Pos(" << Pos.x << "," << Pos.y << "," << Pos.z << ")" << "\t" << "Scale(" << Scale.x << "," << Scale.y << "," << Scale.z << ")" << "\t" << "Angle(" << Angle.x << "," << Angle.y << "," << Angle.z << ")" << std::endl; break;
+			ofs << "ClassName(Player)" << DATA_SAVE_NORMAL << std::endl; break;
 			//エネミー
 		case OBJECT_LIST::ID::ENEMY:
-			ofs << "ClassName(Enemy)" << "\t" << "Pos(" << Pos.x << "," << Pos.y << "," << Pos.z << ")" << "\t" << "Scale(" << Scale.x << "," << Scale.y << "," << Scale.z << ")" << "\t" << "Angle(" << Angle.x << "," << Angle.y << "," << Angle.z << ")" << std::endl; break;
+			ofs << "ClassName(Enemy)" << DATA_SAVE_NORMAL << std::endl; break;
 			//ステージ
 		case OBJECT_LIST::ID::GROUND:
-			ofs << "ClassName(Ground)" << "\t" << "Pos(" << Pos.x << "," << Pos.y << "," << Pos.z << ")" << "\t" << "Scale(" << Scale.x << "," << Scale.y << "," << Scale.z << ")" << "\t" << "Angle(" << Angle.x << "," << Angle.y << "," << Angle.z << ")" << std::endl; break;
+			ofs << "ClassName(Ground)" << DATA_SAVE_NORMAL << std::endl; break;
 			//アーム
 		case OBJECT_LIST::ID::ARM:
-			ofs << "ClassName(Arm)" << "	\t" << "Pos(" << Pos.x << "," << Pos.y << "," << Pos.z << ")" << "\t" << "Scale(" << Scale.x << "," << Scale.y << "," << Scale.z << ")" << "\t" << "Angle(" << Angle.x << "," << Angle.y << "," << Angle.z << ")" << std::endl; break;
+			ofs << "ClassName(Arm)" << DATA_SAVE_NORMAL << std::endl; break;
 		}
 	}
 
