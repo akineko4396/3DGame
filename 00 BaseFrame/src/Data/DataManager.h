@@ -16,10 +16,10 @@ public:
 
 	_FileName		:	ファイルパス
 
-	return			:	戻り値なし
+	return			:	オブジェクト数を返す
 
 	--------------------------------------------*/
-	void DataLoad(const std::string& _FileName);
+	int DataLoad(const std::string& _FileName);
 
 	/*DataLoad------------------------------------
 
@@ -32,7 +32,7 @@ public:
 	return			:	戻り値なし
 
 	--------------------------------------------*/
-	void DataSave(const std::string _FileName);
+	void DataSave(const std::string _FileName, int _num);
 
 	/*GetSplit--------------------------------->
 
@@ -66,7 +66,7 @@ public:
 	-----------------------------------------*/
 	template <class T>
 	inline void CreateGameObject(
-		INT						_SetId,
+		INT						_SetNum,
 		YsVec3					_SetPosition,
 		YsVec3					_SetScale,
 		YsVec3					_SetAngle
@@ -76,7 +76,7 @@ public:
 		SPtr<T> add = ObjectBase::CreateObjectTask<T>();
 
 		//　識別番号をセットする
-		add->SetId(_SetId);
+		add->SetNum(_SetNum);
 
 		//　座標をセットする
 		add->SetPos(_SetPosition);

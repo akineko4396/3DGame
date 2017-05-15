@@ -9,7 +9,7 @@ void GameWorld::Init()
 {
 	//外部からゲームオブジェクトを読み込み
 	UPtr<DataManager> uDM(new DataManager);
-	uDM->DataLoad("data/txt/Object1.txt");
+	Obj_Num_Max = uDM->DataLoad("data/txt/Object1.txt");
 
 	//カメラの初期化
 	m_Cam.Init(20, 180, 0, false, true);
@@ -21,7 +21,8 @@ void GameWorld::Release()
 	// タスク描画　全タスクのRelease実行
 	//=======================================
 	//m_EffectTaskMgr.Release();
-
+	UPtr<DataManager> uDM(new DataManager);
+	uDM->DataSave("data/txt/Object1.txt", Obj_Num_Max);
 	ObjectBase::FullClear();
 }
 

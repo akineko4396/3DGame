@@ -56,12 +56,12 @@ void ObjectBase::CheckKillFlg()
 }
 
 //オブジェクト情報を返す
-SPtr<ObjectBase> ObjectBase::GetThisObject(int _id)
+SPtr<ObjectBase> ObjectBase::GetThisObject(int _Num)
 {
 
 	for (UINT ec = 0; ec < m_oList.size(); ec++){
 
-		if (m_oList[ec]->GetId() == _id)
+		if (m_oList[ec]->GetNum() == _Num)
 		{
 			return m_oList[ec];
 		}

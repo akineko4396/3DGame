@@ -59,7 +59,7 @@ public:
 	static std::vector<SPtr<ObjectBase>> & GetList(){ return m_oList; }
 
 	//オブジェクト情報を返す
-	static SPtr<ObjectBase>	GetThisObject(int _id);
+	static SPtr<ObjectBase>	GetThisObject(int _Num);
 
 	//===========
 	// ゲッター
@@ -78,7 +78,7 @@ public:
 	inline void SetKillFlg(const int _k){ m_killFlg = _k; }
 
 	//個別IDをセット
-	inline void SetId(const int _n){ m_Id = _n; }
+	inline void SetNum(const int _n){ m_Num = _n; }
 
 	//===========
 	// セッター
@@ -90,8 +90,11 @@ public:
 	//キルフラグの情報を返す
 	inline int	GetKillFlg(){ return m_killFlg; }
 
+	//オブジェクトIDを取得
+	inline int	GetObjId() { return m_ObjId; }
+
 	//個別IDを取得
-	inline int	GetId(){ return m_Id; }
+	inline int	GetNum(){ return m_Num; }
 
 
 	//	指定されたクラスをインスタンス化してリストに格納する
@@ -120,8 +123,11 @@ protected:
 	//キャラの回転量
 	YsVec3			m_vAngle;
 
-	//モデルID
-	int				m_Id;
+	//オブジェクトID
+	int				m_ObjId;
+
+	//個体ナンバー
+	int				m_Num;
 
 	//キルフラグ
 	int				m_killFlg;

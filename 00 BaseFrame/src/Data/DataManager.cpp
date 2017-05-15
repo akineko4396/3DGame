@@ -3,7 +3,7 @@
 #include "DataManager.h"
 
 
-void DataManager::DataLoad(const std::string& _FileName)
+int DataManager::DataLoad(const std::string& _FileName)
 {
 	std::ifstream ifs;
 
@@ -17,9 +17,10 @@ void DataManager::DataLoad(const std::string& _FileName)
 		MessageBox(NULL, "テキストファイルが読み込めていません", "警告", MB_OK);
 
 		//	何もせず返す
-		return;
+		return 0;
 	}
 
+	static int num_cnt = 0;
 
 	for (;;)
 	{
@@ -113,16 +114,15 @@ void DataManager::DataLoad(const std::string& _FileName)
 				FileIt += 2;
 				vAngle.z = static_cast<float>(atof((*FileIt).c_str()));
 			}
-			else if ((*FileIt) == "Id")
+			/*else if ((*FileIt) == "Id")
 			{
 				FileIt += 2;
 				Id = atoi((*FileIt).c_str());
-			}
+			}*/
 
 
 			++FileIt;
 		}
-
 
 		//-----------------------------------------------------
 		//
@@ -139,7 +139,8 @@ void DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Player")
 				{
-					CreateGameObject<Player>(Id, vPos, vScale, vAngle);
+					CreateGameObject<Player>(num_cnt, vPos, vScale, vAngle);
+					num_cnt++;
 				}
 			}
 
@@ -147,7 +148,8 @@ void DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Ground")
 				{
-					CreateGameObject<Ground>(Id, vPos, vScale, vAngle);
+					CreateGameObject<Ground>(num_cnt, vPos, vScale, vAngle);
+					num_cnt++;
 				}
 			}
 
@@ -155,7 +157,8 @@ void DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Arm")
 				{
-					CreateGameObject<BeltConveyor>(Id, vPos, vScale, vAngle);
+					CreateGameObject<BeltConveyor>(num_cnt, vPos, vScale, vAngle);
+					num_cnt++;
 				}
 			}
 
@@ -163,13 +166,67 @@ void DataManager::DataLoad(const std::string& _FileName)
 
 		}
 	}
+
+	return num_cnt;
 }
 
-void DataManager::DataSave(const std::string _FileName)
+void DataManager::DataSave(const std::string _FileName, int _num)
 {
 
+	std::ofstream ofs;
+
+	// 読み込み
+	ofs.open(_FileName.c_str());
+
+	//	読み込み失敗
+	if (!ofs)
+	{
+		//	メッセージをだす
+		MessageBox(NULL, "テキストファイルが読み込めていません", "警告", MB_OK);
+
+		//	何もせず返す
+		return;
+	}
+
+	// テキスト内のデータを消去
+	ofs.trunc;
+
+	//作業用変数
+	static int num_cnt;
+	static YsVec3 Pos;
+	static YsVec3 Scale;
+	static YsVec3 Angle;
+
+	//リスト内をすべて回す
+	for (num_cnt = 0; num_cnt < _num; num_cnt++) {
+
+		//仮データを格納
+		Pos = ObjectBase::GetThisObject(num_cnt)->GetMatrix().GetPos();
+		Scale = ObjectBase::GetThisObject(num_cnt)->GetMatrix().GetScale();
+		Angle.x = ObjectBase::GetThisObject(num_cnt)->GetMatrix().GetXAxis().x;
+		Angle.y = ObjectBase::GetThisObject(num_cnt)->GetMatrix().GetXAxis().y;
+		Angle.z = ObjectBase::GetThisObject(num_cnt)->GetMatrix().GetXAxis().z;
 
 
+		//クラス情報保存
+		switch (ObjectBase::GetThisObject(num_cnt)->GetObjId()) {
+			//プレイヤー
+		case OBJECT_LIST::ID::PLAYER:
+			ofs << "ClassName(Player)" << "\t" << "Pos(" << Pos.x << "," << Pos.y << "," << Pos.z << ")" << "\t" << "Scale(" << Scale.x << "," << Scale.y << "," << Scale.z << ")" << "\t" << "Angle(" << Angle.x << "," << Angle.y << "," << Angle.z << ")" << std::endl; break;
+			//エネミー
+		case OBJECT_LIST::ID::ENEMY:
+			ofs << "ClassName(Enemy)" << "\t" << "Pos(" << Pos.x << "," << Pos.y << "," << Pos.z << ")" << "\t" << "Scale(" << Scale.x << "," << Scale.y << "," << Scale.z << ")" << "\t" << "Angle(" << Angle.x << "," << Angle.y << "," << Angle.z << ")" << std::endl; break;
+			//ステージ
+		case OBJECT_LIST::ID::GROUND:
+			ofs << "ClassName(Ground)" << "\t" << "Pos(" << Pos.x << "," << Pos.y << "," << Pos.z << ")" << "\t" << "Scale(" << Scale.x << "," << Scale.y << "," << Scale.z << ")" << "\t" << "Angle(" << Angle.x << "," << Angle.y << "," << Angle.z << ")" << std::endl; break;
+			//アーム
+		case OBJECT_LIST::ID::ARM:
+			ofs << "ClassName(Arm)" << "	\t" << "Pos(" << Pos.x << "," << Pos.y << "," << Pos.z << ")" << "\t" << "Scale(" << Scale.x << "," << Scale.y << "," << Scale.z << ")" << "\t" << "Angle(" << Angle.x << "," << Angle.y << "," << Angle.z << ")" << std::endl; break;
+		}
+	}
+
+	//ファイルクローズ
+	ofs.close();
 }
 
 /*trim------------------------------------------->
