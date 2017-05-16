@@ -21,8 +21,11 @@ void GameWorld::Release()
 	// タスク描画　全タスクのRelease実行
 	//=======================================
 	//m_EffectTaskMgr.Release();
+
+	//外部のテキストファイルへ保存
 	UPtr<DataManager> uDM(new DataManager);
 	uDM->DataSave("data/txt/Object1.txt", Obj_Num_Max);
+
 	ObjectBase::FullClear();
 }
 

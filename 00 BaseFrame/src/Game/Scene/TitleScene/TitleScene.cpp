@@ -2,6 +2,7 @@
 #include "TitleScene.h"
 #include "../GameScene/GameScene.h"
 #include "../SampleScene/SampleScene.h"
+#include "../EditScene/EditScene.h"
 
 //=========================================
 // 更新処理
@@ -14,6 +15,16 @@ int TitleScene::Update()
 		SPtr<GameScene> gs(new GameScene());
 		gs->Init();
 		APP.m_NowScene = gs;
+
+		return 1;
+	}
+
+	//Shiftキー
+	if (INPUT.KeyCheck_Enter(VK_SHIFT)) {
+		// シーン切り替え
+		SPtr<EditScene> es(new EditScene());
+		es->Init();
+		APP.m_NowScene = es;
 
 		return 1;
 	}

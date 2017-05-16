@@ -17,7 +17,8 @@ public:
 #include "Base/ObjectBase.h"
 #include "Character/Player.h"
 #include "Object/Ground.h"
-#include "Object\BeltConveyor.h"
+#include "Object/BeltConveyor.h"
+#include "Object/Arm.h"
 //=====================================
 //
 //ゲームワールドクラス
@@ -43,7 +44,7 @@ public:
 	//=================
 	//　カメラ
 	//=================
-	GameCamera	m_Cam;
+	GameCamera m_Cam;
 
 	//=================
 	//　タスクシステム

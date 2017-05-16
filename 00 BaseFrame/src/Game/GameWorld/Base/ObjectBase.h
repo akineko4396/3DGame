@@ -19,6 +19,9 @@ namespace OBJECT_LIST {
 		//アーム
 		ARM				= 3,
 
+		//ベルトコンベア
+		BELT				= 4,
+
 		//オブジェクト最大数
 		MAX_NUM,
 
@@ -86,6 +89,15 @@ public:
 
 	//行列を返す
 	inline YsMatrix GetMatrix() { return m_Mat; }
+
+	//座標を返す
+	inline YsVec3	GetPos() { return m_vPos; }
+
+	//拡大サイズを返す
+	inline YsVec3 GetScale() { return m_vScale; }
+
+	//回転量を返す
+	inline YsVec3 GetAngle() { return m_vAngle; }
 
 	//キルフラグの情報を返す
 	inline int	GetKillFlg(){ return m_killFlg; }

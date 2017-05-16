@@ -4,7 +4,7 @@
 void Player::Init()
 {
 	//　モデル読み込み
-	m_gmObj=APP.m_ResStg.LoadMesh("data/model/Hackadoll_1/model.xed");
+	m_gmObj=APP.m_ResStg.LoadMesh("data/model/Player/Player.xed");
 	//　モデルデータをセット
 	m_moPla.SetModel(m_gmObj);
 	//　初期の行列設定
@@ -19,7 +19,7 @@ void Player::Init()
 	//　アニメータを初期化
 	m_moPla.InitAnimator(m_aniPla);
 	//　初期アニメ
-	m_aniPla.ChangeAnime_FromName("立ち", true);
+	m_aniPla.ChangeAnime_FromName("Run", true);
 }
 
 void Player::Update()

@@ -109,6 +109,12 @@
     <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\BeltConveyor">
       <UniqueIdentifier>{e6a7af63-4313-492b-91d5-3a13ba5b4d05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\Scene\EditScene">
+      <UniqueIdentifier>{3826e857-c2f2-466d-bf2d-7b8a0ac0bdc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\Arm">
+      <UniqueIdentifier>{0bcbfcba-9d8b-415c-b783-9704855c9dc8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Shader\ShaderManager.cpp">
@@ -281,6 +287,12 @@
     </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Object\BeltConveyor.cpp">
       <Filter>src\Game\GameWorld\Base\ObjectBase\Object\BeltConveyor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Scene\EditScene\EditScene.cpp">
+      <Filter>src\Game\Scene\EditScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameWorld\Object\Arm.cpp">
+      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Arm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -475,6 +487,12 @@
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Object\BeltConveyor.h">
       <Filter>src\Game\GameWorld\Base\ObjectBase\Object\BeltConveyor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Scene\EditScene\EditScene.h">
+      <Filter>src\Game\Scene\EditScene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameWorld\Object\Arm.h">
+      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Arm</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

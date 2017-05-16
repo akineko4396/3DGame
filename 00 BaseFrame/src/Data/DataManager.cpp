@@ -157,6 +157,15 @@ int DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Arm")
 				{
+					CreateGameObject<Arm>(num_cnt, vPos, vScale, vAngle);
+					num_cnt++;
+				}
+			}
+
+			//ベルトコンベア
+			{
+				if ((*FileIt) == "Belt")
+				{
 					CreateGameObject<BeltConveyor>(num_cnt, vPos, vScale, vAngle);
 					num_cnt++;
 				}
@@ -204,11 +213,9 @@ void DataManager::DataSave(const std::string _FileName, int _num)
 	for (num_cnt = 0; num_cnt < _num; num_cnt++) {
 
 		//仮データを格納
-		Pos = ObjectBase::GetThisObject(num_cnt)->GetMatrix().GetPos();
-		Scale = ObjectBase::GetThisObject(num_cnt)->GetMatrix().GetScale();
-		Angle.x = ObjectBase::GetThisObject(num_cnt)->GetMatrix().GetXAxis().x;
-		Angle.y = ObjectBase::GetThisObject(num_cnt)->GetMatrix().GetXAxis().y;
-		Angle.z = ObjectBase::GetThisObject(num_cnt)->GetMatrix().GetXAxis().z;
+		Pos = ObjectBase::GetThisObject(num_cnt)->GetPos();
+		Scale = ObjectBase::GetThisObject(num_cnt)->GetScale();
+		Angle = ObjectBase::GetThisObject(num_cnt)->GetAngle();
 
 
 		//クラス情報保存
@@ -225,6 +232,9 @@ void DataManager::DataSave(const std::string _FileName, int _num)
 			//アーム
 		case OBJECT_LIST::ID::ARM:
 			ofs << "ClassName(Arm)" << DATA_SAVE_NORMAL << std::endl; break;
+			//ベルトコンベア
+		case OBJECT_LIST::ID::BELT:
+			ofs << "ClassName(Belt)" << DATA_SAVE_NORMAL << std::endl; break;
 		}
 	}
 

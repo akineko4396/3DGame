@@ -7,7 +7,7 @@ class BeltConveyor :public ObjectBase
 {
 public:
 
-	BeltConveyor() { m_ObjId = OBJECT_LIST::ID::ARM; }
+	BeltConveyor() { m_ObjId = OBJECT_LIST::ID::BELT; }
 
 	//èâä˙ê›íË
 	void Init();
