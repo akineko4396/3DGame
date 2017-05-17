@@ -8,19 +8,37 @@ namespace OBJECT_LIST {
 	enum ID {
 
 		//プレイヤー
-		PLAYER			= 0,
+		PLAYER					=	0,
 
 		//敵
-		ENEMY			= 1,
+		ENEMY					=	1,
 
 		//ステージ
-		GROUND		= 2,
+		GROUND				=	2,
+
+		//拠点
+		STRONGHOLD		=	3,
+
+		//壁
+		WALL					=	4,
+
+		//投石器
+		SLING					=	5,
+
+		//大砲
+		CANNON				=	6,
+
+		//火炎放射器
+		FLAMETHROWER	=	7,
+
+		//プレス機
+		PRESS					=	8,
 
 		//アーム
-		ARM				= 3,
+		ARM						=	9,
 
 		//ベルトコンベア
-		BELT				= 4,
+		BELTCONVEYOR		=	10,
 
 		//オブジェクト最大数
 		MAX_NUM,

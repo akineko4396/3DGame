@@ -1,13 +1,13 @@
 #pragma once
 
 //=======================================
-// ベルトコンベアークラス
+// 壁クラス
 //=======================================
-class BeltConveyor :public ObjectBase
+class Wall :public ObjectBase
 {
 public:
 
-	BeltConveyor() { m_ObjId = OBJECT_LIST::ID::BELTCONVEYOR; }
+	Wall() { m_ObjId = OBJECT_LIST::ID::WALL; }
 
 	//初期設定
 	void Init();
@@ -21,5 +21,5 @@ public:
 private:
 
 	// ステージマップオブジェクタ
-	YsModelObject		m_moBelt;
+	YsModelObject		m_moWall;
 };

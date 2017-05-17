@@ -1,13 +1,13 @@
 #pragma once
 
 //=======================================
-// ベルトコンベアークラス
+// プレス機クラス
 //=======================================
-class BeltConveyor :public ObjectBase
+class Press :public ObjectBase
 {
 public:
 
-	BeltConveyor() { m_ObjId = OBJECT_LIST::ID::BELTCONVEYOR; }
+	Press() { m_ObjId = OBJECT_LIST::ID::PRESS; }
 
 	//初期設定
 	void Init();
@@ -21,5 +21,5 @@ public:
 private:
 
 	// ステージマップオブジェクタ
-	YsModelObject		m_moBelt;
+	YsModelObject		m_moPress;
 };

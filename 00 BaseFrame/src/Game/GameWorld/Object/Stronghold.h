@@ -1,13 +1,13 @@
 #pragma once
 
 //=======================================
-// ベルトコンベアークラス
+// 拠点クラス
 //=======================================
-class BeltConveyor :public ObjectBase
+class Stronghold :public ObjectBase
 {
 public:
 
-	BeltConveyor() { m_ObjId = OBJECT_LIST::ID::BELTCONVEYOR; }
+	Stronghold() { m_ObjId = OBJECT_LIST::ID::STRONGHOLD; }
 
 	//初期設定
 	void Init();
@@ -21,5 +21,5 @@ public:
 private:
 
 	// ステージマップオブジェクタ
-	YsModelObject		m_moBelt;
+	YsModelObject		m_moStrong;
 };

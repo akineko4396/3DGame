@@ -58,7 +58,13 @@
     <ClCompile Include="src\Game\GameWorld\GameWorld.cpp" />
     <ClCompile Include="src\Game\GameWorld\Object\Arm.cpp" />
     <ClCompile Include="src\Game\GameWorld\Object\BeltConveyor.cpp" />
+    <ClCompile Include="src\Game\GameWorld\Object\Cannon.cpp" />
+    <ClCompile Include="src\Game\GameWorld\Object\Flamethrower.cpp" />
     <ClCompile Include="src\Game\GameWorld\Object\Ground.cpp" />
+    <ClCompile Include="src\Game\GameWorld\Object\Press.cpp" />
+    <ClCompile Include="src\Game\GameWorld\Object\Sling.cpp" />
+    <ClCompile Include="src\Game\GameWorld\Object\Stronghold.cpp" />
+    <ClCompile Include="src\Game\GameWorld\Object\Wall.cpp" />
     <ClCompile Include="src\Game\Scene\EditScene\EditScene.cpp" />
     <ClCompile Include="src\Game\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="src\Game\Scene\SampleScene\SampleScene.cpp" />
@@ -130,7 +136,13 @@
     <ClInclude Include="src\Game\GameWorld\GameWorld.h" />
     <ClInclude Include="src\Game\GameWorld\Object\Arm.h" />
     <ClInclude Include="src\Game\GameWorld\Object\BeltConveyor.h" />
+    <ClInclude Include="src\Game\GameWorld\Object\Cannon.h" />
+    <ClInclude Include="src\Game\GameWorld\Object\Flamethrower.h" />
     <ClInclude Include="src\Game\GameWorld\Object\Ground.h" />
+    <ClInclude Include="src\Game\GameWorld\Object\Press.h" />
+    <ClInclude Include="src\Game\GameWorld\Object\Sling.h" />
+    <ClInclude Include="src\Game\GameWorld\Object\Stronghold.h" />
+    <ClInclude Include="src\Game\GameWorld\Object\Wall.h" />
     <ClInclude Include="src\Game\Scene\EditScene\EditScene.h" />
     <ClInclude Include="src\Game\Scene\GameScene\GameScene.h" />
     <ClInclude Include="src\Game\Scene\SampleScene\SampleScene.h" />

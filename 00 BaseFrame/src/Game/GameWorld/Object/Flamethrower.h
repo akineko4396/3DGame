@@ -1,13 +1,13 @@
 #pragma once
 
 //=======================================
-// ベルトコンベアークラス
+// 火炎放射器クラス
 //=======================================
-class BeltConveyor :public ObjectBase
+class Flamethrower :public ObjectBase
 {
 public:
 
-	BeltConveyor() { m_ObjId = OBJECT_LIST::ID::BELTCONVEYOR; }
+	Flamethrower() { m_ObjId = OBJECT_LIST::ID::FLAMETHROWER; }
 
 	//初期設定
 	void Init();
@@ -21,5 +21,5 @@ public:
 private:
 
 	// ステージマップオブジェクタ
-	YsModelObject		m_moBelt;
+	YsModelObject		m_moFlame;
 };

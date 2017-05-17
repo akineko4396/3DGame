@@ -1,13 +1,13 @@
 #pragma once
 
 //=======================================
-// ベルトコンベアークラス
+// 投石器クラス
 //=======================================
-class BeltConveyor :public ObjectBase
+class Sling :public ObjectBase
 {
 public:
 
-	BeltConveyor() { m_ObjId = OBJECT_LIST::ID::BELTCONVEYOR; }
+	Sling() { m_ObjId = OBJECT_LIST::ID::SLING; }
 
 	//初期設定
 	void Init();
@@ -21,5 +21,5 @@ public:
 private:
 
 	// ステージマップオブジェクタ
-	YsModelObject		m_moBelt;
+	YsModelObject		m_moSling;
 };

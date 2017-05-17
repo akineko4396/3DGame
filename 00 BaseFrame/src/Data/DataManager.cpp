@@ -135,7 +135,10 @@ int DataManager::DataLoad(const std::string& _FileName)
 
 		while (FileIt != sp.end())
 		{
+			//====================
 			// キャラクタ
+			//====================
+			//プレイヤー
 			{
 				if ((*FileIt) == "Player")
 				{
@@ -144,11 +147,68 @@ int DataManager::DataLoad(const std::string& _FileName)
 				}
 			}
 
+			//====================
 			//オブジェクト
+			//====================
+			//ステージ
 			{
 				if ((*FileIt) == "Ground")
 				{
 					CreateGameObject<Ground>(num_cnt, vPos, vScale, vAngle);
+					num_cnt++;
+				}
+			}
+
+			//拠点
+			{
+				if ((*FileIt) == "Stronghold")
+				{
+					CreateGameObject<Stronghold>(num_cnt, vPos, vScale, vAngle);
+					num_cnt++;
+				}
+			}
+
+			//壁
+			{
+				if ((*FileIt) == "Wall")
+				{
+					CreateGameObject<Wall>(num_cnt, vPos, vScale, vAngle);
+					num_cnt++;
+				}
+			}
+
+			//投石器
+			{
+				if ((*FileIt) == "Sling")
+				{
+					CreateGameObject<Sling>(num_cnt, vPos, vScale, vAngle);
+					num_cnt++;
+				}
+			}
+
+			//大砲
+			{
+				if ((*FileIt) == "Cannon")
+				{
+					CreateGameObject<Cannon>(num_cnt, vPos, vScale, vAngle);
+					num_cnt++;
+				}
+			}
+
+			//火炎放射器
+			{
+				if ((*FileIt) == "Flamethrower")
+				{
+					CreateGameObject<Flamethrower>(num_cnt, vPos, vScale, vAngle);
+					num_cnt++;
+				}
+			}
+
+			//プレス機
+			{
+				if ((*FileIt) == "Press")
+				{
+					CreateGameObject<Press>(num_cnt, vPos, vScale, vAngle);
 					num_cnt++;
 				}
 			}
@@ -229,11 +289,29 @@ void DataManager::DataSave(const std::string _FileName, int _num)
 			//ステージ
 		case OBJECT_LIST::ID::GROUND:
 			ofs << "ClassName(Ground)" << DATA_SAVE_NORMAL << std::endl; break;
+			//拠点
+		case OBJECT_LIST::ID::STRONGHOLD:
+			ofs << "ClassName(Stronghold)" << DATA_SAVE_NORMAL << std::endl; break;
+			//壁
+		case OBJECT_LIST::ID::WALL:
+			ofs << "ClassName(Wall)" << DATA_SAVE_NORMAL << std::endl; break;
+			//投石器
+		case OBJECT_LIST::ID::SLING:
+			ofs << "ClassName(Sling)" << DATA_SAVE_NORMAL << std::endl; break;
+			//大砲
+		case OBJECT_LIST::ID::CANNON:
+			ofs << "ClassName(Cannon)" << DATA_SAVE_NORMAL << std::endl; break;
+			//火炎放射器
+		case OBJECT_LIST::ID::FLAMETHROWER:
+			ofs << "ClassName(Flamethrower)" << DATA_SAVE_NORMAL << std::endl; break;
+			//プレス機
+		case OBJECT_LIST::ID::PRESS:
+			ofs << "ClassName(Press)" << DATA_SAVE_NORMAL << std::endl; break;
 			//アーム
 		case OBJECT_LIST::ID::ARM:
 			ofs << "ClassName(Arm)" << DATA_SAVE_NORMAL << std::endl; break;
 			//ベルトコンベア
-		case OBJECT_LIST::ID::BELT:
+		case OBJECT_LIST::ID::BELTCONVEYOR:
 			ofs << "ClassName(Belt)" << DATA_SAVE_NORMAL << std::endl; break;
 		}
 	}
