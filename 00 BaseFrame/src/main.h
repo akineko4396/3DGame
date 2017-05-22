@@ -16,6 +16,9 @@ using namespace YskLib;
 
 #define ShMgr APP.m_ShMgr
 
+#define WINDOW_WIDTH_SIZE 1280
+#define WINDOW_HEIGHT_SIZE 720
+
 
 //=====================================================
 // AppƒNƒ‰ƒX

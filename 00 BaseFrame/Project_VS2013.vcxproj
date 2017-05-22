@@ -52,6 +52,7 @@
     <ClCompile Include="..\Lib\YskLib\YsStates.cpp" />
     <ClCompile Include="src\Data\DataManager.cpp" />
     <ClCompile Include="src\GameResource\GameResource.cpp" />
+    <ClCompile Include="src\Game\Edit\EditWorld.cpp" />
     <ClCompile Include="src\Game\GameCamera.cpp" />
     <ClCompile Include="src\Game\GameWorld\Base\ObjectBase.cpp" />
     <ClCompile Include="src\Game\GameWorld\Character\Player.cpp" />
@@ -65,7 +66,6 @@
     <ClCompile Include="src\Game\GameWorld\Object\Sling.cpp" />
     <ClCompile Include="src\Game\GameWorld\Object\Stronghold.cpp" />
     <ClCompile Include="src\Game\GameWorld\Object\Wall.cpp" />
-    <ClCompile Include="src\Game\Scene\EditScene\EditScene.cpp" />
     <ClCompile Include="src\Game\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="src\Game\Scene\SampleScene\SampleScene.cpp" />
     <ClCompile Include="src\Game\Scene\SampleScene\Sample_Data.cpp" />
@@ -130,6 +130,7 @@
     <ClInclude Include="..\Lib\YskLib\YskLib.h" />
     <ClInclude Include="src\Data\DataManager.h" />
     <ClInclude Include="src\GameResource\GameResource.h" />
+    <ClInclude Include="src\Game\Edit\EditWorld.h" />
     <ClInclude Include="src\Game\GameCamera.h" />
     <ClInclude Include="src\Game\GameWorld\Base\ObjectBase.h" />
     <ClInclude Include="src\Game\GameWorld\Character\Player.h" />
@@ -143,7 +144,6 @@
     <ClInclude Include="src\Game\GameWorld\Object\Sling.h" />
     <ClInclude Include="src\Game\GameWorld\Object\Stronghold.h" />
     <ClInclude Include="src\Game\GameWorld\Object\Wall.h" />
-    <ClInclude Include="src\Game\Scene\EditScene\EditScene.h" />
     <ClInclude Include="src\Game\Scene\GameScene\GameScene.h" />
     <ClInclude Include="src\Game\Scene\SampleScene\SampleScene.h" />
     <ClInclude Include="src\Game\Scene\SampleScene\Sample_Data.h" />

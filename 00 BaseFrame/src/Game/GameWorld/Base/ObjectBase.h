@@ -106,7 +106,7 @@ public:
 	//===========
 
 	//s—ñ‚ğ•Ô‚·
-	inline YsMatrix GetMatrix() { return m_Mat; }
+	inline YsMatrix GetMatrix() { return m_mObj; }
 
 	//À•W‚ğ•Ô‚·
 	inline YsVec3	GetPos() { return m_vPos; }

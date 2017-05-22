@@ -42,7 +42,7 @@ int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInst,LPSTR lpszArgs,int nW
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
 	// èâä˙ê›íË
-	BOOL bRet = APP.InitWindow(hInstance, 1280, 720);
+	BOOL bRet = APP.InitWindow(hInstance, WINDOW_WIDTH_SIZE, WINDOW_HEIGHT_SIZE);
 
 	// ÉãÅ[Év
 	if(bRet){
