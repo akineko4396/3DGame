@@ -1,13 +1,13 @@
 #include "main.h"
 #include "../GameWorld.h"
 
-void Arm::Init()
+void Bridge::Init()
 {
 	//メッシュ読み込み
-	m_gmObj = YsDx.GetResStg()->LoadMesh("data/model/Arm/Arm.x");
+	m_gmObj = YsDx.GetResStg()->LoadMesh("data/model/Bridge/Bridge.x");
 
 	// ステージマップをセット
-	m_moArm.SetModel(m_gmObj);
+	m_moBridge.SetModel(m_gmObj);
 
 	//　初期の行列設定
 	m_mObj.CreateMove(m_vPos);
@@ -20,12 +20,12 @@ void Arm::Init()
 	//m_mObj.Scale_Normal(5.0f, 5.0f, 5.0f);
 }
 
-void Arm::Update()
+void Bridge::Update()
 {
 
 }
 
-void Arm::Draw()
+void Bridge::Draw()
 {
-	ShMgr.m_Samp.DrawModel(m_moArm, &m_mObj);
+	ShMgr.m_Samp.DrawModel(m_moBridge, &m_mObj);
 }

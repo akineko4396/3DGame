@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Game/GameCamera.h"
-
 //=====================================
 //ゲームオブジェクト基本クラス
 //　ゲーム中に登場する物体の基本となるクラス
@@ -25,6 +23,7 @@ public:
 #include "Object/Press.h"
 #include "Object/BeltConveyor.h"
 #include "Object/Arm.h"
+#include "Object/Bridge.h"
 //=====================================
 //
 //ゲームワールドクラス

@@ -133,6 +133,12 @@
     <Filter Include="src\Game\Edit">
       <UniqueIdentifier>{605b67bc-47f9-4e3e-b45d-08a634521709}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CollisionBase">
+      <UniqueIdentifier>{8e0c80ca-405a-4ee6-b18a-139085b51f98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\Bridge">
+      <UniqueIdentifier>{3b80594f-d0f6-4bcb-ab59-0f325f9437a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Shader\ShaderManager.cpp">
@@ -329,6 +335,12 @@
     </ClCompile>
     <ClCompile Include="src\Game\Edit\EditWorld.cpp">
       <Filter>src\Game\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameWorld\Base\CollisionBase.cpp">
+      <Filter>src\Game\GameWorld\Base\CollisionBase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameWorld\Object\Bridge.cpp">
+      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Bridge</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -547,6 +559,12 @@
     </ClInclude>
     <ClInclude Include="src\Game\Edit\EditWorld.h">
       <Filter>src\Game\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameWorld\Base\CollisionBase.h">
+      <Filter>src\Game\GameWorld\Base\CollisionBase</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameWorld\Object\Bridge.h">
+      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Bridge</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

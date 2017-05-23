@@ -54,11 +54,13 @@
     <ClCompile Include="src\GameResource\GameResource.cpp" />
     <ClCompile Include="src\Game\Edit\EditWorld.cpp" />
     <ClCompile Include="src\Game\GameCamera.cpp" />
+    <ClCompile Include="src\Game\GameWorld\Base\CollisionBase.cpp" />
     <ClCompile Include="src\Game\GameWorld\Base\ObjectBase.cpp" />
     <ClCompile Include="src\Game\GameWorld\Character\Player.cpp" />
     <ClCompile Include="src\Game\GameWorld\GameWorld.cpp" />
     <ClCompile Include="src\Game\GameWorld\Object\Arm.cpp" />
     <ClCompile Include="src\Game\GameWorld\Object\BeltConveyor.cpp" />
+    <ClCompile Include="src\Game\GameWorld\Object\Bridge.cpp" />
     <ClCompile Include="src\Game\GameWorld\Object\Cannon.cpp" />
     <ClCompile Include="src\Game\GameWorld\Object\Flamethrower.cpp" />
     <ClCompile Include="src\Game\GameWorld\Object\Ground.cpp" />
@@ -132,11 +134,13 @@
     <ClInclude Include="src\GameResource\GameResource.h" />
     <ClInclude Include="src\Game\Edit\EditWorld.h" />
     <ClInclude Include="src\Game\GameCamera.h" />
+    <ClInclude Include="src\Game\GameWorld\Base\CollisionBase.h" />
     <ClInclude Include="src\Game\GameWorld\Base\ObjectBase.h" />
     <ClInclude Include="src\Game\GameWorld\Character\Player.h" />
     <ClInclude Include="src\Game\GameWorld\GameWorld.h" />
     <ClInclude Include="src\Game\GameWorld\Object\Arm.h" />
     <ClInclude Include="src\Game\GameWorld\Object\BeltConveyor.h" />
+    <ClInclude Include="src\Game\GameWorld\Object\Bridge.h" />
     <ClInclude Include="src\Game\GameWorld\Object\Cannon.h" />
     <ClInclude Include="src\Game\GameWorld\Object\Flamethrower.h" />
     <ClInclude Include="src\Game\GameWorld\Object\Ground.h" />

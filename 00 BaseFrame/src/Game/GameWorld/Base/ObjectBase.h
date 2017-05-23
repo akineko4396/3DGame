@@ -40,6 +40,9 @@ namespace OBJECT_LIST {
 		//ベルトコンベア
 		BELTCONVEYOR		=	10,
 
+		//ブリッジ
+		BRIDGE					=	11,
+
 		//オブジェクト最大数
 		MAX_NUM,
 
@@ -109,13 +112,13 @@ public:
 	inline YsMatrix GetMatrix() { return m_mObj; }
 
 	//座標を返す
-	inline YsVec3	GetPos() { return m_vPos; }
+	inline YsVec3	GetPos() { return m_mObj.GetPos(); }
 
 	//拡大サイズを返す
-	inline YsVec3 GetScale() { return m_vScale; }
+	inline YsVec3 GetScale() { return m_mObj.GetScale(); }
 
 	//回転量を返す
-	inline YsVec3 GetAngle() { return m_vAngle; }
+	inline YsVec3 GetAngle() { return YsVec3(m_mObj.GetXAxis().x, m_mObj.GetYAxis().y, m_mObj.GetZAxis().z); }
 
 	//キルフラグの情報を返す
 	inline int	GetKillFlg(){ return m_killFlg; }

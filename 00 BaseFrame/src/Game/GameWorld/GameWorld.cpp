@@ -24,12 +24,11 @@ void GameWorld::Release()
 	UPtr<DataManager> uDM(new DataManager);
 	uDM->DataSave("data/txt/Object1.txt", Obj_Num_Max);
 
-	//全オブジェクト解放
-	ObjectBase::FullClear();
-
 	//エディットモード解放
 	EW.Release();
 	EditWorld::DeleteWorld();
+
+	ObjectBase::FullClear();
 }
 
 void GameWorld::Update()

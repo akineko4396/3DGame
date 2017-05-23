@@ -16,6 +16,11 @@ void EditWorld::Init(int _ObjNum)
 	//エディットフラグ初期値
 	m_EditFlg = FALSE;
 
+	//升目状のメッシュ読み込み
+	SPtr<YsGameModel> m_gmEdit = YsDx.GetResStg()->LoadMesh("data/model/StageForEdit/stage.x");
+	m_moEdit.SetModel(m_gmEdit);
+	m_mEdit.CreateMove(YsVec3(0, 0, 0));
+	m_mEdit.Scale_Local(YsVec3(0.01f, 0.01f, 0.01f));
 }
 
 void EditWorld::Release()
@@ -88,9 +93,10 @@ void EditWorld::Draw()
 	if (m_EditFlg) {
 
 		// 升目のように線を引いて区切る
-		static int cnt;
-		for (cnt = 0; cnt < 100; cnt++)ShMgr.m_Samp.DrawLine(YsVec3(-50 + cnt * 1, 0, 50), YsVec3(-50 + cnt * 1, 0, -50), &YsVec4(1, 1, 1, 1));
-		for (cnt = 0; cnt < 100; cnt++)ShMgr.m_Samp.DrawLine(YsVec3(50, 0, -50 + cnt * 1), YsVec3(-50, 0, -50 + cnt * 1), &YsVec4(1, 1, 1, 1));
+		//static int cnt;
+		//for (cnt = 0; cnt < 100; cnt++)ShMgr.m_Samp.DrawLine(YsVec3(-50 + cnt * 1, 0, 50), YsVec3(-50 + cnt * 1, 0, -50), &YsVec4(1, 1, 1, 1));
+		//for (cnt = 0; cnt < 100; cnt++)ShMgr.m_Samp.DrawLine(YsVec3(50, 0, -50 + cnt * 1), YsVec3(-50, 0, -50 + cnt * 1), &YsVec4(1, 1, 1, 1));
+		ShMgr.m_Samp.DrawModel(m_moEdit, &m_mEdit);
 
 		// とりあえずXYZ線だけ描画しとく
 		ShMgr.m_Samp.DrawLine(YsVec3(0, 0, 0), YsVec3(1, 0, 0), &YsVec4(1, 0, 0, 1));

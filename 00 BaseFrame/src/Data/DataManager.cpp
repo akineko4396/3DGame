@@ -21,7 +21,7 @@ int DataManager::DataLoad(const std::string& _FileName)
 		return 0;
 	}
 
-	static int num_cnt = 0;
+	int num_cnt = 0;
 
 	for (;;)
 	{
@@ -232,6 +232,15 @@ int DataManager::DataLoad(const std::string& _FileName)
 				}
 			}
 
+			//ブリッジ
+			{
+				if ((*FileIt) == "Bridge")
+				{
+					CreateGameObject<Bridge>(num_cnt, vPos, vScale, vAngle);
+					num_cnt++;
+				}
+			}
+
 			++FileIt;
 
 		}
@@ -314,6 +323,9 @@ void DataManager::DataSave(const std::string _FileName, int _num)
 			//ベルトコンベア
 		case OBJECT_LIST::ID::BELTCONVEYOR:
 			ofs << "ClassName(Belt)" << DATA_SAVE_NORMAL << std::endl; break;
+			//ブリッジ
+		case OBJECT_LIST::ID::BRIDGE:
+			ofs << "ClassName(Bridge)" << DATA_SAVE_NORMAL << std::endl; break;
 		}
 	}
 

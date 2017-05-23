@@ -21,14 +21,8 @@ void ObjectBase::AllDraw()
 	}
 }
 
-// ƒŠƒXƒg‚Ì‘SÁ‹
 void ObjectBase::FullClear()
 {
-	for (UINT ec = 0; ec < m_oList.size(); ec++)
-	{
-		//delete m_oList[ec];
-		m_oList[ec] = nullptr;
-	}
 	m_oList.clear();
 }
 

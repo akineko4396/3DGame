@@ -37,22 +37,6 @@ public:
 	// カメラ
 	GameCamera		m_Cam;			// カメラクラス
 
-	// テクスチャ
-	SPtr<YsTexture>		m_texBack;
-
-	// キャラクタに必要なデータをまとめただけの構造体
-	struct Chara {
-		YsModelObject	m_Mo;		// メッシュオブジェクト　モデルデータ(YsGameModel)を扱える
-		YsMatrix		m_Mat;		// 行列
-
-		YsAnimator		m_Anim;		// アニメーター　アニメーションを担当する
-		YsAnimator		m_Anim2;	// アニメーターはいつくあっても良い　複数使うとアニメの特殊な合成が可能
-	};
-
-	Chara			m_Chara;
-	Chara			m_Chara2;
-	Chara			m_Box[400];
-
 };
 
 
