@@ -1,6 +1,8 @@
 #ifndef __GameCamera_h__
 #define __GameCamera_h__
 
+#include "GameWorld\Base\CollisionBase.h"
+
 //======================================
 //
 // ゲーム用にある程度機能を実装したカメラ
@@ -146,6 +148,9 @@ public:
 			INPUT.SetFPSMode(APP.m_hWnd, false);
 		}
 
+
+		//視錘台作成
+		VF.Create(mProj, mView, mCam);
 
 	}
 

@@ -108,6 +108,9 @@ public:
 	// セッター
 	//===========
 
+	//モデルデータを返す
+	inline SPtr<YsGameModel> GetModel() { return m_gmObj; }
+
 	//行列を返す
 	inline YsMatrix GetMatrix() { return m_mObj; }
 

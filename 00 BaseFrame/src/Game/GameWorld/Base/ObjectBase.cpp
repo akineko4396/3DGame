@@ -1,5 +1,6 @@
 #include "main.h"
 #include "../GameWorld.h"
+#include "../Base/CollisionBase.h"
 
 std::vector<SPtr<ObjectBase>> ObjectBase::m_oList;
 
@@ -17,7 +18,17 @@ void ObjectBase::AllDraw()
 {
 	for (UINT ec = 0; ec < m_oList.size(); ec++)
 	{
-		m_oList[ec]->Draw();
+		//メッシュ数ぶんループ
+		for (UINT i = 0; i < m_oList[ec]->GetModel()->GetModelTbl().size(); i++) {
+			//YsSingleModelからメッシュを取得
+			SPtr<YsSingleModel> model = m_oList[ec]->GetModel()->GetModelTbl()[i];
+			SPtr<YsMesh> mesh = model->GetMesh();
+
+			//視錘台で描画判定
+			if (CheckViewFrustum(m_oList[ec], mesh)) {
+				m_oList[ec]->Draw();
+			}
+		}
 	}
 }
 
@@ -32,12 +43,6 @@ void ObjectBase::CheckKillFlg()
 	std::vector<SPtr<ObjectBase>>::iterator it = m_oList.begin();
 	while (it != m_oList.end())
 	{
-		//例外設定
-		/*if ((*it)->GetId() == PLAYER)
-		{
-			it++;
-			continue;
-		}*/
 		if ((*it)->GetKillFlg() == 1)
 		{
 			*it = NULL;
