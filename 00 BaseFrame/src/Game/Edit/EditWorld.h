@@ -51,6 +51,9 @@ public:
 	//描画
 	void Draw();
 
+	//プレイヤーの座標セット
+	inline void SetPPos(YsVec3 _pos) { pPos = _pos; }
+
 	//=================
 	// その他
 	//=================
@@ -109,6 +112,8 @@ private:
 
 	YsModelObject	m_moEdit;		//升目状のメッシュ
 	YsMatrix			m_mEdit;			//升目状のメッシュの行列
+
+	YsVec3			pPos;						//プレイヤーの座標格納用
 };
 
 #define EW EditWorld::GetWorld()

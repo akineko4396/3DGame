@@ -104,6 +104,11 @@ public:
 	//個別IDをセット
 	inline void SetNum(const int _n){ m_Num = _n; }
 
+	// 入力コントローラ(コンポーネント)をセット
+	inline void SetInput(SPtr<GameInputComponent> p) {
+		m_Controller = p;
+	}
+
 	//===========
 	// セッター
 	//===========
@@ -131,6 +136,9 @@ public:
 
 	//個別IDを取得
 	inline int	GetNum(){ return m_Num; }
+
+	// 現在押されているキーを取得
+	inline int GetKeys() { return m_Keys; }
 
 
 	//	指定されたクラスをインスタンス化してリストに格納する
@@ -170,4 +178,11 @@ protected:
 
 	//リスト
 	static std::vector<SPtr<ObjectBase>> m_oList;
+
+	// 現在押下されてるキー このキー情報によりキャラを動かす(PlayerもAIも)
+	// 各ビット(0～31)が各キーの状態
+	int m_Keys = 0;
+
+	// 入力コントローラ
+	SPtr<GameInputComponent> m_Controller;
 };

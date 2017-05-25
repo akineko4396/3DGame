@@ -43,6 +43,9 @@ void GameWorld::Update()
 	//全オブジェクト更新
 	ObjectBase::AllUpdate();
 
+	//エディット側にプレイヤーの座標を渡す
+	EW.SetPPos(ObjectBase::GetThisObject(OBJECT_LIST::ID::PLAYER)->GetPos());
+
 	//エディットモード更新
 	EW.Update();
 }

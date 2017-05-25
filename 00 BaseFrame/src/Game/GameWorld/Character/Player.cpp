@@ -5,6 +5,7 @@ void Player::Init()
 {
 	//　モデル読み込み
 	m_gmObj=APP.m_ResStg.LoadMesh("data/model/Player/Player.xed");
+	m_moHammer.LoadMesh("data/model/Hammer/hammer.xed");
 	//　モデルデータをセット
 	m_moPla.SetModel(m_gmObj);
 	//　初期の行列設定
@@ -19,11 +20,28 @@ void Player::Init()
 	//　アニメータを初期化
 	m_moPla.InitAnimator(m_aniPla);
 	//　初期アニメ
-	m_aniPla.ChangeAnime_FromName("Run", true);
+	m_aniPla.ChangeAnime_FromName("待機", true);
+
+	// キー入力コンポーネント生成
+	SetInput(std::make_shared<KeyInputComponent>()); 
+
+	// アクションステート
+	m_ActionState = std::make_shared<PlayerAS_Wait>();
 }
 
 void Player::Update()
 {
+
+	// スクリプト関数
+	auto scriptProc = [this](YsAnimeKey_Script* scr)
+	{
+		//ここでアニメーション中に発生するスクリプトを処理する
+	};
+	// アニメ進行・スクリプト実行
+	// スクリプトがある場合は、funcが実行される
+	m_aniPla.AnimationAndScript(1.0, scriptProc, &m_Mat);
+	// 全身のWorldMatを算出
+	m_moPla.CalcBoneMatrix_SkipRoot(&m_mObj);
 
 	// 作業用変数
 	/*static float		JUMP_POWER;			//ジャンプ力
@@ -32,13 +50,28 @@ void Player::Update()
 	static float		prev;				//ジャンプしたときの座標保存用
 	static bool			JFlg = false;		//ジャンプしているかのフラグ*/
 
-	//===========================================================
-	// 移動処理
-	//===========================================================
-	if (INPUT.KeyCheck('W'))m_mObj.Move_Local(0.0f, 0.0f, 0.1f);
-	if (INPUT.KeyCheck('S'))m_mObj.Move_Local(0.0f, 0.0f, -0.1f);
-	if (INPUT.KeyCheck('A'))m_mObj.Move_Local(-0.1f, 0.0f, 0.0f);
-	if (INPUT.KeyCheck('D'))m_mObj.Move_Local(0.1f, 0.0f, 0.0f);
+	//入力コンポーネント処理
+	if (m_Controller) {
+		m_Keys = m_Controller->Update();
+	}
+
+	if (m_Keys&GK_LLEFT) {
+		m_mObj.Move_Local(-0.3f, 0.0f, 0.0f);
+	}
+	if (m_Keys&GK_LUP) {
+		m_mObj.Move_Local(0.0f, 0.0f, 0.3f);
+	}
+	if (m_Keys&GK_LRIGHT) {
+		m_mObj.Move_Local(0.3f, 0.0f, 0.0f);
+	}
+	if (m_Keys&GK_LDOWN) {
+		m_mObj.Move_Local(0.0f, 0.0f, -0.3f);
+	}
+
+	if (m_ActionState) {
+		auto p = m_ActionState;
+		m_ActionState->Update(*this, m_aniPla, m_ActionState);
+	}
 
 	//===========================================================
 	// ジャンプ処理
@@ -84,6 +117,15 @@ void Player::Update()
 	}
 	m_aniPla.ChangeAnimeSmooth(aniNo, 0, 20, true);
 	}*/
+
+	//武器
+	{
+		auto bone = m_moPla.SearchBone("右手ダミー");
+		if (bone) {
+			m_mHammer = bone->WorldMat;
+		}
+	}
+	m_moHammer.CalcBoneMatrix(&m_mHammer);
 }
 
 void Player::Draw()
@@ -94,11 +136,7 @@ void Player::Draw()
 	////=======================================
 	//// 武器描画
 	////=======================================
-	//auto bone = m_moPla.SearchBone("RHandPoint");		//ボーン検索
-	//if (bone){		//ボーン発見
-	//	// ボーン	の行列を使って、武器を描画
-	//	ShMgr.m_Samp.DrawModel(m_moKatana, &bone->WorldMat);
-	//}
+	ShMgr.m_Samp.DrawModel(m_moHammer, &m_mHammer);
 
 	////=======================================
 	//// キャラ１ ボーン名表示
@@ -114,4 +152,76 @@ void Player::Draw()
 	//	}
 	//}
 	//YsDx.GetSprite().End();
+}
+
+//=====================================================
+// 「待機」状態
+//=====================================================
+void PlayerAS_Wait::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>& state)
+{
+	// 方向キー
+	if (Player.GetKeys() & GK_LUP || Player.GetKeys() & GK_LLEFT || Player.GetKeys() & GK_LRIGHT || Player.GetKeys() & GK_LDOWN) {
+		// アニメ切り替え
+		anime.ChangeAnimeSmooth_FromName("走り", 0, 10, true);
+		// 行動切り替え
+		SPtr<PlayerAS_Run> p = std::make_shared<PlayerAS_Run>();
+		state=p;
+		return;
+	}
+	// マウス左クリック
+	if (INPUT.MouseCheck_Enter(INPUT.MOUSE_L)) {
+		//アニメ切り替え
+		anime.ChangeAnimeSmooth_FromName("攻撃", 0, 10, false);
+		// 行動切り替え
+		SPtr<PlayerAS_Attack> p = std::make_shared<PlayerAS_Attack>();
+		state=p;
+		return;
+	}
+}
+//=====================================================
+// 「走り」状態
+//=====================================================
+void PlayerAS_Run::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>& state)
+{
+	// 移動キーを押してる？
+	if (!(Player.GetKeys() & GK_LUP || Player.GetKeys() & GK_LLEFT || Player.GetKeys() & GK_LRIGHT || Player.GetKeys() & GK_LDOWN)) {
+		// アニメ切り替え
+		anime.ChangeAnimeSmooth_FromName("待機", 0, 10, true);
+		// 行動切り替え
+		SPtr<PlayerAS_Wait> p = std::make_shared<PlayerAS_Wait>();
+		state=p;
+		return;
+	}
+	// アニメ速度を移動速度にする
+	//float RunSpeed = (float)Player.GetAnim().GetAnimeSpeed() * 0.05f;
+	//Player.m_Mat.Move_Local(0, 0, RunSpeed);
+
+}
+//=====================================================
+//	「攻撃」状態
+//=====================================================
+void PlayerAS_Attack::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>& state)
+{
+	if (!INPUT.MouseCheck_Enter(INPUT.MOUSE_L) && anime.IsAnimationEnd()) {
+		// アニメ切り替え
+		anime.ChangeAnimeSmooth_FromName("待機", 0, 10, true);
+		// 行動切り替え
+		SPtr<PlayerAS_Wait> p = std::make_shared<PlayerAS_Wait>();
+		state=p;
+		return;
+	}
+}
+//=====================================================
+// 汎用行動
+//=====================================================
+void PlayerAS_Generic::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>& state)
+{
+	if (anime.IsAnimationEnd()) {
+		// アニメ切り替え
+		anime.ChangeAnimeSmooth_FromName("待機", 0, 10, true);
+		// 行動切り替え
+		SPtr<PlayerAS_Wait> p = std::make_shared<PlayerAS_Wait>();
+		state=p;
+		return;
+	}
 }

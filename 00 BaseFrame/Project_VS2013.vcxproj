@@ -137,7 +137,9 @@
     <ClInclude Include="src\Game\GameWorld\Base\CollisionBase.h" />
     <ClInclude Include="src\Game\GameWorld\Base\ObjectBase.h" />
     <ClInclude Include="src\Game\GameWorld\Character\Player.h" />
+    <ClInclude Include="src\Game\GameWorld\GameKey.h" />
     <ClInclude Include="src\Game\GameWorld\GameWorld.h" />
+    <ClInclude Include="src\Game\GameWorld\Include.h" />
     <ClInclude Include="src\Game\GameWorld\Object\Arm.h" />
     <ClInclude Include="src\Game\GameWorld\Object\BeltConveyor.h" />
     <ClInclude Include="src\Game\GameWorld\Object\Bridge.h" />

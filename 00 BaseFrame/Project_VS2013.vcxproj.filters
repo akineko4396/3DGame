@@ -566,6 +566,12 @@
     <ClInclude Include="src\Game\GameWorld\Object\Bridge.h">
       <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Bridge</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\GameWorld\GameKey.h">
+      <Filter>src\Game\GameWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameWorld\Include.h">
+      <Filter>src\Game\GameWorld</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\Sample\Common.hlsl">

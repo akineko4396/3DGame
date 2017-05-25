@@ -11,19 +11,8 @@ public:
 	YsMatrix	m_Mat;
 };
 
-//作成したインクルードヘッダー
-#include "Base/ObjectBase.h"
-#include "Character/Player.h"
-#include "Object/Ground.h"
-#include "Object/Stronghold.h"
-#include "Object/Wall.h"
-#include "Object/Sling.h"
-#include "Object/Cannon.h"
-#include "Object/Flamethrower.h"
-#include "Object/Press.h"
-#include "Object/BeltConveyor.h"
-#include "Object/Arm.h"
-#include "Object/Bridge.h"
+#include "Include.h"
+
 //=====================================
 //
 //ゲームワールドクラス

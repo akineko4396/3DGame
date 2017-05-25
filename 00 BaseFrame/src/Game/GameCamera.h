@@ -48,7 +48,7 @@ public:
 	}
 
 	// 処理
-	void Update() {
+	void Update(YsVec3 _pos = YsVec3(0, 0, 0)) {
 		float ratio = 1.0f;
 		if (GetAsyncKeyState(VK_CONTROL) & 0x8000) {
 			ratio *= 0.2f;
@@ -98,8 +98,8 @@ public:
 				POINT *pt = INPUT.GetMouseMoveValue();
 
 				// 視点回転
-				m_LocalMat.RotateAxis(m_LocalMat.GetXAxis(), pt->y*0.5f);
-				m_LocalMat.RotateY(pt->x*0.5f);
+				m_BaseMat.GetPos() = _pos;
+				m_BaseMat.RotateY(pt->x*0.5f);
 			}
 
 			// ウィンドウのアクティブ状態により切り替え
@@ -168,6 +168,26 @@ public:
 		// カメラ行列からビュー行列を作る
 		CameraToView();
 
+	}
+
+	void SetCamera(YsVec3& _Pos) {
+		//==========================================
+		// カメラ設定
+		//==========================================
+		// 射影行列設定
+		SetProj(mProj);
+
+		//プレイヤーからカメラまでの距離
+		m_LocalMat.CreateMove(0, 5, -10);
+
+		//カメラ行列の親行列の座標をプレイヤーの座標にする
+		m_BaseMat.GetPos() = _Pos;
+
+		// 最終的なカメラ行列を求める
+		mCam = m_LocalMat * m_BaseMat;
+
+		// カメラ行列からビュー行列を作る
+		CameraToView();
 	}
 };
 
