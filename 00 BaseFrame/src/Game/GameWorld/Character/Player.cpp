@@ -54,16 +54,34 @@ void Player::Update()
 	if (m_Controller) {
 		m_Keys = m_Controller->Update();
 	}
-
+	//Aキー
 	if (m_Keys&GK_LLEFT) {
 		m_mObj.Move_Local(-0.3f, 0.0f, 0.0f);
 	}
-	if (m_Keys&GK_LUP) {
-		m_mObj.Move_Local(0.0f, 0.0f, 0.3f);
+	static POINT *pt = INPUT.GetMouseMoveValue();
+	static POINT *oldpt;
+	pt->x = pt->x % 360;
+	oldpt = pt;
+	static float p = 0;
+	//Wキー
+	if (INPUT.KeyCheck_Enter('W')) {
+		m_mObj.RotateY_Local(p*0.5f);
+		p = 0;
 	}
+	if (m_Keys&GK_LUP) {
+		pt = INPUT.GetMouseMoveValue();
+		pt->x = pt->x % 360;
+		m_mObj.Move_Local(0.0f, 0.0f, 0.3f);
+		m_mObj.RotateY_Local(pt->x*0.5f);
+	}
+	else {
+		p += INPUT.GetMouseMoveValue()->x;
+	}
+	//Dキー
 	if (m_Keys&GK_LRIGHT) {
 		m_mObj.Move_Local(0.3f, 0.0f, 0.0f);
 	}
+	//Sキー
 	if (m_Keys&GK_LDOWN) {
 		m_mObj.Move_Local(0.0f, 0.0f, -0.3f);
 	}
