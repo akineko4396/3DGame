@@ -85,6 +85,9 @@ public:
 	//オブジェクト情報を返す
 	static SPtr<ObjectBase>	GetThisObject(int _Num);
 
+	//カメラ処理
+	virtual void SetCamera(){}
+
 	//===========
 	// ゲッター
 	//===========

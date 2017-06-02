@@ -51,20 +51,12 @@ public:
 	//描画
 	void Draw();
 
-	//プレイヤーの座標セット
-	inline void SetPPos(YsVec3 _pos) { pPos = _pos; }
-
 	//=================
 	// その他
 	//=================
 	bool	m_PauseFlag = false;	//ポーズON/OFF
 
 	int	Obj_Num_Max = 0;	//オブジェクトの数格納用
-
-	//=================
-	//　カメラ
-	//=================
-	GameCamera m_Cam;
 
 
 	//================================
@@ -106,14 +98,10 @@ private:
 	YsVec3			m_Scale;			//拡大サイズ
 	YsVec3			m_Angle;			//回転量
 
-	BOOL			m_EditFlg;			//エディット用フラグ
-
 	RECT			m_EditButton;	//エディット用のボタン座標
 
 	YsModelObject	m_moEdit;		//升目状のメッシュ
 	YsMatrix			m_mEdit;			//升目状のメッシュの行列
-
-	YsVec3			pPos;						//プレイヤーの座標格納用
 };
 
 #define EW EditWorld::GetWorld()

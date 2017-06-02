@@ -10,7 +10,7 @@ class Player :public ObjectBase
 {
 public: 
 
-	Player() { m_ObjId = OBJECT_LIST::ID::PLAYER; }
+	Player() { m_ObjId = OBJECT_LIST::ID::PLAYER;}
 
 	//初期化設定
 	void Init();
@@ -20,6 +20,18 @@ public:
 
 	//描画処理
 	virtual void Draw() override;
+
+	//行列更新
+	void UpdateMatrix();
+
+	//座標移動
+	void MovePosition(YsVec3& _ToVec);
+
+	//カメラ処理
+	virtual void SetCamera() override;
+
+	//カメラの情報をとってくる
+	inline GameCamera GetCam() { return m_Cam; }
 	
 
 private:
@@ -36,6 +48,22 @@ private:
 	
 	// 行動ごとに変化するアクションステート
 	SPtr<BasePlayerAS> m_ActionState;
+
+	//内積用の角度
+	float				m_NormalAngleY;
+
+	//----------------------------------
+	// カメラ関係
+	//----------------------------------
+	int m_CameraEffectCnt = 0; // カメラ演出カウント
+	GameCamera m_Cam; // カメラ 移動の基準にもなる
+
+public:
+
+	//移動量
+	YsVec3			m_vMove;
+
+	int m_SkyFlag = 0; // 0:地上 1:空中
 };
 
 //======================================

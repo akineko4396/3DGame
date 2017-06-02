@@ -8,9 +8,20 @@ GameWorld*	GameWorld::s_pInst = nullptr;
 
 void GameWorld::Init()
 {
+	//カメラの初期化
+	m_Cam.Init(20, 180, 0, false, true);
+
+	//エディットフラグ初期値
+	m_EditFlg = FALSE;
+
 	//外部からゲームオブジェクトを読み込み
 	UPtr<DataManager> uDM(new DataManager);
 	Obj_Num_Max = uDM->DataLoad("data/txt/Object1.txt");
+
+	// カメラ視点キャラとして記憶
+	m_wpCamera = ObjectBase::GetThisObject(OBJECT_LIST::ID::PLAYER);
+	// プレイヤーとして記憶
+	m_wpPlayer = ObjectBase::GetThisObject(OBJECT_LIST::ID::PLAYER);
 
 	// エディットワールド作成・初期化
 	EditWorld::CreateWorld();
@@ -29,6 +40,9 @@ void GameWorld::Release()
 	EditWorld::DeleteWorld();
 
 	ObjectBase::FullClear();
+
+	m_wpCamera.reset();
+	m_wpPlayer.reset();
 }
 
 void GameWorld::Update()
@@ -43,15 +57,64 @@ void GameWorld::Update()
 	//全オブジェクト更新
 	ObjectBase::AllUpdate();
 
-	//エディット側にプレイヤーの座標を渡す
-	EW.SetPPos(ObjectBase::GetThisObject(OBJECT_LIST::ID::PLAYER)->GetPos());
+	//=======================================
+	// カメラ操作
+	//=======================================
+	m_Cam.Update(ObjectBase::GetThisObject(OBJECT_LIST::ID::PLAYER)->GetPos());
 
+	//=======================================
+	//エディットモード
+	//=======================================
+	//エディットモード
+	if (INPUT.KeyCheck_Enter('N') && !m_EditFlg) {
+		//カメラの初期化
+		m_Cam.Init(20, 180, 0);
+
+		//フラグON
+		m_EditFlg = TRUE;
+	}
+	//ゲーム
+	if (INPUT.KeyCheck_Enter('M') && m_EditFlg) {
+		//カメラの初期化
+		m_Cam.Init(20, 180, 0, false, true);
+
+		//フラグOFF
+		m_EditFlg = FALSE;
+	}
 	//エディットモード更新
-	EW.Update();
+	if (m_EditFlg) {
+		EW.Update();
+	}
+
+	// Player座標デバッグ表示
+	auto player = m_wpPlayer.lock();
+	if (player) {
+		Dw_Static(10, "pos(%.2f, %.2f, %.2f)", player->GetPos().x, player->GetPos().y, player->GetPos().z);
+	}
 }
 
 void GameWorld::Draw()
 {
+	//==========================================
+	// カメラ設定
+	//==========================================
+	// ポーズ中でないなら、カメラ視点に設定しているキャラの、カメラ処理を実行
+	/*if (m_PauseFlag == false) {
+		if (m_wpCamera.expired() == false) {
+			m_wpCamera.lock()->SetCamera();
+		}
+	}*/
+	// ポーズ中なら、GameWorldのカメラを使用
+	//else {
+		if (m_EditFlg) {
+			m_Cam.SetCamera();
+			//エディットモード描画
+			EW.Draw();
+		}
+		else if (!m_EditFlg) {
+			m_Cam.SetCamera(ObjectBase::GetThisObject(OBJECT_LIST::ID::PLAYER)->GetPos());
+		}
+	//}
 
 	//=======================================
 	// 描画直前にシェーダのフレーム単位データを更新する
@@ -60,7 +123,4 @@ void GameWorld::Draw()
 
 	//全オブジェクト描画
 	ObjectBase::AllDraw();
-
-	//エディットモード描画
-	EW.Draw();
 }
