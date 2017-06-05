@@ -92,6 +92,9 @@ public:
 	// ゲッター
 	//===========
 
+	//行列をセットする
+	inline void SetMatrix(const YsMatrix _Mat) { m_mObj = _Mat; }
+
 	//座標をセットする
 	inline void SetPos(const YsVec3 _pos){ m_vPos = _pos; }
 

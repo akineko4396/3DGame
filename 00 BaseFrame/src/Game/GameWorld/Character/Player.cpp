@@ -56,63 +56,6 @@ void Player::Update()
 	if (m_Controller) {
 		m_Keys = m_Controller->Update();
 	}
-	/*//テンプレート
-	YsVec3			m_vTmpVec = YsVec3(0, 0, 0);
-	//移動量
-	YsVec3			m_vToVec = YsVec3(0, 0, 0);
-
-	YsMatrix	mRot;
-	//Aキー
-	if (m_Keys&GK_LLEFT) {
-		//m_mObj.Move_Local(-0.3f, 0.0f, 0.0f);
-		D3DXMatrixRotationY(&mRot, D3DXToRadian(m_NormalAngleY));
-		D3DXVec3TransformCoord(&m_vTmpVec, &YsVec3(-0.1, 0, 0), &mRot);
-		m_vToVec += m_vTmpVec;
-		MovePosition(m_vToVec);
-	}
-	//Wキー
-	/*static POINT *pt = INPUT.GetMouseMoveValue();
-	static POINT *oldpt;
-	pt->x = pt->x % 360;
-	oldpt = pt;
-	static float p = 0;
-	if (INPUT.KeyCheck_Enter('W')) {
-		m_mObj.RotateY_Local(p*0.5f);
-		p = 0;
-	}
-	if (m_Keys&GK_LUP) {
-		pt = INPUT.GetMouseMoveValue();
-		pt->x = pt->x % 360;
-		m_mObj.Move_Local(0.0f, 0.0f, 0.3f);
-		m_mObj.RotateY_Local(pt->x*0.5f);
-	}
-	else {
-		p += INPUT.GetMouseMoveValue()->x;
-	}
-
-	else if (m_Keys&GK_LUP) {
-		D3DXMatrixRotationY(&mRot, D3DXToRadian(m_NormalAngleY));
-		D3DXVec3TransformCoord(&m_vTmpVec, &YsVec3(0, 0, 0.1), &mRot);
-		m_vToVec += m_vTmpVec;
-		MovePosition(m_vToVec);
-	}
-
-	//Dキー
-	else if (m_Keys&GK_LRIGHT) {
-		//m_mObj.Move_Local(0.3f, 0.0f, 0.0f);
-		D3DXMatrixRotationY(&mRot, D3DXToRadian(m_NormalAngleY));
-		D3DXVec3TransformCoord(&m_vTmpVec, &YsVec3(0.1, 0, 0), &mRot);
-		m_vToVec += m_vTmpVec;
-		MovePosition(m_vToVec);
-	}
-	//Sキー
-	else if (m_Keys&GK_LDOWN) {
-		//m_mObj.Move_Local(0.0f, 0.0f, -0.3f);
-		D3DXMatrixRotationY(&mRot, D3DXToRadian(m_NormalAngleY));
-		D3DXVec3TransformCoord(&m_vTmpVec, &YsVec3(0, 0, -0.1), &mRot);
-		m_vToVec += m_vTmpVec;
-		MovePosition(m_vToVec);
-	}*/
 
 	// カメラ演出カウント
 	m_CameraEffectCnt--;
@@ -230,89 +173,6 @@ void Player::Draw()
 	//YsDx.GetSprite().End();
 }
 
-//==========================
-//行列更新
-//==========================
-void Player::UpdateMatrix()
-{
-	//マウスのY軸回転量を取得
-	m_NormalAngleY = INPUT.GetMouseMoveValue()->x;
-
-	//拡大
-	m_mObj.CreateScale(m_vScale);
-
-	//座標セット
-	m_mObj.Move(m_vPos);
-
-	//Y軸セット
-	m_mObj.RotateY_Local(m_vAngle.y);
-
-	//X軸セット
-	m_mObj.RotateX_Local(m_vAngle.x);
-
-	//Z軸セット
-	m_mObj.RotateZ_Local(m_vAngle.z);
-}
-
-//==========================
-//座標移動
-//==========================
-void Player::MovePosition(YsVec3& _ToVec)
-{
-	//現在の向いている方角
-	YsVec3	NowVec;
-
-	//移動量
-	m_vPos.Add(_ToVec);
-
-	//回転量をセット
-	m_mObj.CreateRotateY(m_vAngle.y);
-
-	//向いている方角を求める
-	D3DXVec3TransformNormal(&NowVec, &YsVec3(0, 0, 1), &m_mObj);
-
-	//正規化
-	_ToVec.Normalize();
-
-	//内積を求める
-	float Dot = _ToVec.Dot(NowVec);
-
-	//角度返還
-	Dot = D3DXToDegree(acos(Dot));
-
-	//内積がある程度の値を超えていたら
-	if (Dot >= 0.1f)
-	{
-		//外積を求める
-		YsVec3 Cross;
-		Cross.Cross(Cross, NowVec, _ToVec);
-
-		//正規化
-		Cross.Normalize();
-
-		//内積の回転量
-		if (Dot >= 10) {
-			//オーバーしないように
-			Dot = 10.0f;
-		}
-		//外積がある程度超えれば
-		if (Cross.y >= 0.9f) {
-			//Y軸に内積を加算
-			m_vAngle.y += Dot;
-		}
-		else if (Cross.y <= -0.9f) {
-			//Y軸に内積を減算
-			m_vAngle.y -= Dot;
-		}
-		else {
-			//Y軸に内積を加算
-			m_vAngle.y += Dot;
-		}
-		//一回転しないように
-		m_vAngle.y = static_cast<float>((int)m_vAngle.y % 360);
-	}
-}
-
 //======================
 //カメラ処理
 //======================
@@ -369,12 +229,20 @@ void PlayerAS_Wait::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>
 		return;
 	}
 
+	//一時計算用行列
+	YsMatrix mMat;
+	//プレイヤー行列保存
+	mMat = Player.GetMatrix();
+
 	// 摩擦
 	/*if (Player.m_SkyFlag == 0) {
 		Player.m_vMove *= 0.9f;
-	}
+	}*/
 	// 力移動
-	Player.GetMatrix().Move(Player.m_vMove);*/
+	mMat.Move(Player.m_vMove);
+
+	//プレイヤー行列にセット
+	Player.SetMatrix(mMat);
 }
 //=====================================================
 // 「走り」状態
@@ -390,6 +258,11 @@ void PlayerAS_Run::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>&
 		state=p;
 		return;
 	}
+
+	//一時計算用行列
+	YsMatrix mMat;
+	//プレイヤー行列保存
+	mMat = Player.GetMatrix();
 
 	// 移動による視点補正
 	float rotaAng = 0;
@@ -422,18 +295,21 @@ void PlayerAS_Run::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>&
 	vTar.Normalize();
 	YsVec3 vZ = Player.GetMatrix().GetZAxis();
 	vZ.Homing(vTar, 10);
-	Player.GetMatrix().SetLookAt(vZ, YsVec3::Up);
+	mMat.SetLookAt(vZ, YsVec3::Up);
 	// アニメ速度を移動速度にする
 	float walkSpeed = (float)anime.GetAnimeSpeed() * 0.05f;
-	Player.GetMatrix().Move_Local(0, 0, walkSpeed);
+	mMat.Move_Local(0, 0, walkSpeed);
 	// 重力
 	//Player.m_vMove.y -= 0.01f;
 	// 摩擦
 	/*if (Player.m_SkyFlag == 0) {
 		Player.m_vMove *= 0.9f;
-	}
+	}*/
 	// 力移動
-	Player.GetMatrix().Move(Player.m_vMove);*/
+	mMat.Move(Player.m_vMove);
+
+	//プレイヤー行列にセット
+	Player.SetMatrix(mMat);
 }
 //=====================================================
 //	「攻撃」状態
@@ -463,10 +339,18 @@ void PlayerAS_Generic::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayer
 		return;
 	}
 
+	//一時計算用行列
+	YsMatrix mMat;
+	//プレイヤー行列保存
+	mMat = Player.GetMatrix();
+
 	// 摩擦
 	/*if (Player.m_SkyFlag == 0) {
-		Player.m_vMove *= 0.9f;
-	}
+	Player.m_vMove *= 0.9f;
+	}*/
 	// 力移動
-	Player.GetMatrix().Move(Player.m_vMove);*/
+	mMat.Move(Player.m_vMove);
+
+	//プレイヤー行列にセット
+	Player.SetMatrix(mMat);
 }

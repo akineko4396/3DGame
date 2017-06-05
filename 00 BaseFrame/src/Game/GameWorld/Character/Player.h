@@ -21,12 +21,6 @@ public:
 	//描画処理
 	virtual void Draw() override;
 
-	//行列更新
-	void UpdateMatrix();
-
-	//座標移動
-	void MovePosition(YsVec3& _ToVec);
-
 	//カメラ処理
 	virtual void SetCamera() override;
 
