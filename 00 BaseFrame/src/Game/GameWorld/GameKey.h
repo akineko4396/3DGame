@@ -52,9 +52,9 @@ public:
 		if (INPUT.KeyCheck(VK_UP)) keys |= GK_UP;
 		if (INPUT.KeyCheck(VK_RIGHT)) keys |= GK_RIGHT;
 		if (INPUT.KeyCheck(VK_DOWN)) keys |= GK_DOWN;
-		if (INPUT.KeyCheck('Z')) keys |= GK_A;
+		if (INPUT.KeyCheck(VK_SPACE)) keys |= GK_A;
 		if (INPUT.KeyCheck('X')) keys |= GK_B;
-		if (INPUT.KeyCheck('C')) keys |= GK_X;
+		if (INPUT.MouseCheck(INPUT.MOUSE_L)) keys |= GK_X;
 		if (INPUT.KeyCheck('V')) keys |= GK_Y;
 		if (INPUT.KeyCheck('A')) keys |= GK_L1;
 		if (INPUT.KeyCheck('S')) keys |= GK_L2;
@@ -63,7 +63,6 @@ public:
 		if (INPUT.KeyCheck('W')) keys |= GK_LUP;
 		if (INPUT.KeyCheck('D')) keys |= GK_LRIGHT;
 		if (INPUT.KeyCheck('S')) keys |= GK_LDOWN;
-		if (INPUT.KeyCheck(VK_RETURN)) keys |= GK_START;
 		return keys;
 	}
 };

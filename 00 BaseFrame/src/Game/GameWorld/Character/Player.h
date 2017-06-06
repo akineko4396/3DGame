@@ -101,7 +101,15 @@ public:
 	virtual void Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>& state) override;
 };
 
-//=====================================
+//======================================
+//「攻撃」状態
+//======================================
+class PlayerAS_Jump :public BasePlayerAS
+{
+public:
+	//毎回実行される
+	virtual void Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>& state) override;
+};
 
 //=====================================================
 // 汎用行動

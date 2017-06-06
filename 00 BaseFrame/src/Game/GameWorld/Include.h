@@ -10,6 +10,7 @@
 
 //ゲームオブジェクト
 #include "Base/ObjectBase.h"
+#include "Base/CollisionBase.h"
 #include "Character/Player.h"
 #include "Object/Ground.h"
 #include "Object/Stronghold.h"

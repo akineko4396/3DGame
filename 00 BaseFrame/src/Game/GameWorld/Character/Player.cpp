@@ -70,49 +70,6 @@ void Player::Update()
 		m_ActionState->Update(*this, m_aniPla, m_ActionState);
 	}
 
-	//===========================================================
-	// ジャンプ処理
-	//===========================================================
-	// 作業用変数
-	/*static float		JUMP_POWER;			//ジャンプ力
-	const static float	GRAVITY = 0.01f;			//重力
-	static float		Jump;				//Y移動量
-	static float		prev;				//ジャンプしたときの座標保存用
-	static bool			m_JumpFlg = false;		//ジャンプしているかのフラグ
-	static bool			m_UpDownFlg = false;	//上昇落下フラグ
-
-	if (INPUT.KeyCheck_Enter(VK_SPACE) && !m_JumpFlg && !m_UpDownFlg){
-		m_JumpFlg = true;
-		JUMP_POWER = 0.1;
-		prev = m_mObj.GetPos().y;
-		Jump = 0;
-	}
-	if (m_JumpFlg){
-		if (!m_UpDownFlg) {
-			JUMP_POWER -= GRAVITY;
-			Jump += JUMP_POWER;
-			if (JUMP_POWER >= 0) {
-				m_UpDownFlg = true;
-			}
-		}
-		else if(m_UpDownFlg) {
-			static YsVec3	Pos;				//プレイヤーのY座標一時保存用
-			Pos = m_mObj.GetPos();
-
-			JUMP_POWER -= GRAVITY;
-			Jump += JUMP_POWER;
-
-			if (Pos.y <= 0) {
-				m_JumpFlg = false;
-				m_UpDownFlg = false;
-				Jump = prev - Pos.y;
-			}
-		}
-		m_mObj.Move_Local(0.0f, Jump, 0.0f);
-	}*/
-
-	//UpdateMatrix();
-
 	//アニメーションを進める
 	// 正確には、アニメーション情報をもとに、全ボーンの「TransMat」を更新する
 	m_aniPla.Animation(1.0);
@@ -213,19 +170,29 @@ void PlayerAS_Wait::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>
 	// 方向キー
 	if (Player.GetKeys() & GK_LUP || Player.GetKeys() & GK_LLEFT || Player.GetKeys() & GK_LRIGHT || Player.GetKeys() & GK_LDOWN) {
 		// アニメ切り替え
-		anime.ChangeAnimeSmooth_FromName("走り", 0, 10, true, 1);
+		anime.ChangeAnimeSmooth_FromName("走り", 0, 10, true, 0.5);
 		// 行動切り替え
 		SPtr<PlayerAS_Run> p = std::make_shared<PlayerAS_Run>();
 		state=p;
 		return;
 	}
 	// マウス左クリック
-	if (INPUT.MouseCheck_Enter(INPUT.MOUSE_L)) {
+	if (Player.GetKeys() & GK_X) {
 		//アニメ切り替え
 		anime.ChangeAnimeSmooth_FromName("攻撃", 0, 10, false, 1);
 		// 行動切り替え
 		SPtr<PlayerAS_Attack> p = std::make_shared<PlayerAS_Attack>();
 		state=p;
+		return;
+	}
+
+	// スペースキー
+	if (Player.GetKeys() & GK_A) {
+		// アニメ切り替え
+		anime.ChangeAnimeSmooth_FromName("ジャンプ", 0, 10, false, 0.5);
+		// 行動切り替え
+		SPtr<PlayerAS_Jump> p = std::make_shared<PlayerAS_Jump>();
+		state = p;
 		return;
 	}
 
@@ -252,7 +219,7 @@ void PlayerAS_Run::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>&
 	// 移動キーを押してる？
 	if (!(Player.GetKeys() & GK_LUP || Player.GetKeys() & GK_LLEFT || Player.GetKeys() & GK_LRIGHT || Player.GetKeys() & GK_LDOWN)) {
 		// アニメ切り替え
-		anime.ChangeAnimeSmooth_FromName("待機", 0, 10, true, 1);
+		anime.ChangeAnimeSmooth_FromName("待機", 0, 10, true, 0.5);
 		// 行動切り替え
 		SPtr<PlayerAS_Wait> p = std::make_shared<PlayerAS_Wait>();
 		state=p;
@@ -297,7 +264,7 @@ void PlayerAS_Run::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>&
 	vZ.Homing(vTar, 10);
 	mMat.SetLookAt(vZ, YsVec3::Up);
 	// アニメ速度を移動速度にする
-	float walkSpeed = (float)anime.GetAnimeSpeed() * 0.05f;
+	float walkSpeed = (float)anime.GetAnimeSpeed() * 0.5f;
 	mMat.Move_Local(0, 0, walkSpeed);
 	// 重力
 	//Player.m_vMove.y -= 0.01f;
@@ -316,14 +283,39 @@ void PlayerAS_Run::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>&
 //=====================================================
 void PlayerAS_Attack::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>& state)
 {
-	if (!INPUT.MouseCheck_Enter(INPUT.MOUSE_L) && anime.IsAnimationEnd()) {
+	if (!(Player.GetKeys() & GK_X) && anime.IsAnimationEnd()) {
 		// アニメ切り替え
-		anime.ChangeAnimeSmooth_FromName("待機", 0, 10, true, 1);
+		anime.ChangeAnimeSmooth_FromName("待機", 0, 10, true, 0.5);
 		// 行動切り替え
 		SPtr<PlayerAS_Wait> p = std::make_shared<PlayerAS_Wait>();
-		state=p;
+		state = p;
 		return;
 	}
+}
+//=====================================================
+//	「ジャンプ」状態
+//=====================================================
+void PlayerAS_Jump::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>& state)
+{
+	if (!(Player.GetKeys() & GK_A) && anime.IsAnimationEnd()) {
+		// アニメ切り替え
+		anime.ChangeAnimeSmooth_FromName("待機", 0, 10, true, 0.5);
+		// 行動切り替え
+		SPtr<PlayerAS_Wait> p = std::make_shared<PlayerAS_Wait>();
+		state = p;
+		return;
+	}
+
+	//一時計算用行列
+	YsMatrix mMat;
+	//プレイヤー行列保存
+	mMat = Player.GetMatrix();
+
+	// 力移動
+	mMat.Move(Player.m_vMove);
+
+	//プレイヤー行列にセット
+	Player.SetMatrix(mMat);
 }
 //=====================================================
 // 汎用行動
@@ -332,7 +324,7 @@ void PlayerAS_Generic::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayer
 {
 	if (anime.IsAnimationEnd()) {
 		// アニメ切り替え
-		anime.ChangeAnimeSmooth_FromName("待機", 0, 10, true, 1);
+		anime.ChangeAnimeSmooth_FromName("待機", 0, 10, true, 0.5);
 		// 行動切り替え
 		SPtr<PlayerAS_Wait> p = std::make_shared<PlayerAS_Wait>();
 		state=p;

@@ -178,7 +178,7 @@ public:
 		SetProj(mProj);
 
 		//プレイヤーからカメラまでの距離
-		m_LocalMat.CreateMove(0, 5, -10);
+		m_LocalMat.CreateMove(0, 1.7f, -4.0f);
 
 		//カメラ行列の親行列の座標をプレイヤーの座標にする
 		m_BaseMat.GetPos() = _Pos;
