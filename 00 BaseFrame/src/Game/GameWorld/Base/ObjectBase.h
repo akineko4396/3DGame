@@ -131,8 +131,11 @@ public:
 	//拡大サイズを返す
 	inline YsVec3 GetScale() { return m_mObj.GetScale(); }
 
-	//回転量を返す
-	inline YsVec3 GetAngle() { return YsVec3(m_mObj.GetXAxis().x, m_mObj.GetYAxis().y, m_mObj.GetZAxis().z); }
+	//行列から回転量を返す
+	inline YsVec3 GetAxis() { return YsVec3(m_mObj.GetXAxis().x, m_mObj.GetYAxis().y, m_mObj.GetZAxis().z); }
+
+	//直接回転量を返す
+	inline YsVec3 GetAngle() { return m_vAngle; }
 
 	//キルフラグの情報を返す
 	inline int	GetKillFlg(){ return m_killFlg; }

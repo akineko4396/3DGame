@@ -275,9 +275,9 @@ void DataManager::DataSave(const std::string _FileName, int _num)
 
 	//作業用変数
 	static int num_cnt;
-	static YsVec3 Pos;
-	static YsVec3 Scale;
-	static YsVec3 Angle;
+	YsVec3 Pos = YsVec3(0.0f, 0.0f, 0.0f);
+	YsVec3 Scale = YsVec3(1.0f, 1.0f, 1.0f);
+	YsVec3 Angle = YsVec3(0.0f, 0.0f, 0.0f);
 
 	//リスト内をすべて回す
 	for (num_cnt = 0; num_cnt < _num; num_cnt++) {
@@ -285,7 +285,12 @@ void DataManager::DataSave(const std::string _FileName, int _num)
 		//仮データを格納
 		Pos = ObjectBase::GetThisObject(num_cnt)->GetPos();
 		Scale = ObjectBase::GetThisObject(num_cnt)->GetScale();
-		Angle = ObjectBase::GetThisObject(num_cnt)->GetAngle();
+		if (ObjectBase::GetThisObject(num_cnt)->GetObjId() == OBJECT_LIST::ID::PLAYER) {
+			Angle = ObjectBase::GetThisObject(num_cnt)->GetAxis();
+		}
+		else {
+			Angle = ObjectBase::GetThisObject(num_cnt)->GetAngle();
+		}
 
 
 		//クラス情報保存

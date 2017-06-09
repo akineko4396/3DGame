@@ -58,6 +58,9 @@ public:
 	YsVec3			m_vMove;
 
 	int m_SkyFlag = 0; // 0:地上 1:空中
+
+	//ジャンプ力
+	float				m_JumpPower;
 };
 
 //======================================
@@ -102,9 +105,39 @@ public:
 };
 
 //======================================
-//「攻撃」状態
+//「ジャンプ攻撃」状態
 //======================================
-class PlayerAS_Jump :public BasePlayerAS
+class PlayerAS_JumpAttack :public BasePlayerAS
+{
+public:
+	//毎回実行される
+	virtual void Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>& state) override;
+};
+
+//======================================
+//「ジャンプ(上昇)」状態
+//======================================
+class PlayerAS_JumpUp :public BasePlayerAS
+{
+public:
+	//毎回実行される
+	virtual void Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>& state) override;
+};
+
+//======================================
+//「ジャンプ(降下)」状態
+//======================================
+class PlayerAS_JumpDown :public BasePlayerAS
+{
+public:
+	//毎回実行される
+	virtual void Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerAS>& state) override;
+};
+
+//======================================
+//「のけ反り」状態
+//======================================
+class PlayerAS_KnockBack :public BasePlayerAS
 {
 public:
 	//毎回実行される

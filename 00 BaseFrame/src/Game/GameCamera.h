@@ -19,7 +19,6 @@ public:
 	bool		m_IsFPSMode;	// FPSモード
 	bool		m_IsTPSMode;	// TPSモード
 
-
 	//
 	GameCamera() {
 		// カメラデータ初期化
