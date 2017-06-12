@@ -37,7 +37,7 @@ void EditWorld::Draw()
 	//static int cnt;
 	//for (cnt = 0; cnt < 100; cnt++)ShMgr.m_Samp.DrawLine(YsVec3(-50 + cnt * 1, 0, 50), YsVec3(-50 + cnt * 1, 0, -50), &YsVec4(1, 1, 1, 1));
 	//for (cnt = 0; cnt < 100; cnt++)ShMgr.m_Samp.DrawLine(YsVec3(50, 0, -50 + cnt * 1), YsVec3(-50, 0, -50 + cnt * 1), &YsVec4(1, 1, 1, 1));
-	ShMgr.m_Samp.DrawModel(m_moEdit, &m_mEdit);
+	//ShMgr.m_Samp.DrawModel(m_moEdit, &m_mEdit);
 
 	// ‚Æ‚è‚ ‚¦‚¸XYZü‚¾‚¯•`‰æ‚µ‚Æ‚­
 	ShMgr.m_Samp.DrawLine(YsVec3(0, 0, 0), YsVec3(1, 0, 0), &YsVec4(1, 0, 0, 1));

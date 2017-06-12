@@ -48,7 +48,8 @@ private:
 	//=================
 	//　カメラ
 	//=================
-	GameCamera		m_Cam;
+	GameCamera		m_gwCam;
+	GameCamera		m_ewCam;			//エディットカメラ
 	WPtr<ObjectBase> m_wpCamera; // 現在カメラ視点になってるキャラへのアドレス
 	WPtr<ObjectBase> m_wpPlayer; // プレイヤーキャラへのアドレス
 

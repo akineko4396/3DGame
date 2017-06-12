@@ -1,5 +1,5 @@
-ClassName(Player)	Pos(-0.450488,0.0593269,1.97376)	Scale(0.5,0.5,0.5)	Angle(-0.246248,0.5,-0.246248)
-ClassName(Ground)	Pos(0,0,0)	Scale(100,100,100)	Angle(0,0,0)
+ClassName(Player)	Pos(1.35114,0.407679,-1.58252)	Scale(0.5,0.5,0.5)	Angle(-0.40198,0.5,-0.40198)
+ClassName(Ground)	Pos(0,0,0)	Scale(10,10,10)	Angle(0,0,0)
 ClassName(Arm)	Pos(10,0,0.005)	Scale(0.01,0.01,0.01)	Angle(0,0,0)
 ClassName(Bridge)	Pos(-10,0,0)	Scale(0.01,0.01,0.01)	Angle(0,0,0)
 ClassName(Belt)	Pos(0,0,0)	Scale(0.01,0.01,0.01)	Angle(0,0,0)

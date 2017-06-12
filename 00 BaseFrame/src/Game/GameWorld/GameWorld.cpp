@@ -9,7 +9,8 @@ GameWorld*	GameWorld::s_pInst = nullptr;
 void GameWorld::Init()
 {
 	//カメラの初期化
-	m_Cam.Init(20, 180, 0, false, true);
+	m_gwCam.Init(20, 180, 0, false, true);
+	m_ewCam.Init(20, 180, 0);
 
 	//エディットフラグ初期値
 	m_EditFlg = FALSE;
@@ -54,36 +55,30 @@ void GameWorld::Update()
 		m_PauseFlag = !m_PauseFlag;
 	}
 
-	//全オブジェクト更新
-	ObjectBase::AllUpdate();
-
-	//=======================================
-	// カメラ操作
-	//=======================================
-	m_Cam.Update(ObjectBase::GetThisObject(OBJECT_LIST::ID::PLAYER)->GetPos());
-
 	//=======================================
 	//エディットモード
 	//=======================================
 	//エディットモード
 	if (INPUT.KeyCheck_Enter('N') && !m_EditFlg) {
-		//カメラの初期化
-		m_Cam.Init(20, 180, 0);
-
 		//フラグON
 		m_EditFlg = TRUE;
 	}
 	//ゲーム
 	if (INPUT.KeyCheck_Enter('M') && m_EditFlg) {
-		//カメラの初期化
-		m_Cam.Init(20, 180, 0, false, true);
-
 		//フラグOFF
 		m_EditFlg = FALSE;
 	}
-	//エディットモード更新
 	if (m_EditFlg) {
+		// カメラ操作
+		m_ewCam.Update(ObjectBase::GetThisObject(OBJECT_LIST::ID::PLAYER)->GetPos());
+		//エディットモード更新
 		EW.Update();
+	}
+	else {
+		//全オブジェクト更新
+		ObjectBase::AllUpdate();
+		// カメラ操作
+		m_gwCam.Update(ObjectBase::GetThisObject(OBJECT_LIST::ID::PLAYER)->GetPos());
 	}
 
 	// Player座標デバッグ表示
@@ -107,12 +102,12 @@ void GameWorld::Draw()
 	// ポーズ中なら、GameWorldのカメラを使用
 	//else {
 		if (m_EditFlg) {
-			m_Cam.SetCamera();
+			m_ewCam.SetCamera();
 			//エディットモード描画
 			EW.Draw();
 		}
 		else if (!m_EditFlg) {
-			m_Cam.SetCamera(ObjectBase::GetThisObject(OBJECT_LIST::ID::PLAYER)->GetPos());
+			m_gwCam.SetCamera(ObjectBase::GetThisObject(OBJECT_LIST::ID::PLAYER)->GetPos());
 		}
 	//}
 

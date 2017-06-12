@@ -332,7 +332,7 @@ void PlayerAS_JumpUp::Update(Player& Player, YsAnimator& anime, SPtr<BasePlayerA
 {
 	if (anime.IsAnimationEnd()) {
 		// アニメ切り替え
-		anime.ChangeAnimeSmooth_FromName("ジャンプ(降下)", 0, 10, true, 0.1);
+		anime.ChangeAnimeSmooth_FromName("ジャンプ(降下)", 0, 10, true, 0.01);
 		// 行動切り替え
 		SPtr<PlayerAS_JumpDown> p = std::make_shared<PlayerAS_JumpDown>();
 		state = p;
