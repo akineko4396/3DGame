@@ -4,7 +4,7 @@
 void Player::Init()
 {
 	//　モデル読み込み
-	m_gmObj=APP.m_ResStg.LoadMesh("data/model/Player/Player2.xed");
+	//m_gmObj=APP.m_ResStg.LoadMesh("data/model/Player/Player2.xed");
 	m_moHammer.LoadMesh("data/model/Hammer/hammer.xed");
 	//　モデルデータをセット
 	m_moPla.SetModel(m_gmObj);

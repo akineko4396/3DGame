@@ -7,8 +7,6 @@ class Cannon :public ObjectBase
 {
 public:
 
-	Cannon() { m_ObjId = OBJECT_LIST::ID::CANNON; }
-
 	//‰Šúİ’è
 	void Init();
 

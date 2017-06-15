@@ -320,7 +320,7 @@ inline BOOL CheckViewFrustum(SPtr<T>& _MyData, SPtr<YsMesh> _Mesh)
 		Len = D3DXVec3Dot(&vTargetVec, &VF.GetNormal(i));
 
 		//内積で求めた距離 > 自身のバウンディングスフィアの半径
-		if (Len > _Mesh->GetBSRadius())
+		if (Len > _Mesh->GetBSRadius()*_MyData->GetScale().x)
 		{
 			//描画しない
 			return false;

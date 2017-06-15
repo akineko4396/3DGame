@@ -6,8 +6,6 @@
 class Bridge :public ObjectBase {
 public:
 
-	Bridge() { m_ObjId = OBJECT_LIST::ID::BRIDGE; }
-
 	//‰Šúİ’è
 	void Init();
 

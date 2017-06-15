@@ -4,7 +4,7 @@
 void Arm::Init()
 {
 	//メッシュ読み込み
-	m_gmObj = YsDx.GetResStg()->LoadMesh("data/model/Arm/Arm.x");
+	//m_gmObj = YsDx.GetResStg()->LoadMesh("data/model/Arm/Arm.x");
 
 	// ステージマップをセット
 	m_moArm.SetModel(m_gmObj);

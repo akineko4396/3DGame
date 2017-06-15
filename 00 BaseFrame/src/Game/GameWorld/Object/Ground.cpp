@@ -4,7 +4,7 @@
 void Ground::Init()
 {
 	//メッシュ読み込み
-	m_gmObj = YsDx.GetResStg()->LoadMesh("data/model/map/map.x");
+	//m_gmObj = YsDx.GetResStg()->LoadMesh("data/model/map/map.x");
 
 	// ステージマップをセット
 	m_moMap.SetModel(m_gmObj);

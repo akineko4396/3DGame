@@ -5,7 +5,7 @@
 void Stronghold::Init()
 {
 	//メッシュ読み込み
-	m_gmObj = YsDx.GetResStg()->LoadMesh("");
+	//m_gmObj = YsDx.GetResStg()->LoadMesh("");
 
 	// ステージマップをセット
 	m_moStrong.SetModel(m_gmObj);

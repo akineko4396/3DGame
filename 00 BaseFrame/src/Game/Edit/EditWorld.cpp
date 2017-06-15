@@ -27,17 +27,21 @@ void EditWorld::Update()
 	if (INPUT.KeyCheck_Enter('S')) {
 		//外部のテキストファイルへ保存
 		UPtr<DataManager> uDM(new DataManager);
-		uDM->DataSave("data/txt/Object1.txt", Obj_Num_Max);
+		uDM->CsvDataSave("data/txt/Object.csv", Obj_Num_Max);
 	}
+
 }
 
 void EditWorld::Draw()
 {
-	// 升目のように線を引いて区切る
-	//static int cnt;
-	//for (cnt = 0; cnt < 100; cnt++)ShMgr.m_Samp.DrawLine(YsVec3(-50 + cnt * 1, 0, 50), YsVec3(-50 + cnt * 1, 0, -50), &YsVec4(1, 1, 1, 1));
-	//for (cnt = 0; cnt < 100; cnt++)ShMgr.m_Samp.DrawLine(YsVec3(50, 0, -50 + cnt * 1), YsVec3(-50, 0, -50 + cnt * 1), &YsVec4(1, 1, 1, 1));
-	//ShMgr.m_Samp.DrawModel(m_moEdit, &m_mEdit);
+	YsVec3 Vec;
+	Vec.Transform(m_Cam.mCam);
+	YsVec3 MousePos = YsVec3(INPUT.GetMousePos()->x, INPUT.GetMousePos()->y, 0);
+	m_Cam.Convert2Dto3D(MousePos, MousePos);
+	ShMgr.m_Samp.DrawLine(MousePos, YsVec3(0,0,0), &YsVec4(1, 1, 1, 1));
+
+	Dw_Static(11, "Pos(%.2f, %.2f, %.2f)", (float)MousePos.x, (float)MousePos.y, Vec.z);
+	Dw_Static(12, "CamPos(%.2f, %.2f, %.2f)", Vec.x, Vec.y, Vec.z);
 
 	// とりあえずXYZ線だけ描画しとく
 	ShMgr.m_Samp.DrawLine(YsVec3(0, 0, 0), YsVec3(1, 0, 0), &YsVec4(1, 0, 0, 1));

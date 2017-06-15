@@ -4,7 +4,7 @@
 void Bridge::Init()
 {
 	//メッシュ読み込み
-	m_gmObj = YsDx.GetResStg()->LoadMesh("data/model/Bridge/Bridge.x");
+	//m_gmObj = YsDx.GetResStg()->LoadMesh("data/model/Bridge/Bridge.x");
 
 	// ステージマップをセット
 	m_moBridge.SetModel(m_gmObj);

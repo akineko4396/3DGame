@@ -5,7 +5,7 @@
 void Cannon::Init()
 {
 	//メッシュ読み込み
-	m_gmObj = YsDx.GetResStg()->LoadMesh("");
+	//m_gmObj = YsDx.GetResStg()->LoadMesh("");
 
 	// ステージマップをセット
 	m_moCannon.SetModel(m_gmObj);

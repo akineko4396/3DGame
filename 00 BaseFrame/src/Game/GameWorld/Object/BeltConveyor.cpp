@@ -5,7 +5,7 @@
 void BeltConveyor::Init()
 {
 	//メッシュ読み込み
-	m_gmObj = YsDx.GetResStg()->LoadMesh("data/model/Belt/belt.x");
+	//m_gmObj = YsDx.GetResStg()->LoadMesh("data/model/Belt/belt.x");
 
 	// ステージマップをセット
 	m_moBelt.SetModel(m_gmObj);

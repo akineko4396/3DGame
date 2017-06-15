@@ -83,7 +83,7 @@ public:
 	static std::vector<SPtr<ObjectBase>> & GetList(){ return m_oList; }
 
 	//オブジェクト情報を返す
-	static SPtr<ObjectBase>	GetThisObject(int _Num);
+	static SPtr<ObjectBase> GetThisObject(int _Num);
 
 	//カメラ処理
 	virtual void SetCamera(){}
@@ -91,6 +91,9 @@ public:
 	//===========
 	// ゲッター
 	//===========
+
+	//モデルデータをセットする
+	inline void SetModel(const SPtr<YsGameModel> _model) { m_gmObj = _model; }
 
 	//行列をセットする
 	inline void SetMatrix(const YsMatrix _Mat) { m_mObj = _Mat; }
@@ -106,6 +109,9 @@ public:
 
 	//キルフラグをセットする
 	inline void SetKillFlg(const int _k){ m_killFlg = _k; }
+
+	//オブジェクトIDをセットする
+	inline void	SetObjId(const int _ObjId) { m_ObjId = _ObjId; }
 
 	//個別IDをセット
 	inline void SetNum(const int _n){ m_Num = _n; }

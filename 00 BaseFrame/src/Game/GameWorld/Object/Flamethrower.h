@@ -7,8 +7,6 @@ class Flamethrower :public ObjectBase
 {
 public:
 
-	Flamethrower() { m_ObjId = OBJECT_LIST::ID::FLAMETHROWER; }
-
 	//‰Šúİ’è
 	void Init();
 

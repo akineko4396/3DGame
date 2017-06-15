@@ -51,6 +51,9 @@ public:
 	//描画
 	void Draw();
 
+	//セッター
+	inline void SetCam(GameCamera& _Cam) { m_Cam = _Cam; }
+
 	//=================
 	// その他
 	//=================
@@ -97,6 +100,8 @@ private:
 	YsVec3			m_Pos;				//座標
 	YsVec3			m_Scale;			//拡大サイズ
 	YsVec3			m_Angle;			//回転量
+
+	GameCamera		m_Cam;
 
 	RECT			m_EditButton;	//エディット用のボタン座標
 

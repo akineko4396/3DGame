@@ -10,8 +10,6 @@ class Player :public ObjectBase
 {
 public: 
 
-	Player() { m_ObjId = OBJECT_LIST::ID::PLAYER;}
-
 	//‰Šú‰»İ’è
 	void Init();
 

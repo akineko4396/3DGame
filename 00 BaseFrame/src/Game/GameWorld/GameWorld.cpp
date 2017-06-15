@@ -17,7 +17,7 @@ void GameWorld::Init()
 
 	//外部からゲームオブジェクトを読み込み
 	UPtr<DataManager> uDM(new DataManager);
-	Obj_Num_Max = uDM->DataLoad("data/txt/Object1.txt");
+	Obj_Num_Max = uDM->CsvDataLoad("data/txt/Object.csv");
 
 	// カメラ視点キャラとして記憶
 	m_wpCamera = ObjectBase::GetThisObject(OBJECT_LIST::ID::PLAYER);
@@ -34,7 +34,7 @@ void GameWorld::Release()
 
 	//外部のテキストファイルへ保存
 	UPtr<DataManager> uDM(new DataManager);
-	uDM->DataSave("data/txt/Object1.txt", Obj_Num_Max);
+	uDM->CsvDataSave("data/txt/Object.csv", Obj_Num_Max);
 
 	//エディットモード解放
 	EW.Release();
@@ -72,6 +72,7 @@ void GameWorld::Update()
 		// カメラ操作
 		m_ewCam.Update(ObjectBase::GetThisObject(OBJECT_LIST::ID::PLAYER)->GetPos());
 		//エディットモード更新
+		EW.SetCam(m_ewCam);
 		EW.Update();
 	}
 	else {

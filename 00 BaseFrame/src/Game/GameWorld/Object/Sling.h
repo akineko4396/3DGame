@@ -7,8 +7,6 @@ class Sling :public ObjectBase
 {
 public:
 
-	Sling() { m_ObjId = OBJECT_LIST::ID::SLING; }
-
 	//‰Šúİ’è
 	void Init();
 

@@ -7,8 +7,6 @@ class Wall :public ObjectBase
 {
 public:
 
-	Wall() { m_ObjId = OBJECT_LIST::ID::WALL; }
-
 	//‰Šúİ’è
 	void Init();
 

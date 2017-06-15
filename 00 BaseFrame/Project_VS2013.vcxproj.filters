@@ -572,6 +572,9 @@
     <ClInclude Include="src\Game\GameWorld\Include.h">
       <Filter>src\Game\GameWorld</Filter>
     </ClInclude>
+    <ClInclude Include="src\Data\FilePath.h">
+      <Filter>src\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\Sample\Common.hlsl">

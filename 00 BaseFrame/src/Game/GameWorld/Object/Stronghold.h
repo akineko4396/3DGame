@@ -7,8 +7,6 @@ class Stronghold :public ObjectBase
 {
 public:
 
-	Stronghold() { m_ObjId = OBJECT_LIST::ID::STRONGHOLD; }
-
 	//‰Šúİ’è
 	void Init();
 

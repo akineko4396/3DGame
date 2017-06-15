@@ -5,7 +5,7 @@
 void Wall::Init()
 {
 	//メッシュ読み込み
-	m_gmObj = YsDx.GetResStg()->LoadMesh("");
+	//m_gmObj = YsDx.GetResStg()->LoadMesh("");
 
 	// ステージマップをセット
 	m_moWall.SetModel(m_gmObj);

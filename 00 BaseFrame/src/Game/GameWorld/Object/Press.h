@@ -7,8 +7,6 @@ class Press :public ObjectBase
 {
 public:
 
-	Press() { m_ObjId = OBJECT_LIST::ID::PRESS; }
-
 	//‰Šúİ’è
 	void Init();
 

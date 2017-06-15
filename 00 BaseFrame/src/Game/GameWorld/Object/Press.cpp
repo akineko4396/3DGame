@@ -5,7 +5,7 @@
 void Press::Init()
 {
 	//メッシュ読み込み
-	m_gmObj = YsDx.GetResStg()->LoadMesh("data/model/box/box.x");
+	//m_gmObj = YsDx.GetResStg()->LoadMesh("data/model/box/box.x");
 
 	// ステージマップをセット
 	m_moPress.SetModel(m_gmObj);

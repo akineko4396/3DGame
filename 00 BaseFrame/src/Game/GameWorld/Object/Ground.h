@@ -7,8 +7,6 @@ class Ground :public ObjectBase
 {
 public:
 
-	Ground() { m_ObjId = OBJECT_LIST::ID::GROUND; }
-
 	//‰Šúİ’è
 	void Init();
 

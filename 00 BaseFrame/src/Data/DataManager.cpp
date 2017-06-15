@@ -2,9 +2,10 @@
 #include "Game/GameWorld/GameWorld.h"
 #include "Game/Edit/EditWorld.h"
 #include "DataManager.h"
+#include "FilePath.h"
 
 
-int DataManager::DataLoad(const std::string& _FileName)
+int DataManager::TxtDataLoad(const std::string& _FileName)
 {
 	std::ifstream ifs;
 
@@ -143,7 +144,10 @@ int DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Player")
 				{
-					CreateGameObject<Player>(num_cnt, vPos, vScale, vAngle);
+					// 描画用メッシュ読み込み
+					SPtr<YsGameModel> drawModel = YsDx.GetResStg()->LoadMesh(PLAYER_PATH);
+
+					CreateGameObject<Player>(num_cnt, vPos, vScale, vAngle, drawModel, OBJECT_LIST::ID::PLAYER);
 					num_cnt++;
 				}
 			}
@@ -155,7 +159,10 @@ int DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Ground")
 				{
-					CreateGameObject<Ground>(num_cnt, vPos, vScale, vAngle);
+					// 描画用メッシュ読み込み
+					SPtr<YsGameModel> drawModel = YsDx.GetResStg()->LoadMesh(GROUND_PATH);
+
+					CreateGameObject<Ground>(num_cnt, vPos, vScale, vAngle, drawModel, OBJECT_LIST::ID::GROUND);
 					num_cnt++;
 				}
 			}
@@ -164,7 +171,10 @@ int DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Stronghold")
 				{
-					CreateGameObject<Stronghold>(num_cnt, vPos, vScale, vAngle);
+					// 描画用メッシュ読み込み
+					SPtr<YsGameModel> drawModel = YsDx.GetResStg()->LoadMesh("");
+
+					CreateGameObject<Stronghold>(num_cnt, vPos, vScale, vAngle, drawModel,OBJECT_LIST::ID::STRONGHOLD);
 					num_cnt++;
 				}
 			}
@@ -173,7 +183,10 @@ int DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Wall")
 				{
-					CreateGameObject<Wall>(num_cnt, vPos, vScale, vAngle);
+					// 描画用メッシュ読み込み
+					SPtr<YsGameModel> drawModel = YsDx.GetResStg()->LoadMesh("");
+
+					CreateGameObject<Wall>(num_cnt, vPos, vScale, vAngle, drawModel, OBJECT_LIST::ID::WALL);
 					num_cnt++;
 				}
 			}
@@ -182,7 +195,10 @@ int DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Sling")
 				{
-					CreateGameObject<Sling>(num_cnt, vPos, vScale, vAngle);
+					// 描画用メッシュ読み込み
+					SPtr<YsGameModel> drawModel = YsDx.GetResStg()->LoadMesh("");
+
+					CreateGameObject<Sling>(num_cnt, vPos, vScale, vAngle, drawModel, OBJECT_LIST::ID::SLING);
 					num_cnt++;
 				}
 			}
@@ -191,7 +207,10 @@ int DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Cannon")
 				{
-					CreateGameObject<Cannon>(num_cnt, vPos, vScale, vAngle);
+					// 描画用メッシュ読み込み
+					SPtr<YsGameModel> drawModel = YsDx.GetResStg()->LoadMesh("");
+
+					CreateGameObject<Cannon>(num_cnt, vPos, vScale, vAngle, drawModel, OBJECT_LIST::ID::CANNON);
 					num_cnt++;
 				}
 			}
@@ -200,7 +219,10 @@ int DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Flamethrower")
 				{
-					CreateGameObject<Flamethrower>(num_cnt, vPos, vScale, vAngle);
+					// 描画用メッシュ読み込み
+					SPtr<YsGameModel> drawModel = YsDx.GetResStg()->LoadMesh("");
+
+					CreateGameObject<Flamethrower>(num_cnt, vPos, vScale, vAngle, drawModel, OBJECT_LIST::ID::FLAMETHROWER);
 					num_cnt++;
 				}
 			}
@@ -209,7 +231,10 @@ int DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Press")
 				{
-					CreateGameObject<Press>(num_cnt, vPos, vScale, vAngle);
+					// 描画用メッシュ読み込み
+					SPtr<YsGameModel> drawModel = YsDx.GetResStg()->LoadMesh("");
+
+					CreateGameObject<Press>(num_cnt, vPos, vScale, vAngle, drawModel, OBJECT_LIST::ID::PRESS);
 					num_cnt++;
 				}
 			}
@@ -218,7 +243,10 @@ int DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Arm")
 				{
-					CreateGameObject<Arm>(num_cnt, vPos, vScale, vAngle);
+					// 描画用メッシュ読み込み
+					SPtr<YsGameModel> drawModel = YsDx.GetResStg()->LoadMesh(ARM_PATH);
+
+					CreateGameObject<Arm>(num_cnt, vPos, vScale, vAngle, drawModel, OBJECT_LIST::ID::ARM);
 					num_cnt++;
 				}
 			}
@@ -227,7 +255,10 @@ int DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Belt")
 				{
-					CreateGameObject<BeltConveyor>(num_cnt, vPos, vScale, vAngle);
+					// 描画用メッシュ読み込み
+					SPtr<YsGameModel> drawModel = YsDx.GetResStg()->LoadMesh(BELT_PATH);
+
+					CreateGameObject<BeltConveyor>(num_cnt, vPos, vScale, vAngle, drawModel, OBJECT_LIST::ID::BELTCONVEYOR);
 					num_cnt++;
 				}
 			}
@@ -236,7 +267,10 @@ int DataManager::DataLoad(const std::string& _FileName)
 			{
 				if ((*FileIt) == "Bridge")
 				{
-					CreateGameObject<Bridge>(num_cnt, vPos, vScale, vAngle);
+					// 描画用メッシュ読み込み
+					SPtr<YsGameModel> drawModel = YsDx.GetResStg()->LoadMesh(BRIDGE_PATH);
+
+					CreateGameObject<Bridge>(num_cnt, vPos, vScale, vAngle, drawModel, OBJECT_LIST::ID::BRIDGE);
 					num_cnt++;
 				}
 			}
@@ -249,10 +283,7 @@ int DataManager::DataLoad(const std::string& _FileName)
 	return num_cnt;
 }
 
-//コードが長いため簡略化
-#define DATA_SAVE_NORMAL "\t" << "Pos(" << Pos.x << "," << Pos.y << "," << Pos.z << ")" << "\t" << "Scale(" << Scale.x << "," << Scale.y << "," << Scale.z << ")" << "\t" << "Angle(" << Angle.x << "," << Angle.y << "," << Angle.z << ")" 
-
-void DataManager::DataSave(const std::string _FileName, int _num)
+void DataManager::TxtDataSave(const std::string _FileName, int _num)
 {
 
 	std::ofstream ofs;
@@ -297,40 +328,40 @@ void DataManager::DataSave(const std::string _FileName, int _num)
 		switch (ObjectBase::GetThisObject(num_cnt)->GetObjId()) {
 			//プレイヤー
 		case OBJECT_LIST::ID::PLAYER:
-			ofs << "ClassName(Player)" << DATA_SAVE_NORMAL << std::endl; break;
+			ofs << "ClassName(Player)" << TXT_DATA_SAVE << std::endl; break;
 			//エネミー
 		case OBJECT_LIST::ID::ENEMY:
-			ofs << "ClassName(Enemy)" << DATA_SAVE_NORMAL << std::endl; break;
+			ofs << "ClassName(Enemy)" << TXT_DATA_SAVE << std::endl; break;
 			//ステージ
 		case OBJECT_LIST::ID::GROUND:
-			ofs << "ClassName(Ground)" << DATA_SAVE_NORMAL << std::endl; break;
+			ofs << "ClassName(Ground)" << TXT_DATA_SAVE << std::endl; break;
 			//拠点
 		case OBJECT_LIST::ID::STRONGHOLD:
-			ofs << "ClassName(Stronghold)" << DATA_SAVE_NORMAL << std::endl; break;
+			ofs << "ClassName(Stronghold)" << TXT_DATA_SAVE << std::endl; break;
 			//壁
 		case OBJECT_LIST::ID::WALL:
-			ofs << "ClassName(Wall)" << DATA_SAVE_NORMAL << std::endl; break;
+			ofs << "ClassName(Wall)" << TXT_DATA_SAVE << std::endl; break;
 			//投石器
 		case OBJECT_LIST::ID::SLING:
-			ofs << "ClassName(Sling)" << DATA_SAVE_NORMAL << std::endl; break;
+			ofs << "ClassName(Sling)" << TXT_DATA_SAVE << std::endl; break;
 			//大砲
 		case OBJECT_LIST::ID::CANNON:
-			ofs << "ClassName(Cannon)" << DATA_SAVE_NORMAL << std::endl; break;
+			ofs << "ClassName(Cannon)" << TXT_DATA_SAVE << std::endl; break;
 			//火炎放射器
 		case OBJECT_LIST::ID::FLAMETHROWER:
-			ofs << "ClassName(Flamethrower)" << DATA_SAVE_NORMAL << std::endl; break;
+			ofs << "ClassName(Flamethrower)" << TXT_DATA_SAVE << std::endl; break;
 			//プレス機
 		case OBJECT_LIST::ID::PRESS:
-			ofs << "ClassName(Press)" << DATA_SAVE_NORMAL << std::endl; break;
+			ofs << "ClassName(Press)" << TXT_DATA_SAVE << std::endl; break;
 			//アーム
 		case OBJECT_LIST::ID::ARM:
-			ofs << "ClassName(Arm)" << DATA_SAVE_NORMAL << std::endl; break;
+			ofs << "ClassName(Arm)" << TXT_DATA_SAVE << std::endl; break;
 			//ベルトコンベア
 		case OBJECT_LIST::ID::BELTCONVEYOR:
-			ofs << "ClassName(Belt)" << DATA_SAVE_NORMAL << std::endl; break;
+			ofs << "ClassName(Belt)" << TXT_DATA_SAVE << std::endl; break;
 			//ブリッジ
 		case OBJECT_LIST::ID::BRIDGE:
-			ofs << "ClassName(Bridge)" << DATA_SAVE_NORMAL << std::endl; break;
+			ofs << "ClassName(Bridge)" << TXT_DATA_SAVE << std::endl; break;
 		}
 	}
 
@@ -409,4 +440,243 @@ std::vector<std::string> DataManager::GetSplit(
 
 	//	リストを返す
 	return vecRet;
+}
+
+
+
+
+
+
+
+int DataManager::CsvDataLoad(const std::string& _FileName)
+{
+	//オブジェクト個数初期化
+	int num_cnt = 0;
+
+	//===========================
+	// CSVデータ読み込み
+	//===========================
+	csv.Load(_FileName);
+
+	//読み込み・配置(０行目はタイトル行なので、１行目から)
+	for (UINT i = 1; i < csv.m_Tbl.size(); i++) {
+		// データ取得
+		std::string modelName = csv.GetCol(i, "モデル名");
+		YsVec3 pos;
+		pos.x = std::stof(csv.GetCol(i, "X座標"));
+		pos.y = std::stof(csv.GetCol(i, "Y座標"));
+		pos.z = std::stof(csv.GetCol(i, "Z座標"));
+		float size = std::stof(csv.GetCol(i, "サイズ"));
+		YsVec3 rotate;
+		rotate.x = std::stof(csv.GetCol(i, "角度X"));
+		rotate.y = std::stof(csv.GetCol(i, "角度Y"));
+		rotate.z = std::stof(csv.GetCol(i, "角度Z"));
+		std::string className = csv.GetCol(i, "クラス");
+
+		// 描画用メッシュ読み込み
+		SPtr<YsGameModel> drawModel = YsDx.GetResStg()->LoadMesh(modelName);
+
+		YsVec3 scale = YsVec3(size, size, size);
+
+		//====================
+		// キャラクタ
+		//====================
+		//プレイヤー
+		{
+			if (className == "Player")
+			{
+				CreateGameObject<Player>(num_cnt, pos, scale, rotate, drawModel,OBJECT_LIST::ID::PLAYER);
+				num_cnt++;
+			}
+		}
+
+		//====================
+		//オブジェクト
+		//====================
+		//ステージ
+		{
+			if (className == "Ground")
+			{
+				CreateGameObject<Ground>(num_cnt, pos, scale, rotate, drawModel, OBJECT_LIST::ID::GROUND);
+				num_cnt++;
+			}
+		}
+
+		//拠点
+		{
+			if (className == "Stronghold")
+			{
+				CreateGameObject<Stronghold>(num_cnt, pos, scale, rotate, drawModel, OBJECT_LIST::ID::STRONGHOLD);
+				num_cnt++;
+			}
+		}
+
+		//壁
+		{
+			if (className == "Wall")
+			{
+				CreateGameObject<Wall>(num_cnt, pos, scale, rotate, drawModel, OBJECT_LIST::ID::WALL);
+				num_cnt++;
+			}
+		}
+
+		//投石器
+		{
+			if (className == "Sling")
+			{
+				CreateGameObject<Sling>(num_cnt, pos, scale, rotate, drawModel, OBJECT_LIST::ID::SLING);
+				num_cnt++;
+			}
+		}
+
+		//大砲
+		{
+			if (className == "Cannon")
+			{
+				CreateGameObject<Cannon>(num_cnt, pos, scale, rotate, drawModel, OBJECT_LIST::ID::CANNON);
+				num_cnt++;
+			}
+		}
+
+		//火炎放射器
+		{
+			if (className == "Flamethrower")
+			{
+				CreateGameObject<Flamethrower>(num_cnt, pos, scale, rotate, drawModel, OBJECT_LIST::ID::FLAMETHROWER);
+				num_cnt++;
+			}
+		}
+
+		//プレス機
+		{
+			if (className == "Press")
+			{
+				CreateGameObject<Press>(num_cnt, pos, scale, rotate, drawModel, OBJECT_LIST::ID::PRESS);
+				num_cnt++;
+			}
+		}
+
+		//アーム
+		{
+			if (className == "Arm")
+			{
+				CreateGameObject<Arm>(num_cnt, pos, scale, rotate, drawModel, OBJECT_LIST::ID::ARM);
+				num_cnt++;
+			}
+		}
+
+		//ベルトコンベア
+		{
+			if (className == "BeltConveyor")
+			{
+				CreateGameObject<BeltConveyor>(num_cnt, pos, scale, rotate, drawModel, OBJECT_LIST::ID::BELTCONVEYOR);
+				num_cnt++;
+			}
+		}
+
+		//ブリッジ
+		{
+			if (className == "Bridge")
+			{
+				CreateGameObject<Bridge>(num_cnt, pos, scale, rotate, drawModel, OBJECT_LIST::ID::BRIDGE);
+				num_cnt++;
+			}
+		}
+	}
+
+	return num_cnt;
+}
+
+void DataManager::CsvDataSave(const std::string _FileName, int _num)
+{
+	std::ofstream ofs;
+
+	// 読み込み
+	ofs.open(_FileName.c_str());
+
+	//	読み込み失敗
+	if (!ofs)
+	{
+		//	メッセージをだす
+		MessageBox(NULL, "テキストファイルが読み込めていません", "警告", MB_OK);
+
+		//	何もせず返す
+		return;
+	}
+
+	// テキスト内のデータを消去
+	ofs.trunc;
+
+	//作業用変数
+	static int num_cnt;
+	YsVec3 Pos = YsVec3(0.0f, 0.0f, 0.0f);
+	float size = 1.0f;
+	YsVec3 Angle = YsVec3(0.0f, 0.0f, 0.0f);
+	std::string modelName;
+
+	//種類名を先に保存
+	ofs << "モデル名," << "X座標," << "Y座標," << "Z座標," << "サイズ," << "角度X," << "角度Y," << "角度Z," << "クラス" << std::endl;
+
+	//リスト内をすべて回す
+	for (num_cnt = 0; num_cnt < _num; num_cnt++) {
+
+		//仮データを格納
+		Pos = ObjectBase::GetThisObject(num_cnt)->GetPos();
+		size = ObjectBase::GetThisObject(num_cnt)->GetScale().x;
+		if (ObjectBase::GetThisObject(num_cnt)->GetObjId() == OBJECT_LIST::ID::PLAYER) {
+			Angle = ObjectBase::GetThisObject(num_cnt)->GetAxis();
+		}
+		else {
+			Angle = ObjectBase::GetThisObject(num_cnt)->GetAngle();
+		}
+
+
+		//クラス情報保存
+		switch (ObjectBase::GetThisObject(num_cnt)->GetObjId()) {
+			//プレイヤー
+		case OBJECT_LIST::ID::PLAYER:
+			modelName = PLAYER_PATH;
+			ofs << CSV_DATA_SAVE << "Player" << std::endl; break;
+			//エネミー
+		case OBJECT_LIST::ID::ENEMY:
+			ofs << CSV_DATA_SAVE << "Enemy" << std::endl; break;
+			//ステージ
+		case OBJECT_LIST::ID::GROUND:
+			modelName = GROUND_PATH;
+			ofs << CSV_DATA_SAVE << "Ground" << std::endl; break;
+			//拠点
+		case OBJECT_LIST::ID::STRONGHOLD:
+			ofs << CSV_DATA_SAVE << "Stronghold" << std::endl; break;
+			//壁
+		case OBJECT_LIST::ID::WALL:
+			ofs << CSV_DATA_SAVE << "Wall" << std::endl; break;
+			//投石器
+		case OBJECT_LIST::ID::SLING:
+			ofs << CSV_DATA_SAVE << "Sling" << std::endl; break;
+			//大砲
+		case OBJECT_LIST::ID::CANNON:
+			ofs << CSV_DATA_SAVE << "Cannon" << std::endl; break;
+			//火炎放射器
+		case OBJECT_LIST::ID::FLAMETHROWER:
+			ofs << CSV_DATA_SAVE << "Flamethrower" << std::endl; break;
+			//プレス機
+		case OBJECT_LIST::ID::PRESS:
+			ofs << CSV_DATA_SAVE << "Press" << std::endl; break;
+			//アーム
+		case OBJECT_LIST::ID::ARM:
+			modelName = ARM_PATH;
+			ofs << CSV_DATA_SAVE << "Arm" << std::endl; break;
+			//ベルトコンベア
+		case OBJECT_LIST::ID::BELTCONVEYOR:
+			modelName = BELT_PATH;
+			ofs << CSV_DATA_SAVE << "BeltConveyor" << std::endl; break;
+			//ブリッジ
+		case OBJECT_LIST::ID::BRIDGE:
+			modelName = BRIDGE_PATH;
+			ofs << CSV_DATA_SAVE << "Bridge" << std::endl; break;
+		}
+	}
+
+	//ファイルクローズ
+	ofs.close();
 }

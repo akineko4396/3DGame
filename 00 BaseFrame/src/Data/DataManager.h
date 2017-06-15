@@ -19,7 +19,9 @@ public:
 	return			:	オブジェクト数を返す
 
 	--------------------------------------------*/
-	int DataLoad(const std::string& _FileName);
+	int TxtDataLoad(const std::string& _FileName);	//テキストファイルVer.
+
+	int CsvDataLoad(const std::string& _FileName);	//csvファイルVer.
 
 	/*DataLoad------------------------------------
 
@@ -32,7 +34,9 @@ public:
 	return			:	戻り値なし
 
 	--------------------------------------------*/
-	void DataSave(const std::string _FileName, int _num);
+	void TxtDataSave(const std::string _FileName, int _num);
+
+	void CsvDataSave(const std::string _FileName, int _num);
 
 	/*GetSplit--------------------------------->
 
@@ -69,7 +73,9 @@ public:
 		INT						_SetNum,
 		YsVec3					_SetPosition,
 		YsVec3					_SetScale,
-		YsVec3					_SetAngle
+		YsVec3					_SetAngle,
+		SPtr<YsGameModel>		_Model,
+		int						_ObjId
 		)
 	{
 		//　リストにインスタンス化したオブジェクトをプッシュする
@@ -87,8 +93,17 @@ public:
 		//　回転量をセットする
 		add->SetAngle(_SetAngle);
 
+		//　モデルをセットする
+		add->SetModel(_Model);
+
+		//オブジェクトIDをセットする
+		add->SetObjId(_ObjId);
+
 		//　オブジェクトの初期化をする
 		add->Init();
 	}
 
+private:
+	//データ取得用
+	YsCsv csv;
 };

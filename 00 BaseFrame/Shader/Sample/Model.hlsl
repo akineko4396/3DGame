@@ -403,9 +403,9 @@ PS_OUT PS(VS_OUT In)
 	};
 
 	// 視差マップ用
-	row_major float3x3 mInvTBN = transpose(mTBN);	// 転置行列(ある条件下の行列だと、逆行列と同じ意味になる)
-	float3 vCamLocal = mul(vCam, mInvTBN);
-	In.UV += g_ParallaxVal * NormalTex.Sample(WrapSmp, In.UV).a * vCamLocal.xy; // 射影(2D)座標系で、視差ぶんUVをずらす。g_ParallaxValは調整用
+	//row_major float3x3 mInvTBN = transpose(mTBN);	// 転置行列(ある条件下の行列だと、逆行列と同じ意味になる)
+	//float3 vCamLocal = mul(vCam, mInvTBN);
+	//In.UV += g_ParallaxVal * NormalTex.Sample(WrapSmp, In.UV).a * vCamLocal.xy; // 射影(2D)座標系で、視差ぶんUVをずらす。g_ParallaxValは調整用
 
 
 	// 法線マップ取得

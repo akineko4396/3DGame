@@ -131,6 +131,7 @@
     <ClInclude Include="..\Lib\YskLib\YsVertexType.h" />
     <ClInclude Include="..\Lib\YskLib\YskLib.h" />
     <ClInclude Include="src\Data\DataManager.h" />
+    <ClInclude Include="src\Data\FilePath.h" />
     <ClInclude Include="src\GameResource\GameResource.h" />
     <ClInclude Include="src\Game\Edit\EditWorld.h" />
     <ClInclude Include="src\Game\GameCamera.h" />
