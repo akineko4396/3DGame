@@ -140,6 +140,7 @@
     <ClInclude Include="src\Game\GameWorld\Character\Player.h" />
     <ClInclude Include="src\Game\GameWorld\GameKey.h" />
     <ClInclude Include="src\Game\GameWorld\GameWorld.h" />
+    <ClInclude Include="src\Game\GameWorld\Helper.h" />
     <ClInclude Include="src\Game\GameWorld\Include.h" />
     <ClInclude Include="src\Game\GameWorld\Object\Arm.h" />
     <ClInclude Include="src\Game\GameWorld\Object\BeltConveyor.h" />

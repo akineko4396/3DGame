@@ -82,8 +82,8 @@ public:
 	//リストのゲッター
 	static std::vector<SPtr<ObjectBase>> & GetList(){ return m_oList; }
 
-	//オブジェクト情報を返す
-	static SPtr<ObjectBase> GetThisObject(int _Num);
+	//オブジェクト情報を返す(登録番号,オブジェクトID)
+	static SPtr<ObjectBase> GetThisObject(int _Num, int _id = OBJECT_LIST::ID::FREE);
 
 	//カメラ処理
 	virtual void SetCamera(){}
@@ -113,7 +113,7 @@ public:
 	//オブジェクトIDをセットする
 	inline void	SetObjId(const int _ObjId) { m_ObjId = _ObjId; }
 
-	//個別IDをセット
+	//登録番号をセット
 	inline void SetNum(const int _n){ m_Num = _n; }
 
 	// 入力コントローラ(コンポーネント)をセット

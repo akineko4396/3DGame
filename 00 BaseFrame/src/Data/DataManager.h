@@ -34,9 +34,9 @@ public:
 	return			:	–ß‚è’l‚È‚µ
 
 	--------------------------------------------*/
-	void TxtDataSave(const std::string _FileName, int _num);
+	void TxtDataSave(const std::string& _FileName, int _num);
 
-	void CsvDataSave(const std::string _FileName, int _num);
+	void CsvDataSave(const std::string& _FileName, int _num);
 
 	/*GetSplit--------------------------------->
 

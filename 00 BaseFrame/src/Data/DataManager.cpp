@@ -1,6 +1,5 @@
 #include "main.h"
 #include "Game/GameWorld/GameWorld.h"
-#include "Game/Edit/EditWorld.h"
 #include "DataManager.h"
 #include "FilePath.h"
 
@@ -283,7 +282,7 @@ int DataManager::TxtDataLoad(const std::string& _FileName)
 	return num_cnt;
 }
 
-void DataManager::TxtDataSave(const std::string _FileName, int _num)
+void DataManager::TxtDataSave(const std::string& _FileName, int _num)
 {
 
 	std::ofstream ofs;
@@ -314,18 +313,18 @@ void DataManager::TxtDataSave(const std::string _FileName, int _num)
 	for (num_cnt = 0; num_cnt < _num; num_cnt++) {
 
 		//仮データを格納
-		Pos = ObjectBase::GetThisObject(num_cnt)->GetPos();
-		Scale = ObjectBase::GetThisObject(num_cnt)->GetScale();
-		if (ObjectBase::GetThisObject(num_cnt)->GetObjId() == OBJECT_LIST::ID::PLAYER) {
-			Angle = ObjectBase::GetThisObject(num_cnt)->GetAxis();
+		Pos = HELP.GetObject_All(num_cnt)->GetPos();
+		Scale = HELP.GetObject_All(num_cnt)->GetScale();
+		if (HELP.GetObject_All(num_cnt)->GetObjId() == OBJECT_LIST::ID::PLAYER) {
+			Angle = HELP.GetObject_All(num_cnt)->GetAxis();
 		}
 		else {
-			Angle = ObjectBase::GetThisObject(num_cnt)->GetAngle();
+			Angle = HELP.GetObject_All(num_cnt)->GetAngle();
 		}
 
 
 		//クラス情報保存
-		switch (ObjectBase::GetThisObject(num_cnt)->GetObjId()) {
+		switch (HELP.GetObject_All(num_cnt)->GetObjId()) {
 			//プレイヤー
 		case OBJECT_LIST::ID::PLAYER:
 			ofs << "ClassName(Player)" << TXT_DATA_SAVE << std::endl; break;
@@ -587,7 +586,7 @@ int DataManager::CsvDataLoad(const std::string& _FileName)
 	return num_cnt;
 }
 
-void DataManager::CsvDataSave(const std::string _FileName, int _num)
+void DataManager::CsvDataSave(const std::string& _FileName, int _num)
 {
 	std::ofstream ofs;
 
@@ -621,18 +620,18 @@ void DataManager::CsvDataSave(const std::string _FileName, int _num)
 	for (num_cnt = 0; num_cnt < _num; num_cnt++) {
 
 		//仮データを格納
-		Pos = ObjectBase::GetThisObject(num_cnt)->GetPos();
-		size = ObjectBase::GetThisObject(num_cnt)->GetScale().x;
-		if (ObjectBase::GetThisObject(num_cnt)->GetObjId() == OBJECT_LIST::ID::PLAYER) {
-			Angle = ObjectBase::GetThisObject(num_cnt)->GetAxis();
+		Pos = HELP.GetObject_All(num_cnt)->GetPos();
+		size = HELP.GetObject_All(num_cnt)->GetScale().x;
+		if (HELP.GetObject_All(num_cnt)->GetObjId() == OBJECT_LIST::ID::PLAYER) {
+			Angle = HELP.GetObject_All(num_cnt)->GetAxis();
 		}
 		else {
-			Angle = ObjectBase::GetThisObject(num_cnt)->GetAngle();
+			Angle = HELP.GetObject_All(num_cnt)->GetAngle();
 		}
 
 
 		//クラス情報保存
-		switch (ObjectBase::GetThisObject(num_cnt)->GetObjId()) {
+		switch (HELP.GetObject_All(num_cnt)->GetObjId()) {
 			//プレイヤー
 		case OBJECT_LIST::ID::PLAYER:
 			modelName = PLAYER_PATH;

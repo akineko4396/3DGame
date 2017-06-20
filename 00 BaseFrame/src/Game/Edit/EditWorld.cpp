@@ -1,5 +1,6 @@
 #include "main.h"
 #include "Data/DataManager.h"
+#include "Game\GameWorld\GameWorld.h"
 #include "EditWorld.h"
 
 //staticƒƒ“ƒo•Ï”‚Ì–{‘Ì

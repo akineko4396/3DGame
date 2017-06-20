@@ -55,14 +55,30 @@ void ObjectBase::CheckKillFlg()
 }
 
 //オブジェクト情報を返す
-SPtr<ObjectBase> ObjectBase::GetThisObject(int _Num)
+SPtr<ObjectBase> ObjectBase::GetThisObject(int _Num, int _id)
 {
-
+	//オブジェクトの個数分回す
 	for (UINT ec = 0; ec < m_oList.size(); ec++){
 
-		if (m_oList[ec]->GetNum() == _Num)
-		{
-			return m_oList[ec];
+		//指定されてない場合
+		if (_id == OBJECT_LIST::ID::FREE) {
+			//指定のオブジェクト登録番号
+			if (m_oList[ec]->GetNum() == _Num)
+			{
+				return m_oList[ec];
+			}
+		}
+		//指定がある場合
+		else {
+			//指定のオブジェクトID
+			if (m_oList[ec]->GetObjId() == _id) {
+				//指定のオブジェクト登録番号
+				if (m_oList[ec]->GetNum() == _Num)
+				{
+					return m_oList[ec];
+				}
+
+			}
 		}
 
 	}

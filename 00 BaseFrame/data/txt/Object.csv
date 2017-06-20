@@ -1,5 +1,5 @@
 モデル名,X座標,Y座標,Z座標,サイズ,角度X,角度Y,角度Z,クラス
-data/model/Player/Player2.xed,-1.19933,6.25618e-006,-7.26222,0.5,1.43796e-005,0.5,1.43796e-005,Player
+data/model/Player/Player2.xed,-0.946282,-0.0011674,-5.13234,0.5,-0.05219,0.5,-0.05219,Player
 data/model/map/map.x,0,-3,0,100,0,0,0,Ground
 data/model/Arm/Arm.x,10,0,0,0.01,0,0,0,Arm
 data/model/Bridge/Bridge.x,-10,0,0,0.01,0,0,0,Bridge

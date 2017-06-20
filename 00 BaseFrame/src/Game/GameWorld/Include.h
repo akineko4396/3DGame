@@ -22,3 +22,5 @@
 #include "Object/BeltConveyor.h"
 #include "Object/Arm.h"
 #include "Object/Bridge.h"
+
+#include "Helper.h"
