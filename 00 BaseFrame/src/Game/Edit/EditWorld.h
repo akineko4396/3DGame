@@ -40,7 +40,7 @@ namespace OPTION {
 class EditWorld {
 public:
 	//初期化
-	void Init(int _ObjNum);
+	void Init();
 
 	//解放
 	void Release();
@@ -58,8 +58,6 @@ public:
 	// その他
 	//=================
 	bool	m_PauseFlag = false;	//ポーズON/OFF
-
-	int	Obj_Num_Max = 0;	//オブジェクトの数格納用
 
 
 	//================================
@@ -95,11 +93,6 @@ private:
 	//=======================
 	// エディットに必要な変数
 	//=======================
-	int				m_OptionId;		//オプションID
-	int				m_ObjId;			//オブジェクトID
-	YsVec3			m_Pos;				//座標
-	YsVec3			m_Scale;			//拡大サイズ
-	YsVec3			m_Angle;			//回転量
 
 	GameCamera		m_Cam;
 

@@ -9,7 +9,7 @@
 #include "GameKey.h"
 
 //ゲームオブジェクト
-#include "Base/ObjectBase.h"
+#include "Base/CharacterBase.h"
 #include "Base/CollisionBase.h"
 #include "Character/Player.h"
 #include "Object/Ground.h"
@@ -22,5 +22,3 @@
 #include "Object/BeltConveyor.h"
 #include "Object/Arm.h"
 #include "Object/Bridge.h"
-
-#include "Helper.h"

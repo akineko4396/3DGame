@@ -1,24 +1,19 @@
 #include "main.h"
 #include "../GameWorld.h"
 
-void Player::Init()
+void Player::Init(YsMatrix& _m, SPtr<YsGameModel>& _gm)
 {
+
 	//　モデル読み込み
-	//m_gmObj=APP.m_ResStg.LoadMesh("data/model/Player/Player2.xed");
+	//m_gmChara=APP.m_ResStg.LoadMesh("data/model/Player/Player2.xed");
 	m_moHammer.LoadMesh("data/model/Hammer/hammer.xed");
 	//　モデルデータをセット
-	m_moPla.SetModel(m_gmObj);
+	m_moChara.SetModel(_gm);
 	//　初期の行列設定
-	m_mObj.CreateMove(m_vPos);
-	//　初期のサイズ
-	m_mObj.Scale_Local(m_vScale);
-	//　初期の回転量
-	m_mObj.RotateY_Local(m_vAngle.y);
-	m_mObj.RotateX_Local(m_vAngle.x);
-	m_mObj.RotateZ_Local(m_vAngle.z);
+	m_mChara = _m;
 
 	//　アニメータを初期化
-	m_moPla.InitAnimator(m_aniPla);
+	m_moChara.InitAnimator(m_aniPla);
 	//　初期アニメ
 	m_aniPla.ChangeAnime_FromName("待機", true);
 
@@ -30,6 +25,9 @@ void Player::Init()
 
 	m_SkyFlag = 0;
 	m_CameraEffectCnt = 0;
+
+	//ID設定
+	m_CharaId = OBJECT_LIST::ID::PLAYER;
 
 	// カメラ設定
 	m_Cam.Init(0, 0, -3, false); // 少し後ろに引いた位置
@@ -48,9 +46,9 @@ void Player::Update()
 	};
 	// アニメ進行・スクリプト実行
 	// スクリプトがある場合は、funcが実行される
-	m_aniPla.AnimationAndScript(1.0, scriptProc, &m_mObj);
+	m_aniPla.AnimationAndScript(1.0, scriptProc, &m_mChara);
 	// 全身のWorldMatを算出
-	m_moPla.CalcBoneMatrix_SkipRoot(&m_mObj);
+	m_moChara.CalcBoneMatrix_SkipRoot(&m_mChara);
 
 	//入力コンポーネント処理
 	if (m_Controller) {
@@ -74,14 +72,14 @@ void Player::Update()
 	// 正確には、アニメーション情報をもとに、全ボーンの「TransMat」を更新する
 	m_aniPla.Animation(1.0);
 
-	/*auto bone = m_moPla.SearchBone("首");
+	/*auto bone = m_moChara.SearchBone("首");
 	if (bone){
 	bone->TransMat.RotateY_Local(45);
 	}*/
 
 	//全ボーンの「WorldMat」を「TransMat」をもとに算出する
 	// 実際に描画などで必要なのがこのWorldMatです
-	m_moPla.CalcBoneMatrix(&m_mObj);
+	m_moChara.CalcBoneMatrix(&m_mChara);
 
 	//Spaceで次のアニメへ
 	/*if (INPUT.KeyCheck_Enter(VK_SPACE)){
@@ -96,7 +94,7 @@ void Player::Update()
 
 	//武器
 	{
-		auto bone = m_moPla.SearchBone("右手ダミー");
+		auto bone = m_moChara.SearchBone("右手ダミー");
 		if (bone) {
 			m_mHammer = bone->WorldMat;
 		}
@@ -107,7 +105,7 @@ void Player::Update()
 void Player::Draw()
 {
 	// SampleShaderクラスで描画する
-	ShMgr.m_Samp.DrawModel(m_moPla, &m_mObj);
+	ShMgr.m_Samp.DrawModel(m_moChara, &m_mChara);
 
 	////=======================================
 	//// 武器描画
@@ -118,7 +116,7 @@ void Player::Draw()
 	//// キャラ１ ボーン名表示
 	////=======================================
 	//YsDx.GetSprite().Begin(true);
-	//for (auto& bn : m_moPla.GetBoneTree()){
+	//for (auto& bn : m_moChara.GetBoneTree()){
 	//	// ボーン行列を2D座標へ変換
 	//	YsVec3 v2D;
 	//	m_Cam.Convert3Dto2D(v2D, bn->WorldMat.GetPos());
@@ -144,7 +142,7 @@ void Player::SetCamera()
 	//=============================================================
 	// カメラ演出中
 	if (m_CameraEffectCnt > 0) {
-		auto camBone = m_moPla.SearchBone("Camera");
+		auto camBone = m_moChara.SearchBone("Camera");
 		if (camBone) {
 			m_Cam.mCam = camBone->WorldMat;
 		}
@@ -154,7 +152,7 @@ void Player::SetCamera()
 		// カメラのベース行列に、キャラの座標を加算する
 		YsMatrix mChara;
 		mChara = m_Cam.m_BaseMat;
-		mChara.GetPos() += m_mObj.GetPos();
+		mChara.GetPos() += m_mChara.GetPos();
 		// 最終的なカメラ行列を求める
 		m_Cam.mCam = m_Cam.m_LocalMat * mChara;
 	}

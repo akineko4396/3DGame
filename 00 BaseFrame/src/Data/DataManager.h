@@ -4,6 +4,8 @@
 // データを読み書きするクラス
 //=================================================
 
+class CharacterBase;
+
 class DataManager
 {
 public:
@@ -19,9 +21,9 @@ public:
 	return			:	オブジェクト数を返す
 
 	--------------------------------------------*/
-	int TxtDataLoad(const std::string& _FileName);	//テキストファイルVer.
+	//int TxtDataLoad(const std::string& _FileName);	//テキストファイルVer.
 
-	int CsvDataLoad(const std::string& _FileName);	//csvファイルVer.
+	SPtr<CharacterBase> CsvDataLoad(const std::string& _FileName);	//csvファイルVer.
 
 	/*DataLoad------------------------------------
 
@@ -34,9 +36,9 @@ public:
 	return			:	戻り値なし
 
 	--------------------------------------------*/
-	void TxtDataSave(const std::string& _FileName, int _num);
+	//void TxtDataSave(const std::string& _FileName, int _num);
 
-	void CsvDataSave(const std::string& _FileName, int _num);
+	void CsvDataSave(const std::string& _FileName);
 
 	/*GetSplit--------------------------------->
 
@@ -50,59 +52,11 @@ public:
 	return	:	vector型
 
 	<----------------------------------------*/
-	std::vector<std::string> GetSplit(
+	/*std::vector<std::string> GetSplit(
 		std::string _Str,
 		std::string _Split
 		);
-
-	/*(template)CreateGameObject---------------
-
-	ObjectBaseにプッシュして初期化を行う
-
-	template		:	プッシュするクラス
-	_SetId			:	識別番号
-	_SetPosition	:	座標
-	_SetScale		:	拡大サイズ
-	_SetAngle		:	角度
-
-	return			:	戻り値なし
-
-	-----------------------------------------*/
-	template <class T>
-	inline void CreateGameObject(
-		INT						_SetNum,
-		YsVec3					_SetPosition,
-		YsVec3					_SetScale,
-		YsVec3					_SetAngle,
-		SPtr<YsGameModel>		_Model,
-		int						_ObjId
-		)
-	{
-		//　リストにインスタンス化したオブジェクトをプッシュする
-		SPtr<T> add = ObjectBase::CreateObjectTask<T>();
-
-		//　識別番号をセットする
-		add->SetNum(_SetNum);
-
-		//　座標をセットする
-		add->SetPos(_SetPosition);
-
-		//　拡大サイズをセットする
-		add->SetScale(_SetScale);
-
-		//　回転量をセットする
-		add->SetAngle(_SetAngle);
-
-		//　モデルをセットする
-		add->SetModel(_Model);
-
-		//オブジェクトIDをセットする
-		add->SetObjId(_ObjId);
-
-		//　オブジェクトの初期化をする
-		add->Init();
-	}
-
+		*/
 private:
 	//データ取得用
 	YsCsv csv;

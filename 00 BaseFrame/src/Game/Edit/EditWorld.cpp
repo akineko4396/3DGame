@@ -6,11 +6,8 @@
 //staticメンバ変数の本体
 EditWorld* EditWorld::s_pInst = nullptr;
 
-void EditWorld::Init(int _ObjNum)
+void EditWorld::Init()
 {
-	//現在のオブジェクト数を代入
-	Obj_Num_Max = _ObjNum;
-
 	//升目状のメッシュ読み込み
 	SPtr<YsGameModel> m_gmEdit = YsDx.GetResStg()->LoadMesh("data/model/StageForEdit/stage.x");
 	m_moEdit.SetModel(m_gmEdit);
@@ -28,7 +25,7 @@ void EditWorld::Update()
 	if (INPUT.KeyCheck_Enter('S')) {
 		//外部のテキストファイルへ保存
 		UPtr<DataManager> uDM(new DataManager);
-		uDM->CsvDataSave("data/txt/Object.csv", Obj_Num_Max);
+		uDM->CsvDataSave("data/txt/Object.csv");
 	}
 
 }

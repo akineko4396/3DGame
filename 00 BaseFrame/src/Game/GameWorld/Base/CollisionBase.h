@@ -45,7 +45,7 @@ namespace HitStates {
 		EXIT = 0x00000004, // HITしなくなった1回目
 	};
 }
-class ObjectBase;
+class CharacterBase;
 class BaseHitObj;
 //============================================
 // ヒット結果データ構造体
@@ -74,7 +74,7 @@ public:
 	int m_ShapeFilter = 0xFFFFFFFF; // 判定する側の時、どの形状と判定するかのフィルタ HitShapesを使用
 	int m_Shape = 0; // 自分の形状(高速ダウンキャスト用) HitShapesを使用
 	int m_HitState = 0; // ヒット状態フラグ
-	WPtr<ObjectBase> m_wpTask; // 対象のキャラ(タスク)へのアドレス。同じキャラは判定を無視する用途で使用
+	WPtr<CharacterBase> m_wpTask; // 対象のキャラ(タスク)へのアドレス。同じキャラは判定を無視する用途で使用
 								// 汎用事前チェック関数
 	std::function<bool(BaseHitObj*)> m_BroadPhaseProc;
 	// ヒット結果リスト あたり判定結果を格納する場所
@@ -132,7 +132,7 @@ public:
 	// task … この判定データの持ち主キャラ
 	// pos … 座標
 	// rad … 半径
-	void Set(SPtr<ObjectBase> task, const YsVec3& pos, float rad) {
+	void Set(SPtr<CharacterBase> task, const YsVec3& pos, float rad) {
 		m_wpTask = task;
 		m_vPos = pos;
 		m_Rad = rad;
@@ -160,7 +160,7 @@ public:
 	// task … この判定データの持ち主キャラ
 	// pos1 … レイ開始座標
 	// pos2 … レイ終了座標
-	void Set(SPtr<ObjectBase> task, const YsVec3& pos1, const YsVec3& pos2) {
+	void Set(SPtr<CharacterBase> task, const YsVec3& pos1, const YsVec3& pos2) {
 		m_wpTask = task;
 		m_vPos1 = pos1;
 		m_vPos2 = pos2;
@@ -188,7 +188,7 @@ public:
 	// task … この判定データの持ち主キャラ
 	// pMesh … メッシュデータ
 	// mat … 行列
-	void Set(SPtr<ObjectBase> obj,
+	void Set(SPtr<CharacterBase> obj,
 		SPtr<YsMesh> pMesh,
 		const YsMatrix& mat
 	) {

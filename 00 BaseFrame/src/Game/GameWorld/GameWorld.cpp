@@ -17,16 +17,14 @@ void GameWorld::Init()
 
 	//外部からゲームオブジェクトを読み込み
 	UPtr<DataManager> uDM(new DataManager);
-	Obj_Num_Max = uDM->CsvDataLoad("data/txt/Object.csv");
-
 	// カメラ視点キャラとして記憶
-	m_wpCamera = HELP.GetObject_Player();
+	m_wpCamera = uDM->CsvDataLoad("data/txt/Object.csv");
 	// プレイヤーとして記憶
-	m_wpPlayer = HELP.GetObject_Player();
+	m_wpPlayer = m_wpCamera;
 
 	// エディットワールド作成・初期化
 	EditWorld::CreateWorld();
-	EW.Init(Obj_Num_Max);
+	EW.Init();
 }
 
 void GameWorld::Release()
@@ -34,13 +32,13 @@ void GameWorld::Release()
 
 	//外部のテキストファイルへ保存
 	UPtr<DataManager> uDM(new DataManager);
-	uDM->CsvDataSave("data/txt/Object.csv", Obj_Num_Max);
+	uDM->CsvDataSave("data/txt/Object.csv");
 
 	//エディットモード解放
 	EW.Release();
 	EditWorld::DeleteWorld();
 
-	ObjectBase::FullClear();
+	CharacterBase::FullClear();
 
 	m_wpCamera.reset();
 	m_wpPlayer.reset();
@@ -70,16 +68,16 @@ void GameWorld::Update()
 	}
 	if (m_EditFlg) {
 		// カメラ操作
-		m_ewCam.Update(HELP.GetObject_Player()->GetPos());
+		m_ewCam.Update(m_wpCamera.lock().get()->GetPos());
 		//エディットモード更新
 		EW.SetCam(m_ewCam);
 		EW.Update();
 	}
 	else {
 		//全オブジェクト更新
-		ObjectBase::AllUpdate();
+		CharacterBase::AllUpdate();
 		// カメラ操作
-		m_gwCam.Update(HELP.GetObject_Player()->GetPos());
+		m_gwCam.Update(m_wpCamera.lock().get()->GetPos());
 	}
 
 	// Player座標デバッグ表示
@@ -108,7 +106,7 @@ void GameWorld::Draw()
 			EW.Draw();
 		}
 		else if (!m_EditFlg) {
-			m_gwCam.SetCamera(HELP.GetObject_Player()->GetPos());
+			m_gwCam.SetCamera(m_wpCamera.lock().get()->GetPos());
 		}
 	//}
 
@@ -118,5 +116,5 @@ void GameWorld::Draw()
 	ShMgr.UpdateBeforeDraw();
 
 	//全オブジェクト描画
-	ObjectBase::AllDraw();
+	CharacterBase::AllDraw();
 }

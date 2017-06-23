@@ -41,8 +41,6 @@ public:
 	//=================
 	bool	m_PauseFlag = false;	//ポーズON/OFF
 
-	int	Obj_Num_Max = 0;	//オブジェクトの数格納用
-
 private:
 
 	//=================
@@ -50,8 +48,8 @@ private:
 	//=================
 	GameCamera		m_gwCam;
 	GameCamera		m_ewCam;			//エディットカメラ
-	WPtr<ObjectBase> m_wpCamera; // 現在カメラ視点になってるキャラへのアドレス
-	WPtr<ObjectBase> m_wpPlayer; // プレイヤーキャラへのアドレス
+	WPtr<CharacterBase> m_wpCamera; // 現在カメラ視点になってるキャラへのアドレス
+	WPtr<CharacterBase> m_wpPlayer; // プレイヤーキャラへのアドレス
 
 	BOOL			m_EditFlg;			//エディット用フラグ
 

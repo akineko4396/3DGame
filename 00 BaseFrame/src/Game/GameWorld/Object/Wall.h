@@ -3,12 +3,12 @@
 //=======================================
 // 壁クラス
 //=======================================
-class Wall :public ObjectBase
+class Wall :public CharacterBase
 {
 public:
 
 	//初期設定
-	void Init();
+	void Init(YsMatrix& _m, SPtr<YsGameModel>& _gm);
 
 	//更新処理
 	virtual void Update() override;
@@ -18,9 +18,4 @@ public:
 
 	//カメラ処理
 	virtual void SetCamera() override {};
-
-private:
-
-	// ステージマップオブジェクタ
-	YsModelObject		m_moWall;
 };

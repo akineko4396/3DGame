@@ -54,10 +54,10 @@ namespace OBJECT_LIST {
 }
 
 //===================================
-// オブジェクトの基底クラス
-// 　オブジェクトのクラスを管理する
+// キャラクター基底クラス
+// 　プレイヤーなどのクラスを管理する
 //===================================
-class ObjectBase :public BaseGameObj
+class CharacterBase :public BaseGameObj
 {
 public:
 
@@ -65,7 +65,7 @@ public:
 	// m_oList管理用関数
 	//==================================
 	//リストにオブジェクトを登録
-	static void PushObject(SPtr<ObjectBase> _obj){ m_oList.push_back(_obj); }
+	static void PushChara(SPtr<CharacterBase> _obj) { m_cList.push_back(_obj); }
 
 	//オブジェクト全てを更新
 	static void AllUpdate();
@@ -80,41 +80,29 @@ public:
 	static void CheckKillFlg();
 
 	//リストのゲッター
-	static std::vector<SPtr<ObjectBase>> & GetList(){ return m_oList; }
-
-	//オブジェクト情報を返す(登録番号,オブジェクトID)
-	static SPtr<ObjectBase> GetThisObject(int _Num, int _id = OBJECT_LIST::ID::FREE);
+	static std::vector<SPtr<CharacterBase>> & GetList() { return m_cList; }
 
 	//カメラ処理
-	virtual void SetCamera(){}
+	virtual void SetCamera() {}
 
 	//===========
 	// ゲッター
 	//===========
 
-	//モデルデータをセットする
-	inline void SetModel(const SPtr<YsGameModel> _model) { m_gmObj = _model; }
-
 	//行列をセットする
-	inline void SetMatrix(const YsMatrix _Mat) { m_mObj = _Mat; }
+	inline void SetMatrix(const YsMatrix _Mat) { m_mChara = _Mat; }
 
 	//座標をセットする
-	inline void SetPos(const YsVec3 _pos){ m_vPos = _pos; }
+	inline void SetPos(const YsVec3 _pos) { m_vPos = _pos; }
 
 	//拡大サイズをセット
-	inline void SetScale(const YsVec3 _scale){ m_vScale = _scale; }
+	inline void SetScale(const YsVec3 _scale) { m_vScale = _scale; }
 
 	//回転量をセット
-	inline void SetAngle(const YsVec3 _angle){ m_vAngle = _angle; }
+	inline void SetAngle(const YsVec3 _angle) { m_vAngle = _angle; }
 
 	//キルフラグをセットする
-	inline void SetKillFlg(const int _k){ m_killFlg = _k; }
-
-	//オブジェクトIDをセットする
-	inline void	SetObjId(const int _ObjId) { m_ObjId = _ObjId; }
-
-	//登録番号をセット
-	inline void SetNum(const int _n){ m_Num = _n; }
+	inline void SetKillFlg(const int _k) { m_killFlg = _k; }
 
 	// 入力コントローラ(コンポーネント)をセット
 	inline void SetInput(SPtr<GameInputComponent> p) {
@@ -126,31 +114,28 @@ public:
 	//===========
 
 	//モデルデータを返す
-	inline SPtr<YsGameModel> GetModel() { return m_gmObj; }
+	inline YsModelObject& GetModel() { return m_moChara; }
 
 	//行列を返す
-	inline YsMatrix GetMatrix() { return m_mObj; }
+	inline YsMatrix GetMatrix() { return m_mChara; }
 
 	//座標を返す
-	inline YsVec3	GetPos() { return m_mObj.GetPos(); }
+	inline YsVec3	GetPos() { return m_mChara.GetPos(); }
 
 	//拡大サイズを返す
-	inline YsVec3 GetScale() { return m_mObj.GetScale(); }
+	inline YsVec3 GetScale() { return m_mChara.GetScale(); }
 
 	//行列から回転量を返す
-	inline YsVec3 GetAxis() { return YsVec3(m_mObj.GetXAxis().x, m_mObj.GetYAxis().y, m_mObj.GetZAxis().z); }
+	inline YsVec3 GetAxis() { return YsVec3(m_mChara.GetXAxis().x, m_mChara.GetYAxis().y, m_mChara.GetZAxis().z); }
 
 	//直接回転量を返す
 	inline YsVec3 GetAngle() { return m_vAngle; }
 
 	//キルフラグの情報を返す
-	inline int	GetKillFlg(){ return m_killFlg; }
+	inline int	GetKillFlg() { return m_killFlg; }
 
 	//オブジェクトIDを取得
-	inline int	GetObjId() { return m_ObjId; }
-
-	//個別IDを取得
-	inline int	GetNum(){ return m_Num; }
+	inline int	GetObjId() { return m_CharaId; }
 
 	// 現在押されているキーを取得
 	inline int GetKeys() { return m_Keys; }
@@ -158,20 +143,20 @@ public:
 
 	//	指定されたクラスをインスタンス化してリストに格納する
 	template <class T>
-	inline static SPtr<T> CreateObjectTask()
+	inline static SPtr<T> CreateCharaTask()
 	{
 		SPtr<T> add(new T);
-		PushObject(add);
+		PushChara(add);
 		return add;
 	}
 
 protected:
-
-	// モデルデータ
-	SPtr<YsGameModel>	m_gmObj;
+	
+	//	モデルデータ
+	YsModelObject		m_moChara;
 
 	// 行列
-	YsMatrix			m_mObj;
+	YsMatrix			m_mChara;
 
 	// キャラの座標
 	YsVec3			m_vPos;
@@ -183,16 +168,13 @@ protected:
 	YsVec3			m_vAngle;
 
 	//オブジェクトID
-	int				m_ObjId;
-
-	//個体ナンバー
-	int				m_Num;
+	int				m_CharaId;
 
 	//キルフラグ
 	int				m_killFlg;
 
 	//リスト
-	static std::vector<SPtr<ObjectBase>> m_oList;
+	static std::vector<SPtr<CharacterBase>> m_cList;
 
 	// 現在押下されてるキー このキー情報によりキャラを動かす(PlayerもAIも)
 	// 各ビット(0～31)が各キーの状態

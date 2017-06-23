@@ -91,52 +91,52 @@
     <Filter Include="src\Game\Task">
       <UniqueIdentifier>{3ff9464c-4d4e-48e7-8e50-ad9d1e562153}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Game\GameWorld\Base\ObjectBase">
-      <UniqueIdentifier>{25dafca2-3988-46e3-8f98-747a68e37894}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Character">
-      <UniqueIdentifier>{2607a9d4-cd73-42d1-88e6-08fe80fc00f8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object">
-      <UniqueIdentifier>{7aa0bef0-c124-4b44-86dd-a5cb1aa71b84}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\Ground">
-      <UniqueIdentifier>{5eed6dd0-d117-4bbd-a91d-8d066e9ffa52}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Character\Player">
-      <UniqueIdentifier>{f1380b3f-0c17-47d5-9b50-68ba8398852d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\BeltConveyor">
-      <UniqueIdentifier>{e6a7af63-4313-492b-91d5-3a13ba5b4d05}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\Arm">
-      <UniqueIdentifier>{0bcbfcba-9d8b-415c-b783-9704855c9dc8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\Cannon">
-      <UniqueIdentifier>{41d0e159-fcee-4060-96ca-238e9cf7783d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\Flamethrower">
-      <UniqueIdentifier>{7b5c2562-4e22-4dda-b13c-c56a5eee4537}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\Press">
-      <UniqueIdentifier>{3c8b2ad8-92f7-4bcf-9a1f-779e4468d00d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\Sling">
-      <UniqueIdentifier>{bc231554-43d3-4da9-8edf-1b0e219b8fc4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\Stronghold">
-      <UniqueIdentifier>{e35002d0-d06b-443d-b635-e07e53e34542}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\Wall">
-      <UniqueIdentifier>{3e34d66b-4241-47ef-856a-e86eced88674}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Game\Edit">
       <UniqueIdentifier>{605b67bc-47f9-4e3e-b45d-08a634521709}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Game\GameWorld\Base\CollisionBase">
       <UniqueIdentifier>{8e0c80ca-405a-4ee6-b18a-139085b51f98}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Game\GameWorld\Base\ObjectBase\Object\Bridge">
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase">
+      <UniqueIdentifier>{25dafca2-3988-46e3-8f98-747a68e37894}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Character">
+      <UniqueIdentifier>{2607a9d4-cd73-42d1-88e6-08fe80fc00f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Character\Player">
+      <UniqueIdentifier>{f1380b3f-0c17-47d5-9b50-68ba8398852d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Object">
+      <UniqueIdentifier>{7aa0bef0-c124-4b44-86dd-a5cb1aa71b84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Object\Ground">
+      <UniqueIdentifier>{5eed6dd0-d117-4bbd-a91d-8d066e9ffa52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Object\BeltConveyor">
+      <UniqueIdentifier>{e6a7af63-4313-492b-91d5-3a13ba5b4d05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Object\Arm">
+      <UniqueIdentifier>{0bcbfcba-9d8b-415c-b783-9704855c9dc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Object\Cannon">
+      <UniqueIdentifier>{41d0e159-fcee-4060-96ca-238e9cf7783d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Object\Flamethrower">
+      <UniqueIdentifier>{7b5c2562-4e22-4dda-b13c-c56a5eee4537}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Object\Press">
+      <UniqueIdentifier>{3c8b2ad8-92f7-4bcf-9a1f-779e4468d00d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Object\Sling">
+      <UniqueIdentifier>{bc231554-43d3-4da9-8edf-1b0e219b8fc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Object\Stronghold">
+      <UniqueIdentifier>{e35002d0-d06b-443d-b635-e07e53e34542}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Object\Wall">
+      <UniqueIdentifier>{3e34d66b-4241-47ef-856a-e86eced88674}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Object\Bridge">
       <UniqueIdentifier>{3b80594f-d0f6-4bcb-ab59-0f325f9437a4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -300,38 +300,35 @@
     <ClCompile Include="src\Game\GameCamera.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\GameWorld\Base\ObjectBase.cpp">
-      <Filter>src\Game\GameWorld\Base\ObjectBase</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Character\Player.cpp">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Character\Player</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Character\Player</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Object\Ground.cpp">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Ground</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Ground</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Object\BeltConveyor.cpp">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\BeltConveyor</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\BeltConveyor</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Object\Arm.cpp">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Arm</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Arm</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Object\Cannon.cpp">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Cannon</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Cannon</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Object\Flamethrower.cpp">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Flamethrower</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Flamethrower</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Object\Press.cpp">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Press</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Press</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Object\Sling.cpp">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Sling</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Sling</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Object\Stronghold.cpp">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Stronghold</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Stronghold</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Object\Wall.cpp">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Wall</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Wall</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Edit\EditWorld.cpp">
       <Filter>src\Game\Edit</Filter>
@@ -340,7 +337,10 @@
       <Filter>src\Game\GameWorld\Base\CollisionBase</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Object\Bridge.cpp">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Bridge</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Bridge</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameWorld\Base\CharacterBase.cpp">
+      <Filter>src\Game\GameWorld\Base\CharacterBase</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -524,38 +524,35 @@
     <ClInclude Include="src\Game\GameCamera.h">
       <Filter>src\Game</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\GameWorld\Base\ObjectBase.h">
-      <Filter>src\Game\GameWorld\Base\ObjectBase</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Character\Player.h">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Character\Player</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Character\Player</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Object\Ground.h">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Ground</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Ground</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Object\BeltConveyor.h">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\BeltConveyor</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\BeltConveyor</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Object\Arm.h">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Arm</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Arm</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Object\Cannon.h">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Cannon</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Cannon</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Object\Flamethrower.h">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Flamethrower</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Flamethrower</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Object\Press.h">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Press</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Press</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Object\Sling.h">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Sling</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Sling</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Object\Stronghold.h">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Stronghold</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Stronghold</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Object\Wall.h">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Wall</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Wall</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Edit\EditWorld.h">
       <Filter>src\Game\Edit</Filter>
@@ -564,7 +561,7 @@
       <Filter>src\Game\GameWorld\Base\CollisionBase</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Object\Bridge.h">
-      <Filter>src\Game\GameWorld\Base\ObjectBase\Object\Bridge</Filter>
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Object\Bridge</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\GameKey.h">
       <Filter>src\Game\GameWorld</Filter>
@@ -575,8 +572,8 @@
     <ClInclude Include="src\Data\FilePath.h">
       <Filter>src\Data</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\GameWorld\Helper.h">
-      <Filter>src\Game\GameWorld</Filter>
+    <ClInclude Include="src\Game\GameWorld\Base\CharacterBase.h">
+      <Filter>src\Game\GameWorld\Base\CharacterBase</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

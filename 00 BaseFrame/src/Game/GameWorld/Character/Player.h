@@ -6,12 +6,12 @@ class BasePlayerAS;
 //====================================
 // プレイヤークラス
 //====================================
-class Player :public ObjectBase
+class Player :public CharacterBase
 {
 public: 
 
 	//初期化設定
-	void Init();
+	void Init(YsMatrix& _m, SPtr<YsGameModel>& _gm);
 
 	//更新処理
 	virtual void Update() override;
@@ -27,9 +27,6 @@ public:
 	
 
 private:
-
-	//モデルデータ
-	YsModelObject	m_moPla;
 
 	// アニメーター
 	YsAnimator		m_aniPla;
