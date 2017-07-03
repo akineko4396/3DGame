@@ -139,6 +139,15 @@
     <Filter Include="src\Game\GameWorld\Base\CharacterBase\Object\Bridge">
       <UniqueIdentifier>{3b80594f-d0f6-4bcb-ab59-0f325f9437a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Character\Skeleton">
+      <UniqueIdentifier>{bbdabf49-7d23-4f43-86be-91e22c0d5055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Character\Boss">
+      <UniqueIdentifier>{d71d37da-6a95-45a8-bf3a-f944176e14b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game\GameWorld\Base\CharacterBase\Character\Demon">
+      <UniqueIdentifier>{d1dc038e-3609-4372-9823-4cc1aba7f8c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Shader\ShaderManager.cpp">
@@ -341,6 +350,15 @@
     </ClCompile>
     <ClCompile Include="src\Game\GameWorld\Base\CharacterBase.cpp">
       <Filter>src\Game\GameWorld\Base\CharacterBase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameWorld\Character\Boss.cpp">
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Character\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameWorld\Character\Skeleton.cpp">
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Character\Skeleton</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameWorld\Character\Demon.cpp">
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Character\Demon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -574,6 +592,15 @@
     </ClInclude>
     <ClInclude Include="src\Game\GameWorld\Base\CharacterBase.h">
       <Filter>src\Game\GameWorld\Base\CharacterBase</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameWorld\Character\Boss.h">
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Character\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameWorld\Character\Skeleton.h">
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Character\Skeleton</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameWorld\Character\Demon.h">
+      <Filter>src\Game\GameWorld\Base\CharacterBase\Character\Demon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -460,7 +460,6 @@ SPtr<CharacterBase> DataManager::CsvDataLoad(const std::string& _FileName)
 	//読み込み・配置(０行目はタイトル行なので、１行目から)
 	for (UINT i = 1; i < csv.m_Tbl.size(); i++) {
 		// データ取得
-		std::string modelName = csv.GetCol(i, "モデル名");
 		YsVec3 pos;
 		pos.x = std::stof(csv.GetCol(i, "X座標"));
 		pos.y = std::stof(csv.GetCol(i, "Y座標"));
@@ -472,11 +471,13 @@ SPtr<CharacterBase> DataManager::CsvDataLoad(const std::string& _FileName)
 		rotate.z = std::stof(csv.GetCol(i, "角度Z"));
 		std::string className = csv.GetCol(i, "クラス");
 
-		// 描画用メッシュ読み込み
-		SPtr<YsGameModel> drawModel = YsDx.GetResStg()->LoadMesh(modelName);
-
 		YsVec3 scale = YsVec3(size, size, size);
 
+		//モデル用
+		std::string modelName;
+		SPtr<YsGameModel> drawModel;
+
+		//仮行列
 		YsMatrix mat;
 
 		//　座標をセットする
@@ -500,11 +501,63 @@ SPtr<CharacterBase> DataManager::CsvDataLoad(const std::string& _FileName)
 				//　リストにインスタンス化したオブジェクトをプッシュする
 				SPtr<Player> add = CharacterBase::CreateCharaTask<Player>();
 
+				//メッシュ読み込み
+				modelName = PLAYER_PATH;
+				drawModel = YsDx.GetResStg()->LoadMesh(modelName);
+
 				//　オブジェクトの初期化をする
 				add->Init(mat, drawModel);
 
 				//プレイやーの情報を保存
 				p = add;
+			}
+		}
+
+		//ボス
+		{
+			if (className == "Boss")
+			{
+				//　リストにインスタンス化したオブジェクトをプッシュする
+				SPtr<Boss> add = CharacterBase::CreateCharaTask<Boss>();
+
+				//メッシュ読み込み
+				modelName = BOSS_PATH;
+				drawModel = YsDx.GetResStg()->LoadMesh(modelName);
+
+				//　オブジェクトの初期化をする
+				add->Init(mat, drawModel);
+			}
+		}
+
+		//スケルトン
+		{
+			if (className == "Skeleton")
+			{
+				//　リストにインスタンス化したオブジェクトをプッシュする
+				SPtr<Skeleton> add = CharacterBase::CreateCharaTask<Skeleton>();
+
+				//メッシュ読み込み
+				modelName = SKELETON_PATH;
+				drawModel = YsDx.GetResStg()->LoadMesh(modelName);
+
+				//　オブジェクトの初期化をする
+				add->Init(mat, drawModel);
+			}
+		}
+
+		//デーモン
+		{
+			if (className == "Demon")
+			{
+				//　リストにインスタンス化したオブジェクトをプッシュする
+				SPtr<Demon> add = CharacterBase::CreateCharaTask<Demon>();
+
+				//メッシュ読み込み
+				modelName = DEMON_PATH;
+				drawModel = YsDx.GetResStg()->LoadMesh(modelName);
+
+				//　オブジェクトの初期化をする
+				add->Init(mat, drawModel);
 			}
 		}
 
@@ -517,6 +570,10 @@ SPtr<CharacterBase> DataManager::CsvDataLoad(const std::string& _FileName)
 			{
 				//　リストにインスタンス化したオブジェクトをプッシュする
 				SPtr<Ground> add = CharacterBase::CreateCharaTask<Ground>();
+
+				//メッシュ読み込み
+				modelName = GROUND_PATH;
+				drawModel = YsDx.GetResStg()->LoadMesh(modelName);
 
 				//回転量セット（オブジェクト用）
 				add->SetAngle(rotate);
@@ -533,6 +590,10 @@ SPtr<CharacterBase> DataManager::CsvDataLoad(const std::string& _FileName)
 				//　リストにインスタンス化したオブジェクトをプッシュする
 				SPtr<Stronghold> add = CharacterBase::CreateCharaTask<Stronghold>();
 
+				//メッシュ読み込み
+				modelName = STRONGHOLD_PATH;
+				drawModel = YsDx.GetResStg()->LoadMesh(modelName);
+
 				//回転量セット（オブジェクト用）
 				add->SetAngle(rotate);
 
@@ -547,6 +608,10 @@ SPtr<CharacterBase> DataManager::CsvDataLoad(const std::string& _FileName)
 			{
 				//　リストにインスタンス化したオブジェクトをプッシュする
 				SPtr<Wall> add = CharacterBase::CreateCharaTask<Wall>();
+
+				//メッシュ読み込み
+				modelName = WALL_PATH;
+				drawModel = YsDx.GetResStg()->LoadMesh(modelName);
 
 				//回転量セット（オブジェクト用）
 				add->SetAngle(rotate);
@@ -563,6 +628,10 @@ SPtr<CharacterBase> DataManager::CsvDataLoad(const std::string& _FileName)
 				//　リストにインスタンス化したオブジェクトをプッシュする
 				SPtr<Sling> add = CharacterBase::CreateCharaTask<Sling>();
 
+				//メッシュ読み込み
+				modelName = SLING_PATH;
+				drawModel = YsDx.GetResStg()->LoadMesh(modelName);
+
 				//回転量セット（オブジェクト用）
 				add->SetAngle(rotate);
 
@@ -577,6 +646,10 @@ SPtr<CharacterBase> DataManager::CsvDataLoad(const std::string& _FileName)
 			{
 				//　リストにインスタンス化したオブジェクトをプッシュする
 				SPtr<Cannon> add = CharacterBase::CreateCharaTask<Cannon>();
+
+				//メッシュ読み込み
+				modelName = CANNON_PATH;
+				drawModel = YsDx.GetResStg()->LoadMesh(modelName);
 
 				//回転量セット（オブジェクト用）
 				add->SetAngle(rotate);
@@ -593,6 +666,10 @@ SPtr<CharacterBase> DataManager::CsvDataLoad(const std::string& _FileName)
 				//　リストにインスタンス化したオブジェクトをプッシュする
 				SPtr<Flamethrower> add = CharacterBase::CreateCharaTask<Flamethrower>();
 
+				//メッシュ読み込み
+				modelName = FLAMETHROWER_PATH;
+				drawModel = YsDx.GetResStg()->LoadMesh(modelName);
+
 				//回転量セット（オブジェクト用）
 				add->SetAngle(rotate);
 
@@ -607,6 +684,10 @@ SPtr<CharacterBase> DataManager::CsvDataLoad(const std::string& _FileName)
 			{
 				//　リストにインスタンス化したオブジェクトをプッシュする
 				SPtr<Press> add = CharacterBase::CreateCharaTask<Press>();
+
+				//メッシュ読み込み
+				modelName = PRESS_PATH;
+				drawModel = YsDx.GetResStg()->LoadMesh(modelName);
 
 				//回転量セット（オブジェクト用）
 				add->SetAngle(rotate);
@@ -623,6 +704,10 @@ SPtr<CharacterBase> DataManager::CsvDataLoad(const std::string& _FileName)
 				//　リストにインスタンス化したオブジェクトをプッシュする
 				SPtr<Arm> add = CharacterBase::CreateCharaTask<Arm>();
 
+				//メッシュ読み込み
+				modelName = ARM_PATH;
+				drawModel = YsDx.GetResStg()->LoadMesh(modelName);
+
 				//回転量セット（オブジェクト用）
 				add->SetAngle(rotate);
 
@@ -638,6 +723,10 @@ SPtr<CharacterBase> DataManager::CsvDataLoad(const std::string& _FileName)
 				//　リストにインスタンス化したオブジェクトをプッシュする
 				SPtr<BeltConveyor> add = CharacterBase::CreateCharaTask<BeltConveyor>();
 
+				//メッシュ読み込み
+				modelName = BELTCONVEYOR_PATH;
+				drawModel = YsDx.GetResStg()->LoadMesh(modelName);
+
 				//回転量セット（オブジェクト用）
 				add->SetAngle(rotate);
 
@@ -652,6 +741,10 @@ SPtr<CharacterBase> DataManager::CsvDataLoad(const std::string& _FileName)
 			{
 				//　リストにインスタンス化したオブジェクトをプッシュする
 				SPtr<Bridge> add = CharacterBase::CreateCharaTask<Bridge>();
+
+				//メッシュ読み込み
+				modelName = BRIDGE_PATH;
+				drawModel = YsDx.GetResStg()->LoadMesh(modelName);
 
 				//回転量セット（オブジェクト用）
 				add->SetAngle(rotate);
@@ -689,12 +782,11 @@ void DataManager::CsvDataSave(const std::string& _FileName)
 	YsVec3 Pos = YsVec3(0.0f, 0.0f, 0.0f);
 	float size = 1.0f;
 	YsVec3 Angle = YsVec3(0.0f, 0.0f, 0.0f);
-	std::string modelName;
 
 	std::vector<SPtr<CharacterBase>> cList = CharacterBase::GetList();
 
 	//種類名を先に保存
-	ofs << "モデル名," << "X座標," << "Y座標," << "Z座標," << "サイズ," << "角度X," << "角度Y," << "角度Z," << "クラス" << std::endl;
+	ofs << "X座標," << "Y座標," << "Z座標," << "サイズ," << "角度X," << "角度Y," << "角度Z," << "クラス" << std::endl;
 
 	//リスト内をすべて回す
 	for (UINT i = 0; i < cList.size(); i++) {
@@ -714,14 +806,18 @@ void DataManager::CsvDataSave(const std::string& _FileName)
 		switch (cList[i]->GetObjId()) {
 			//プレイヤー
 		case OBJECT_LIST::ID::PLAYER:
-			modelName = PLAYER_PATH;
 			ofs << CSV_DATA_SAVE << "Player" << std::endl; break;
-			//エネミー
-		case OBJECT_LIST::ID::ENEMY:
-			ofs << CSV_DATA_SAVE << "Enemy" << std::endl; break;
+			//ボス
+		case OBJECT_LIST::ID::BOSS:
+			ofs << CSV_DATA_SAVE << "Boss" << std::endl; break;
+			//スケルトン
+		case OBJECT_LIST::ID::SKELETON:
+			ofs << CSV_DATA_SAVE << "Skeleton" << std::endl; break;
+			//デーモン
+		case OBJECT_LIST::ID::DEMON:
+			ofs << CSV_DATA_SAVE << "Demon" << std::endl; break;
 			//ステージ
 		case OBJECT_LIST::ID::GROUND:
-			modelName = GROUND_PATH;
 			ofs << CSV_DATA_SAVE << "Ground" << std::endl; break;
 			//拠点
 		case OBJECT_LIST::ID::STRONGHOLD:
@@ -743,15 +839,12 @@ void DataManager::CsvDataSave(const std::string& _FileName)
 			ofs << CSV_DATA_SAVE << "Press" << std::endl; break;
 			//アーム
 		case OBJECT_LIST::ID::ARM:
-			modelName = ARM_PATH;
 			ofs << CSV_DATA_SAVE << "Arm" << std::endl; break;
 			//ベルトコンベア
 		case OBJECT_LIST::ID::BELTCONVEYOR:
-			modelName = BELT_PATH;
 			ofs << CSV_DATA_SAVE << "BeltConveyor" << std::endl; break;
 			//ブリッジ
 		case OBJECT_LIST::ID::BRIDGE:
-			modelName = BRIDGE_PATH;
 			ofs << CSV_DATA_SAVE << "Bridge" << std::endl; break;
 		}
 	}

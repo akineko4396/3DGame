@@ -56,7 +56,10 @@
     <ClCompile Include="src\Game\GameCamera.cpp" />
     <ClCompile Include="src\Game\GameWorld\Base\CollisionBase.cpp" />
     <ClCompile Include="src\Game\GameWorld\Base\CharacterBase.cpp" />
+    <ClCompile Include="src\Game\GameWorld\Character\Boss.cpp" />
+    <ClCompile Include="src\Game\GameWorld\Character\Demon.cpp" />
     <ClCompile Include="src\Game\GameWorld\Character\Player.cpp" />
+    <ClCompile Include="src\Game\GameWorld\Character\Skeleton.cpp" />
     <ClCompile Include="src\Game\GameWorld\GameWorld.cpp" />
     <ClCompile Include="src\Game\GameWorld\Object\Arm.cpp" />
     <ClCompile Include="src\Game\GameWorld\Object\BeltConveyor.cpp" />
@@ -137,7 +140,10 @@
     <ClInclude Include="src\Game\GameCamera.h" />
     <ClInclude Include="src\Game\GameWorld\Base\CollisionBase.h" />
     <ClInclude Include="src\Game\GameWorld\Base\CharacterBase.h" />
+    <ClInclude Include="src\Game\GameWorld\Character\Boss.h" />
+    <ClInclude Include="src\Game\GameWorld\Character\Demon.h" />
     <ClInclude Include="src\Game\GameWorld\Character\Player.h" />
+    <ClInclude Include="src\Game\GameWorld\Character\Skeleton.h" />
     <ClInclude Include="src\Game\GameWorld\GameKey.h" />
     <ClInclude Include="src\Game\GameWorld\GameWorld.h" />
     <ClInclude Include="src\Game\GameWorld\Include.h" />

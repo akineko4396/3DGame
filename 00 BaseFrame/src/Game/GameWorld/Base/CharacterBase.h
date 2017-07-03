@@ -10,38 +10,44 @@ namespace OBJECT_LIST {
 		//プレイヤー
 		PLAYER					=	0,
 
-		//敵
-		ENEMY					=	1,
+		//ボス
+		BOSS						=	1,
+
+		//スケルトン
+		SKELETON				=	2,
+
+		//デーモン
+		DEMON					=	3,
 
 		//ステージ
-		GROUND				=	2,
+		GROUND				=	4,
 
 		//拠点
-		STRONGHOLD		=	3,
+		STRONGHOLD		=	5,
 
 		//壁
-		WALL					=	4,
+		WALL					=	6,
 
 		//投石器
-		SLING					=	5,
+		SLING					=	7,
 
 		//大砲
-		CANNON				=	6,
+		CANNON				=	8,
 
 		//火炎放射器
-		FLAMETHROWER	=	7,
+		FLAMETHROWER	=	9,
 
 		//プレス機
-		PRESS					=	8,
+		PRESS					=	10,
 
 		//アーム
-		ARM						=	9,
+		ARM						=	11,
 
 		//ベルトコンベア
-		BELTCONVEYOR		=	10,
+		BELTCONVEYOR		=	12,
 
 		//ブリッジ
-		BRIDGE					=	11,
+		BRIDGE					=	13,
 
 		//オブジェクト最大数
 		MAX_NUM,
@@ -151,6 +157,9 @@ public:
 	}
 
 protected:
+
+	//リスト
+	static std::vector<SPtr<CharacterBase>> m_cList;
 	
 	//	モデルデータ
 	YsModelObject		m_moChara;
@@ -172,9 +181,6 @@ protected:
 
 	//キルフラグ
 	int				m_killFlg;
-
-	//リスト
-	static std::vector<SPtr<CharacterBase>> m_cList;
 
 	// 現在押下されてるキー このキー情報によりキャラを動かす(PlayerもAIも)
 	// 各ビット(0～31)が各キーの状態

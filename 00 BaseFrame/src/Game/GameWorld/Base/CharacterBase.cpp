@@ -45,7 +45,7 @@ void CharacterBase::CheckKillFlg()
 	{
 		if ((*it)->GetKillFlg() == 1)
 		{
-			*it = NULL;
+			*it = nullptr;
 			it = m_cList.erase(it);
 		}
 		else{
